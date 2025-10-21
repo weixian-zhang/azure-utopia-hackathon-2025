@@ -57,7 +57,7 @@ def azure_openai_llm():
 
 
 def intention_router(prompt: str) -> str:
-    if "image" or 'img' in prompt.lower():
+    if prompt.lower().find("image") != -1 or prompt.lower().find("img") != -1:
         return "image"
     else:
         return "text"
@@ -75,7 +75,7 @@ def intention_router(prompt: str) -> str:
 def main():
     import streamlit as st
     
-    st.title("💬 Chat with Azure AI")
+    st.title("💬 Azure Utopia Hackathon for the win!")
     
     # Initialize chat history in session state
     if "messages" not in st.session_state:
@@ -105,7 +105,7 @@ def main():
 
                 if intention_router(prompt) == "image":
                     image = dall_e_image_generator(prompt)
-                    st.image(image, caption="Generated Image", use_container_width=True)
+                    st.image(image, caption="", use_container_width=True)
                     assistant_message = "Here is the image you requested."
                     return
 
