@@ -1,0 +1,15 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "streamlit run",
+            "type": "shell",
+            "command": "streamlit run main.py",
+            "options": {
+                "cwd": "${workspaceFolder}/src"
+            }
+        }
+    ]
+}
