@@ -16,13 +16,13 @@ app = FastAPI()
 
 
 class RequestData(BaseModel):
-    message: str
+    input: str
 
 
 @app.post("/chat")
 async def chat_endpoint(data: RequestData):
     evil_llm = EvilLLMSingleton.get_instance()
-    response: str = evil_llm.ask_evil_question(data.message)
+    response: str = evil_llm.ask_evil_question(data.input)
     
     return {
         "status": "success",

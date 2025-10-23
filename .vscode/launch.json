@@ -16,7 +16,7 @@
                     "--server.port",
                     "8501" // Or your desired port
                 ],
-                "cwd": "${workspaceFolder}/src"
+                "cwd": "${workspaceFolder}/src/stage_1"
             }
         ]
     }

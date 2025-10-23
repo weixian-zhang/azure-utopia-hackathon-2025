@@ -19,7 +19,7 @@ def azure_ai_llm():
     )
     return llm
 
-def dall_e_image_generator(prompt: str) -> ImageFile:
+def dall_e_image_generator(prompt: str) -> list[bool, str, ImageFile]:
     endpoint = os.getenv("AZURE_AI_IMAGE_GENERATION_ENDPOINT")
     key = os.getenv("AZURE_AI_IMAGE_GENERATION_CREDENTIAL")
     response: Response = requests.post(
@@ -39,25 +39,24 @@ def dall_e_image_generator(prompt: str) -> ImageFile:
     )
 
     content = json.loads(response.content.decode('utf-8'))
+
+    if 'error' in content:
+        return False, content['error'], None
+     
     image_url = content['data'][0]['url']
 
     response = requests.get(image_url)
 
     image_data = BytesIO(response.content)
     image = Image.open(image_data)
-    return image
 
-def azure_openai_llm():
-    llm = AzureChatOpenAI(
-        azure_deployment="gpt-4o", # The name of your deployed model in Azure OpenAI
-        api_version="2024-12-01-preview",
-        temperature=1.0
-    )
-    return llm
+    return True, "", image
+
 
 
 def intention_router(prompt: str) -> str:
-    if prompt.lower().find("image") != -1 or prompt.lower().find("img") != -1:
+    img_words = ["image", "img", "picture", "photo", "draw", "illustrate", "visualize", "sketch", "paint", "design", 'pic']
+    if any(word in prompt for word in img_words):
         return "image"
     else:
         return "text"
@@ -68,14 +67,11 @@ def intention_router(prompt: str) -> str:
 # response: AIMessage = azure_ai_llm().invoke("Hello from Azure AI LLM!")
 # print(response.pretty_print())
 
-# response: AIMessage = azure_openai_llm().invoke("Hello from Azure OpenAI LLM!")
-# print(response.pretty_print())
-
 
 def main():
     import streamlit as st
     
-    st.title("💬 Azure Utopia Hackathon for the win!")
+    st.title("💬 Azure Utopia CPF Hackathon!")
     
     # Initialize chat history in session state
     if "messages" not in st.session_state:
@@ -104,7 +100,13 @@ def main():
             with st.spinner("Thinking..."):
 
                 if intention_router(prompt) == "image":
-                    image = dall_e_image_generator(prompt)
+                    ok, err, image = dall_e_image_generator(prompt)
+                    
+                    if not ok:
+                        assistant_message = f"Error generating image: {err}"
+                        st.markdown(assistant_message)
+                        return
+                    
                     st.image(image, caption="", use_container_width=True)
                     assistant_message = "Here is the image you requested."
                     return

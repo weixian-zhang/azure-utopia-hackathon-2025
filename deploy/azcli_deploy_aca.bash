@@ -10,38 +10,56 @@ az role assignment create \
 # create container app environment
 # az containerapp env create --assign-identity --enable-workload-profiles --resource-group "rg-clamblob" --name "cae-common" --location "southeastasia" --infrastructure-subnet-resource-id /subscriptions/c9061bc7-fa28-41d9-a783-2600b29c6e2f/resourceGroups/rg-clamblob/providers/Microsoft.Network/virtualNetworks/vnet-clamblob/subnets/CAEnvironment --logs-workspace-id c596239e-beda-4999-a79f-58e34d9881e4
 #az containerapp env workload-profile set --resource-group rg-clamblob --name cae-common --workload-profile-type D4 --workload-profile-name dedicated-d4-1 --min-nodes 1 --max-nodes 1
+
+# internal only with existing VNET
+# az containerapp env create \
+#     --resource-group rg-cpf-hackathon-2025 \
+#     --name aca-env-external-cpf-hackathon \
+#     --location "southeastasia" \
+#     --infrastructure-subnet-resource-id /subscriptions/c9061bc7-fa28-41d9-a783-2600b29c6e2f/resourceGroups/rg-cpf-hackathon-2025/providers/Microsoft.Network/virtualNetworks/vnet-cpf-hackathon/subnets/Container-App-Environment \
+#     --internal-only \
+#     --enable-peer-to-peer-encryption \
+#     --logs-workspace-id f2aba6b2-3607-4eb6-aec3-3d52ed5c9d92
+
 az containerapp env create \
     --resource-group rg-cpf-hackathon-2025 \
-    --name aca-env-cpf-hackathon \
+    --name aca-env-external-cpf-hackathon \
     --location "southeastasia" \
-    --infrastructure-subnet-resource-id /subscriptions/c9061bc7-fa28-41d9-a783-2600b29c6e2f/resourceGroups/rg-cpf-hackathon-2025/providers/Microsoft.Network/virtualNetworks/vnet-cpf-hackathon/subnets/Container-App-Environment \
-    --internal-only \
     --enable-peer-to-peer-encryption \
     --logs-workspace-id f2aba6b2-3607-4eb6-aec3-3d52ed5c9d92
 
 # stage_1 streamlit container app
+az acr build --image acrcpfhackthon.azurecr.io/webapp:v0.0.3 --registry acrcpfhackthon --file Dockerfile .
+
 az containerapp create \
---name aca-streamlit \
+--name aca-stage-1-streamlit \
 --resource-group rg-cpf-hackathon-2025 \
---environment /subscriptions/c9061bc7-fa28-41d9-a783-2600b29c6e2f/resourceGroups/rg-cpf-hackathon-2025/providers/Microsoft.App/managedEnvironments/aca-env-cpf-hackathon \
---image acrcpfhackthon.azurecr.io/webapp:v0.0.1 \
+--environment /subscriptions/c9061bc7-fa28-41d9-a783-2600b29c6e2f/resourceGroups/rg-cpf-hackathon-2025/providers/Microsoft.App/managedEnvironments/aca-env-external-cpf-hackathon \
+--image acrcpfhackthon.azurecr.io/webapp:v0.0.3 \
 --registry-server acrcpfhackthon.azurecr.io \
 --registry-identity /subscriptions/c9061bc7-fa28-41d9-a783-2600b29c6e2f/resourceGroups/rg-cpf-hackathon-2025/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity-aca-acr-cpf-hackathon \
 --target-port 8080 \
+--min-replicas 1 \
+--max-replicas 2 \
 --ingress external \
 --query properties.configuration.fullQdn
 
 # stage_2 hugging face evil llm container app
+az acr build --image acrcpfhackthon.azurecr.io/evil-llm --registry acrcpfhackthon --file Dockerfile .
+
 az containerapp create \
---name aca-evil-llm \
+--name aca-stage-2-evil-llm \
 --resource-group rg-cpf-hackathon-2025 \
---environment /subscriptions/c9061bc7-fa28-41d9-a783-2600b29c6e2f/resourceGroups/rg-cpf-hackathon-2025/providers/Microsoft.App/managedEnvironments/aca-env-cpf-hackathon \
+--environment /subscriptions/c9061bc7-fa28-41d9-a783-2600b29c6e2f/resourceGroups/rg-cpf-hackathon-2025/providers/Microsoft.App/managedEnvironments/aca-env-external-cpf-hackathon \
 --image acrcpfhackthon.azurecr.io/evil-llm:latest \
 --registry-server acrcpfhackthon.azurecr.io \
 --registry-identity /subscriptions/c9061bc7-fa28-41d9-a783-2600b29c6e2f/resourceGroups/rg-cpf-hackathon-2025/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity-aca-acr-cpf-hackathon \
 --target-port 8080 \
 --ingress external \
+--min-replicas 1 \
+--max-replicas 2 \
 --query properties.configuration.fullQdn
+
 
 # mount azure file share to container app environment
 # az containerapp env storage set \

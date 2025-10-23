@@ -1,0 +1,22 @@
+<policies>
+    <inbound>
+        <base />
+        <llm-content-safety backend-id="ai-foundry-content-safety-cpf-hackathon" shield-prompt="true">
+            <categories output-type="FourSeverityLevels">
+                <category name="Hate" threshold="2" />
+                <category name="Violence" threshold="2" />
+                <category name="SelfHarm" threshold="2" />
+                <category name="Sexual" threshold="2" />
+            </categories>
+        </llm-content-safety>
+    </inbound>
+    <backend>
+        <base />
+    </backend>
+    <outbound>
+        <base />
+    </outbound>
+    <on-error>
+        <base />
+    </on-error>
+</policies>
