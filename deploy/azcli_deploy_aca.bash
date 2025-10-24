@@ -45,7 +45,7 @@ az containerapp create \
 --query properties.configuration.fullQdn
 
 # stage_2 hugging face evil llm container app
-az acr build --image acrcpfhackthon.azurecr.io/evil-llm --registry acrcpfhackthon --file Dockerfile .
+az acr build --image acrcpfhackthon.azurecr.io/evil-llm:v0.0.2 --registry acrcpfhackthon --file Dockerfile .
 
 az containerapp create \
 --name aca-stage-2-evil-llm \

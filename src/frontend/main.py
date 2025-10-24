@@ -1,4 +1,5 @@
-from langchain_azure_ai.chat_models import AzureAIChatCompletionsModel
+# from langchain_azure_ai.chat_models import AzureAIChatCompletionsModel
+import streamlit as st
 from langchain_openai import AzureChatOpenAI
 from langchain_core.messages import AIMessage
 from dotenv import load_dotenv
@@ -11,11 +12,24 @@ import json
 
 load_dotenv()
 
+#global variables
+hackathon_stage = "Stage 1"
+stage_2_api_endpoint = os.getenv("STAGE_2_API_ENDPOINT")
+stage_2_evil_llm_api_endpoint = os.getenv("STAGE_2_EVIL_LLM_API_ENDPOINT")
+stage_3_ml_endpoint = os.getenv("STAGE_3_ML_ENDPOINT")
 
-def azure_ai_llm():
-    llm = AzureAIChatCompletionsModel(  
+def azure_openai_llm():
+    # llm = AzureAIChatCompletionsModel(  
+    #     model="gpt-4o",
+    #     api_version="2024-12-01-preview",
+    # )
+    # return llm
+
+    llm = AzureChatOpenAI(
+        deployment_name="gpt-4o",
         model="gpt-4o",
         api_version="2024-12-01-preview",
+        temperature=1.0
     )
     return llm
 
@@ -61,25 +75,38 @@ def intention_router(prompt: str) -> str:
     else:
         return "text"
 
-# image = dall_e_image_generator("generate image of cartoonish cuttlefish")
-# image.show()
 
-# response: AIMessage = azure_ai_llm().invoke("Hello from Azure AI LLM!")
-# print(response.pretty_print())
+def render_side_bar():
+    hackathon_stage = st.sidebar.selectbox(
+    "Select a view:",
+    ("Stage 1", "Stage 2", "Stage 3", "Stage 4", "Stage 5")
+    )
+
+    if hackathon_stage == "Stage 1":
+        st.sidebar.markdown("""Goal:  
+        Understanding on using prompts to generate text or images.""")
+    elif hackathon_stage == "Stage 2":
+        st.sidebar.markdown("""Goal:  
+        Basics of vector DB, the flow of retrieval augmented generation solution using Azure solution""")
+    elif hackathon_stage == "Stage 3":
+        st.sidebar.markdown("""Goal:  
+        Extension of Gen AI with other tools such as machine learning endpoint and interaction with databases.""")
+    elif hackathon_stage == "Stage 4":
+        st.sidebar.markdown("""Goal:  
+        Multi-modal Gen AI, and extension to read from database.""")
+    elif hackathon_stage == "Stage 5":
+        st.sidebar.markdown("""Goal:  
+        Deployment and usage of SLM to address certain tasks that is less intensive, such as sentiment analysis and entity extraction.""")
 
 
-def main():
-    import streamlit as st
-    
-    st.title("💬 Azure Utopia CPF Hackathon!")
-    
+def render_chat_component():
     # Initialize chat history in session state
     if "messages" not in st.session_state:
         st.session_state.messages = []
     
     # Initialize LLM in session state (only once)
     if "llm" not in st.session_state:
-        st.session_state.llm = azure_ai_llm()
+        st.session_state.llm = azure_openai_llm()
     
     # Display chat history
     for message in st.session_state.messages:
@@ -96,6 +123,7 @@ def main():
             st.markdown(prompt)
         
         # Generate assistant response
+        
         with st.chat_message("assistant"):
             with st.spinner("Thinking..."):
 
@@ -122,6 +150,14 @@ def main():
         
         # Add assistant message to chat history
         st.session_state.messages.append({"role": "assistant", "content": assistant_message})
+
+
+
+def main():
+    st.title("💬 Azure Utopia CPF Hackathon!")
+    render_side_bar()
+    render_chat_component()
+    
 
 
 if __name__ == "__main__":
