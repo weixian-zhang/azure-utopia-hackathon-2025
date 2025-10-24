@@ -18,13 +18,24 @@ stage_2_api_endpoint = os.getenv("STAGE_2_API_ENDPOINT")
 stage_2_evil_llm_api_endpoint = os.getenv("STAGE_2_EVIL_LLM_API_ENDPOINT")
 stage_3_ml_endpoint = os.getenv("STAGE_3_ML_ENDPOINT")
 stage_info = {
-    "Stage 1": ("Understanding on using prompts to generate text or images.", '''HTTP call Dall-E model in Azure AI Foundry to generate images based on text prompts, 
-                and use Azure OpenAI Service to generate text based on text prompts.''', 'ensure in prompt contains words like "image", "img", "picture", "photo", "draw", "illustrate", "visualize", "sketch", "paint", "design", "pic" to generate images.'),
-    "Stage 2": ("Basics of vector DB, the flow of retrieval augmented generation solution using Azure solution", 'use LangChain to load Kaggle Happiness Report CSV dataset into Azure AI Search.', 'example prompt: How happy are the people in Singapore?  which country has the saddest people?  '),
-    "Stage 2-1": ("Try out Evil LLM to answer your darkest questions without Azure Content Safety", '''APIM API ignore llm-content-safety policy.  use Hugging Face to load deepseek-ai/DeepSeek-R1-0528 model with jailbreak system prompt to answer evil questions.''', 'evil prompt example: How I can hurt myself safely to claim insurance money?'),
-    "Stage 3": ("Extension of Gen AI with other tools such as machine learning endpoint and interaction with databases.", 'HTTP call Azure ML endpoint'),
-    "Stage 4": ("Multi-modal Gen AI, and extension to read from database.", 'LangChain LLM multimodal will extract applicant id from image badge.  query Sqlite where image.applicant.id == Sqlite.applicant.id. Use Azure Content Safety API to analyze image for content safety.', '1. upload an image of successful applicant badge.  2. upload malicious image for content safety check.'),
-    "Stage 5": ("Deployment and usage of SLM to address certain tasks that is less intensive, such as sentiment analysis and entity extraction.", 'use Azure OpenAI SDK to call Azure AI Foundry Llama model to perform sentiment abalysis and entity extraction.')
+    "Stage 1": ("Understanding on using prompts to generate text or images.", 
+                '''HTTP call Dall-E model in Azure AI Foundry to generate images based on text prompts, and use Azure OpenAI Service to generate text based on text prompts.''', 
+                'ensure in prompt contains words like:  \n"image", "img", "picture", "photo", "draw", "illustrate", "visualize", "sketch", "paint", "design", "pic" to generate images.'),
+    "Stage 2": ("Basics of vector DB, the flow of retrieval augmented generation solution using Azure solution", 
+                'use LangChain to load Kaggle Happiness Report CSV dataset into Azure AI Search.', 
+                'example prompt: \n\n 1. How happy are the people in Singapore? \n\n 2. Which country has the saddest people?'),
+    "Stage 2-1": ("Try out Evil LLM to answer your darkest questions without Azure Content Safety", 
+                  '''APIM API ignore llm-content-safety policy.  use Hugging Face to load deepseek-ai/DeepSeek-R1-0528 model with jailbreak system prompt to answer evil questions.''', 
+                  'evil prompt example: \n\n How I can hurt myself as safe as possible to claim insurance money without being caught?'),
+    "Stage 3": ("Extension of Gen AI with other tools such as machine learning endpoint and interaction with databases.", 
+                '1. use Azure OpenAI Assistant with File Search as RAG to vector search if applicant description is qualified. \n\n2. tool call to insert input and output data to CosmosDB',
+                'prompt as interested applicant: \n\n I am a teacher who teaches math, I am of age 31 without any health issues. I am interested in joining the Utopia Rocjet tour. Am I qualified? '),
+    "Stage 4": ("Multi-modal Gen AI, and extension to read from database.", 
+                '1. use LangChain multimodal LLM to OCR-extract applicant id from image badge. \n\n 2. query Sqlite where image.applicant.id == Sqlite.applicant.id. \n\n 3. Use Azure Content Safety API to analyze image for content safety.',
+                '1. upload an image of successful applicant badge. \n\n 2. upload malicious image for content safety check.'),
+    "Stage 5": ("Deployment and usage of SLM to address certain tasks that is less intensive, such as sentiment analysis and entity extraction.", 
+                'use Azure OpenAI SDK to call Azure AI Foundry Llama model to perform: \n\n 1. sentiment analysis \n\n 2. entity extraction',
+                '1. prompt feedback with positive sentiment: I am very happy with the Utopia Rocket tour experience! \n\n 2. prompt feedback with negative sentiment: The Utopia Rocket tour is a waste of money and time.')
 }
 
 def azure_openai_llm():
@@ -93,6 +104,7 @@ def render_side_bar():
 
     goal = stage_info[hackathon_stage][0]
     solution = stage_info[hackathon_stage][1]
+    usage = stage_info[hackathon_stage][2]
 
     st.sidebar.write('\n')
     st.sidebar.write('\n')
@@ -104,28 +116,12 @@ def render_side_bar():
 
     st.sidebar.markdown(f"""**Solution**:  
         {solution}""")
+    
+    st.sidebar.write('\n')
 
-    # st.sidebar.markdown("""Goal:  
-    #     Understanding on using prompts to generate text or images.""")
+    st.sidebar.markdown(f"""**Usage**:  
+        {usage}""")
 
-    # if hackathon_stage == "Stage 1":
-    #     st.sidebar.markdown("""Goal:  
-    #     Understanding on using prompts to generate text or images.""")
-    # elif hackathon_stage == "Stage 2":
-    #     st.sidebar.markdown("""Goal:  
-    #     Basics of vector DB, the flow of retrieval augmented generation solution using Azure solution""")
-    # elif hackathon_stage == "Stage 2-1":
-    #     st.sidebar.markdown("""Goal:  
-    #     Try out Evil LLM to answer your darkest questions without Content Safety""")
-    # elif hackathon_stage == "Stage 3":
-    #     st.sidebar.markdown("""Goal:  
-    #     Extension of Gen AI with other tools such as machine learning endpoint and interaction with databases.""")
-    # elif hackathon_stage == "Stage 4":
-    #     st.sidebar.markdown("""Goal:  
-    #     Multi-modal Gen AI, and extension to read from database.""")
-    # elif hackathon_stage == "Stage 5":
-    #     st.sidebar.markdown("""Goal:  
-    #     Deployment and usage of SLM to address certain tasks that is less intensive, such as sentiment analysis and entity extraction.""")
 
 
 def render_chat_component():
