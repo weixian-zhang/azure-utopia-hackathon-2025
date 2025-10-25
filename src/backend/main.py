@@ -4,7 +4,7 @@ from pydantic import BaseModel
 import uvicorn
 from rag import RAG
 from evil_llm import EvilLLM
-
+from virtue_llm import VirtueLLM
 
 # class EvilLLMSingleton:
 #     _instance = None
@@ -18,6 +18,7 @@ from evil_llm import EvilLLM
 class AppState():
     rag: RAG = None
     evil_llm: EvilLLM = None
+    virtue_llm: VirtueLLM = None
 
  
 app_state = AppState()
@@ -27,6 +28,7 @@ async def lifespan(app: FastAPI):
     app_state.rag = RAG()
     app_state.rag.vectorize_data_if_not_exists()
     app_state.evil_llm = EvilLLM()
+    app_state.virtue_llm = VirtueLLM()
 
     yield
 
@@ -34,6 +36,7 @@ async def lifespan(app: FastAPI):
     print("Shutting down...")
     app_state.rag = None
     app_state.evil_llm = None
+    app_state.virtue_llm = None
 
 
 app = FastAPI(lifespan=lifespan)
@@ -42,6 +45,21 @@ app = FastAPI(lifespan=lifespan)
 class RequestData(BaseModel):
     input: str
 
+@app.post("/stage-1")
+async def stage_1(data: RequestData):
+    return app_state.virtue_llm.invoke(data.input)
+
+@app.post("/stage-2")
+async def chat_endpoint(data: RequestData):
+    """
+    retrieval augmented generation solution using Azure AI Search and Azure OpenAI Service.
+    """
+    response: str = app_state.rag.answer_query(data.input)
+    
+    return {
+        "status": "success",
+        "data": response
+    }
 
 
 @app.post("/stage-2")

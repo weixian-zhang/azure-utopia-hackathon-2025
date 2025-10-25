@@ -1,4 +1,5 @@
 # from langchain_azure_ai.chat_models import AzureAIChatCompletionsModel
+from typing import Union, Tuple, Any
 import streamlit as st
 from langchain_openai import AzureChatOpenAI
 from langchain_core.messages import AIMessage
@@ -37,6 +38,9 @@ stage_info = {
                 'use Azure OpenAI SDK to call Azure AI Foundry Llama model to perform: \n\n 1. sentiment analysis \n\n 2. entity extraction',
                 '1. prompt feedback with positive sentiment: I am very happy with the Utopia Rocket tour experience! \n\n 2. prompt feedback with negative sentiment: The Utopia Rocket tour is a waste of money and time.')
 }
+
+ai_gateway_endpoint = os.getenv("AI_GATEWAY_ENDPOINT")
+ai_gateway_key = os.getenv("AI_GATEWAY_KEY")
 
 def azure_openai_llm():
     # llm = AzureAIChatCompletionsModel(  
@@ -88,12 +92,35 @@ def dall_e_image_generator(prompt: str) -> list[bool, str, ImageFile]:
 
 
 
-def intention_router(prompt: str) -> str:
-    img_words = ["image", "img", "picture", "photo", "draw", "illustrate", "visualize", "sketch", "paint", "design", 'pic']
-    if any(word in prompt for word in img_words):
-        return "image"
-    else:
-        return "text"
+def invoke_stage_1(prompt: str) -> Tuple[str, str, str, Union[Any | str]]:
+    try:
+
+        img_words = ["image", "img", "picture", "photo", "draw", "illustrate", "visualize", "sketch", "paint", "design", 'pic']
+        if any(word in prompt for word in img_words):
+            ok, err, image = dall_e_image_generator(prompt)
+            return ok, 'image', err, image
+        else:
+            endpoint = ai_gateway_endpoint + "/stage-1"
+
+            response: Response = requests.post(
+                endpoint,
+                headers={
+                    "Content-Type": "application/json",
+                    "Ocp-Apim-Subscription-Key": f"{ai_gateway_key}"
+                },
+                json={
+                    "input": prompt,
+                }
+            )
+
+            content = json.loads(response.content.decode('utf-8'))
+            if 'error' in content:
+                return False, 'text', content['error'], None
+
+            return True, 'text', "", content['data']
+
+    except Exception as e:
+        return False, 'text', str(e), ""
 
 
 def render_side_bar():
@@ -130,8 +157,8 @@ def render_chat_component():
         st.session_state.messages = []
     
     # Initialize LLM in session state (only once)
-    if "llm" not in st.session_state:
-        st.session_state.llm = azure_openai_llm()
+    # if "llm" not in st.session_state:
+    #     st.session_state.llm = azure_openai_llm()
     
     # Display chat history
     for message in st.session_state.messages:
@@ -152,23 +179,35 @@ def render_chat_component():
         with st.chat_message("assistant"):
             with st.spinner("Thinking..."):
 
-                if intention_router(prompt) == "image":
-                    ok, err, image = dall_e_image_generator(prompt)
+                if hackathon_stage == "Stage 1":
+                    ok, resp_type, err, result = invoke_stage_1(prompt)
                     
                     if not ok:
-                        assistant_message = f"Error generating image: {err}"
+                        assistant_message = f"Error responding to prompt: {err}"
                         st.markdown(assistant_message)
                         return
                     
-                    st.image(image, caption="", use_container_width=True)
-                    assistant_message = "Here is the image you requested."
-                    return
+                    if resp_type == "image":
+                        st.image(result, caption="", use_container_width=True)
+                    else:
+                        st.markdown(result)
+                    
+                elif hackathon_stage == "Stage 2":
+                    pass
+                elif hackathon_stage == "Stage 2-1":
+                    pass
+                elif hackathon_stage == "Stage 3":
+                    pass
+                elif hackathon_stage == "Stage 4":
+                    pass
+                elif hackathon_stage == "Stage 5":
+                    pass
 
-                # Get response from LLM
-                response: AIMessage = st.session_state.llm.invoke(prompt)
+                # # Get response from LLM
+                # response: AIMessage = st.session_state.llm.invoke(prompt)
                 
-                # Extract the content from the response
-                assistant_message = response.content
+                # # Extract the content from the response
+                # assistant_message = response.content
                 
                 # Display assistant message
                 st.markdown(assistant_message)
