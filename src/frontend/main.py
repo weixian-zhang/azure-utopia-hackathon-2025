@@ -10,31 +10,40 @@ from requests import Response
 from PIL import Image, ImageFile
 from io import BytesIO
 import json
+from enum import Enum
 
 load_dotenv()
 
+class HackathonStage(Enum):
+    STAGE_1 = 1
+    STAGE_2 = 2
+    STAGE_2_1 = 21
+    STAGE_3 = 3
+    STAGE_4 = 4
+    STAGE_5 = 5
+
 #global variables
-hackathon_stage = "Stage 1"
+st.session_state.current_stage = HackathonStage.STAGE_1
 stage_2_api_endpoint = os.getenv("STAGE_2_API_ENDPOINT")
 stage_2_evil_llm_api_endpoint = os.getenv("STAGE_2_EVIL_LLM_API_ENDPOINT")
 stage_3_ml_endpoint = os.getenv("STAGE_3_ML_ENDPOINT")
 stage_info = {
-    "Stage 1": ("Understanding on using prompts to generate text or images.", 
+    HackathonStage.STAGE_1.name: ("Understanding on using prompts to generate text or images.", 
                 '''HTTP call Dall-E model in Azure AI Foundry to generate images based on text prompts, and use Azure OpenAI Service to generate text based on text prompts.''', 
                 'ensure in prompt contains words like:  \n"image", "img", "picture", "photo", "draw", "illustrate", "visualize", "sketch", "paint", "design", "pic" to generate images.'),
-    "Stage 2": ("Basics of vector DB, the flow of retrieval augmented generation solution using Azure solution", 
-                'use LangChain to load Kaggle Happiness Report CSV dataset into Azure AI Search.', 
+    HackathonStage.STAGE_2.name: ("Basics of vector DB, the flow of retrieval augmented generation solution using Azure solution", 
+                '1. I use Kaggle Happiness Report as RAG dataset \n\n2. use LangChain to load Happiness Report into Azure AI Search. \n\n3. do semantic search against Azure AI Search and pass search result as part of prompt.', 
                 'example prompt: \n\n 1. How happy are the people in Singapore? \n\n 2. Which country has the saddest people?'),
-    "Stage 2-1": ("Try out Evil LLM to answer your darkest questions without Azure Content Safety", 
+    HackathonStage.STAGE_2_1.name: ("Try out Evil LLM to answer your darkest questions without Azure Content Safety", 
                   '''APIM API ignore llm-content-safety policy.  use Hugging Face to load deepseek-ai/DeepSeek-R1-0528 model with jailbreak system prompt to answer evil questions.''', 
                   'evil prompt example: \n\n How I can hurt myself as safe as possible to claim insurance money without being caught?'),
-    "Stage 3": ("Extension of Gen AI with other tools such as machine learning endpoint and interaction with databases.", 
+    HackathonStage.STAGE_3.name: ("Extension of Gen AI with other tools such as machine learning endpoint and interaction with databases.", 
                 '1. use Azure OpenAI Assistant with File Search as RAG to vector search if applicant description is qualified. \n\n2. tool call to insert input and output data to CosmosDB',
                 'prompt as interested applicant: \n\n I am a teacher who teaches math, I am of age 31 without any health issues. I am interested in joining the Utopia Rocjet tour. Am I qualified? '),
-    "Stage 4": ("Multi-modal Gen AI, and extension to read from database.", 
+    HackathonStage.STAGE_4.name: ("Multi-modal Gen AI, and extension to read from database.", 
                 '1. use LangChain multimodal LLM to OCR-extract applicant id from image badge. \n\n 2. query Sqlite where image.applicant.id == Sqlite.applicant.id. \n\n 3. Use Azure Content Safety API to analyze image for content safety.',
                 '1. upload an image of successful applicant badge. \n\n 2. upload malicious image for content safety check.'),
-    "Stage 5": ("Deployment and usage of SLM to address certain tasks that is less intensive, such as sentiment analysis and entity extraction.", 
+    HackathonStage.STAGE_5.name: ("Deployment and usage of SLM to address certain tasks that is less intensive, such as sentiment analysis and entity extraction.", 
                 'use Azure OpenAI SDK to call Azure AI Foundry Llama model to perform: \n\n 1. sentiment analysis \n\n 2. entity extraction',
                 '1. prompt feedback with positive sentiment: I am very happy with the Utopia Rocket tour experience! \n\n 2. prompt feedback with negative sentiment: The Utopia Rocket tour is a waste of money and time.')
 }
@@ -113,25 +122,44 @@ def invoke_stage_1(prompt: str) -> Tuple[str, str, str, Union[Any | str]]:
                 }
             )
 
-            content = json.loads(response.content.decode('utf-8'))
-            if 'error' in content:
-                return False, 'text', content['error'], None
+            result = response.content.decode('utf-8')
 
-            return True, 'text', "", content['data']
+            return True, 'text', "", result
 
     except Exception as e:
         return False, 'text', str(e), ""
+    
 
+def invoke_stage_2(prompt: str) -> Tuple[bool, str, Union[Any | str]]:
+    try:
+        ok, err, result = _http_post_backend(prompt, 2)
+        return ok, err, result
+
+    except Exception as e:
+        return False, str(e), ""
+    
 
 def render_side_bar():
-    hackathon_stage = st.sidebar.selectbox(
-    "",
-    ("Stage 1", "Stage 2", "Stage 2-1", "Stage 3", "Stage 4", "Stage 5")
-    )
 
-    goal = stage_info[hackathon_stage][0]
-    solution = stage_info[hackathon_stage][1]
-    usage = stage_info[hackathon_stage][2]
+    # def on_stage_change(wid, value):
+    #     st.session_state.current_stage = HackathonStage[value.name]
+
+    current_selection = st.sidebar.selectbox(
+    "Select Hackathon Stage",
+    [HackathonStage.STAGE_1.name, 
+     HackathonStage.STAGE_2.name, 
+     HackathonStage.STAGE_2_1.name,
+     HackathonStage.STAGE_3.name, 
+     HackathonStage.STAGE_4.name, 
+     HackathonStage.STAGE_5.name
+    ])
+
+    st.session_state.current_stage = HackathonStage[current_selection]
+
+
+    goal = stage_info[current_selection][0]
+    solution = stage_info[current_selection][1]
+    usage = stage_info[current_selection][2]
 
     st.sidebar.write('\n')
     st.sidebar.write('\n')
@@ -163,7 +191,10 @@ def render_chat_component():
     # Display chat history
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
-            st.markdown(message["content"])
+            if message["role"] == "assistant" and isinstance(message["content"], Image.Image):
+                st.image(message["content"], caption="", use_container_width=True)
+            else:
+                st.markdown(message["content"])
     
     # Chat input
     if prompt := st.chat_input("What would you like to know?"):
@@ -179,7 +210,7 @@ def render_chat_component():
         with st.chat_message("assistant"):
             with st.spinner("Thinking..."):
 
-                if hackathon_stage == "Stage 1":
+                if st.session_state.current_stage == HackathonStage.STAGE_1:
                     ok, resp_type, err, result = invoke_stage_1(prompt)
                     
                     if not ok:
@@ -192,15 +223,26 @@ def render_chat_component():
                     else:
                         st.markdown(result)
                     
-                elif hackathon_stage == "Stage 2":
+                    st.session_state.messages.append({"role": "assistant", "content": result})
+                    
+                elif st.session_state.current_stage  == HackathonStage.STAGE_2:
+                    ok, err, result = invoke_stage_2(prompt)
+
+                    if not ok:
+                        assistant_message = f"Error responding to prompt: {err}"
+                        st.markdown(assistant_message)
+                        return
+                    
+                    st.markdown(result)
+                    st.session_state.messages.append({"role": "assistant", "content": result})
+
+                elif st.session_state.current_stage  == HackathonStage.STAGE_2_1:
                     pass
-                elif hackathon_stage == "Stage 2-1":
+                elif st.session_state.current_stage  == HackathonStage.STAGE_3:
                     pass
-                elif hackathon_stage == "Stage 3":
+                elif st.session_state.current_stage  == HackathonStage.STAGE_4:
                     pass
-                elif hackathon_stage == "Stage 4":
-                    pass
-                elif hackathon_stage == "Stage 5":
+                elif st.session_state.current_stage  == HackathonStage.STAGE_5:
                     pass
 
                 # # Get response from LLM
@@ -208,14 +250,39 @@ def render_chat_component():
                 
                 # # Extract the content from the response
                 # assistant_message = response.content
-                
-                # Display assistant message
-                st.markdown(assistant_message)
+            
         
         # Add assistant message to chat history
-        st.session_state.messages.append({"role": "assistant", "content": assistant_message})
+        # st.session_state.messages.append({"role": "assistant", "content": assistant_message})
 
 
+def _http_post_backend(prompt: str, stage_num: int) -> Tuple[bool, str, str]:
+    try:
+        endpoint = ai_gateway_endpoint + f"/stage-{stage_num}"
+
+        response: Response = requests.post(
+            endpoint,
+            headers={
+                "Content-Type": "application/json",
+                "Ocp-Apim-Subscription-Key": f"{ai_gateway_key}"
+            },
+            json={
+                "input": prompt,
+            }
+        )
+
+        content = json.loads(response.content.decode('utf-8'))
+
+        if content['status'] != 'success':
+            return False, content.get('error', 'Unknown error'), ""
+
+        result = content['data']
+
+        return True, "", result
+
+    except Exception as e:
+        return False, str(e), ""
+    
 
 def main():
     st.title("💬 Azure Utopia CPF Hackathon!")
