@@ -62,28 +62,28 @@ async def chat_endpoint(data: RequestData):
     }
 
 
-@app.post("/stage-2")
+@app.post("/stage-21")
 async def chat_endpoint(data: RequestData):
     """
     retrieval augmented generation solution using Azure AI Search and Azure OpenAI Service.
     """
-    response: str = app_state.rag.answer_query(data.input)
-    
-    return {
-        "status": "success",
-        "data": response
-    }
-
-
-@app.post("/stage-2-evil-llm")
-async def chat_endpoint(data: RequestData):
-
     response: str = app_state.evil_llm.ask_evil_question(data.input)
     
     return {
         "status": "success",
         "data": response
     }
+
+
+# @app.post("/stage-2-evil-llm")
+# async def chat_endpoint(data: RequestData):
+
+#     response: str = app_state.evil_llm.ask_evil_question(data.input)
+    
+#     return {
+#         "status": "success",
+#         "data": response
+#     }
 
 
 @app.get("/health")

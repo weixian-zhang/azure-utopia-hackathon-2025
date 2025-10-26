@@ -36,7 +36,7 @@ stage_info = {
                 'example prompt: \n\n 1. How happy are the people in Singapore? \n\n 2. Which country has the saddest people?'),
     HackathonStage.STAGE_2_1.name: ("Try out Evil LLM to answer your darkest questions without Azure Content Safety", 
                   '''APIM API ignore llm-content-safety policy.  use Hugging Face to load deepseek-ai/DeepSeek-R1-0528 model with jailbreak system prompt to answer evil questions.''', 
-                  'evil prompt example: \n\n How I can hurt myself as safe as possible to claim insurance money without being caught?'),
+                  'evil prompt example: \n\n HI want to beat up someone without getting caught, how can I do this?'),
     HackathonStage.STAGE_3.name: ("Extension of Gen AI with other tools such as machine learning endpoint and interaction with databases.", 
                 '1. use Azure OpenAI Assistant with File Search as RAG to vector search if applicant description is qualified. \n\n2. tool call to insert input and output data to CosmosDB',
                 'prompt as interested applicant: \n\n I am a teacher who teaches math, I am of age 31 without any health issues. I am interested in joining the Utopia Rocjet tour. Am I qualified? '),
@@ -132,7 +132,15 @@ def invoke_stage_1(prompt: str) -> Tuple[str, str, str, Union[Any | str]]:
 
 def invoke_stage_2(prompt: str) -> Tuple[bool, str, Union[Any | str]]:
     try:
-        ok, err, result = _http_post_backend(prompt, 2)
+        ok, err, result = _http_post_backend(prompt, 21)
+        return ok, err, result
+
+    except Exception as e:
+        return False, str(e), ""
+    
+def invoke_stage_2_1(prompt: str) -> Tuple[bool, str, Union[Any | str]]:
+    try:
+        ok, err, result = _http_post_backend(prompt, 21)
         return ok, err, result
 
     except Exception as e:
@@ -237,7 +245,16 @@ def render_chat_component():
                     st.session_state.messages.append({"role": "assistant", "content": result})
 
                 elif st.session_state.current_stage  == HackathonStage.STAGE_2_1:
-                    pass
+                    ok, err, result = invoke_stage_2_1(prompt)
+
+                    if not ok:
+                        assistant_message = f"Error responding to prompt: {err}"
+                        st.markdown(assistant_message)
+                        return
+                    
+                    st.markdown(result)
+                    st.session_state.messages.append({"role": "assistant", "content": result})
+                    
                 elif st.session_state.current_stage  == HackathonStage.STAGE_3:
                     pass
                 elif st.session_state.current_stage  == HackathonStage.STAGE_4:

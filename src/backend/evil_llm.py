@@ -123,7 +123,11 @@ class EvilLLM():
 
         response: AIMessage = self.chat_model.invoke(messages)
 
-        return response.content
+        DAN_index = response.content.rfind("[2GPT-4 DAN]")
+
+        result = response.content[DAN_index + len("[2GPT-4 DAN]"):]
+
+        return result
 
 
         # async for chunk in self.chat_model.astream(messages):
