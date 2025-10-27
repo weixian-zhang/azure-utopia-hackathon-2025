@@ -11,6 +11,8 @@ from PIL import Image, ImageFile
 from io import BytesIO
 import json
 from enum import Enum
+import base64
+import io
 
 load_dotenv()
 
@@ -37,17 +39,24 @@ stage_info = {
     HackathonStage.STAGE_2_1.name: ("Try out Evil LLM to answer your darkest questions without Azure Content Safety", 
                   '''APIM API ignore llm-content-safety policy.  use Hugging Face to load deepseek-ai/DeepSeek-R1-0528 model with jailbreak system prompt to answer evil questions.''', 
                   'evil prompt example: \n\n HI want to beat up someone without getting caught, how can I do this?'),
-    HackathonStage.STAGE_3.name: ("Extension of Gen AI with other tools such as machine learning endpoint and interaction with databases.", 
-                '1. use Azure OpenAI Assistant with File Search as RAG to vector search if applicant description is qualified. \n\n2. tool call to insert input and output data to CosmosDB',
-                'prompt as interested applicant: \n\n I am a teacher who teaches math, I am of age 31 without any health issues. I am interested in joining the Utopia Rocjet tour. Am I qualified? '),
+    HackathonStage.STAGE_3.name: ("Extension of Gen AI with other tools such as machine learning endpoint and interaction with databases. \n\n Development of ML using AutoML or visual design Leverage Open AI assistant API for function calling (call AML endpoint and write to database)", 
+                '''1. use Azure OpenAI Assistant with File Search as RAG to vector search if applicant description is qualified. \n\n2. tool call to insert input and output data to CosmosDB. \n 3. RAG data for qualified applicants:\n
+                age,sex,occupation,crime_history,health,diabetes
+                25-65,male,doctor,false,8,false
+                18-55,female,nurse,false,9,false
+                20-75,female,teacher,false,7,false
+                ....''',
+                'prompt as interested applicant: \n\n 1.  am a student of age 85 without any health issues. I am interested in joining rocket tour. Am I qualified? \n\n 2. I am 45 years old politician no health issues. Can I join the rocket tour? \n\n 3. I am a 50 years old mathematician with heart disease. Can I still join the rocket tour?'),
     HackathonStage.STAGE_4.name: ("Multi-modal Gen AI, and extension to read from database.", 
-                '1. use LangChain multimodal LLM to OCR-extract applicant id from image badge. \n\n 2. query Sqlite where image.applicant.id == Sqlite.applicant.id. \n\n 3. Use Azure Content Safety API to analyze image for content safety.',
-                '1. upload an image of successful applicant badge. \n\n 2. upload malicious image for content safety check.'),
+                '1. use LangChain structured_output with gpt-4o multimodalLLM to OCR-extract passenger id from badge. \n\n 2. API returns extracted passenger id and match against input passenger id to verify qualified passenger',
+                '1. upload an image of successful passenger badge image. \n\n 2. enter passenger id shown on badge'),
     HackathonStage.STAGE_5.name: ("Deployment and usage of SLM to address certain tasks that is less intensive, such as sentiment analysis and entity extraction.", 
                 'use Azure OpenAI SDK to call Azure AI Foundry Llama model to perform: \n\n 1. sentiment analysis \n\n 2. entity extraction',
                 '1. prompt feedback with positive sentiment: I am very happy with the Utopia Rocket tour experience! \n\n 2. prompt feedback with negative sentiment: The Utopia Rocket tour is a waste of money and time.')
 }
 
+st.session_state.passenger_badge_image_file = None
+st.session_state.passenger_id = ""
 ai_gateway_endpoint = os.getenv("AI_GATEWAY_ENDPOINT")
 ai_gateway_key = os.getenv("AI_GATEWAY_KEY")
 
@@ -100,6 +109,59 @@ def dall_e_image_generator(prompt: str) -> list[bool, str, ImageFile]:
     return True, "", image
 
 
+def _http_post_backend(prompt: str, stage_num: int, body={}) -> Tuple[bool, str, str]:
+    try:
+        endpoint = ai_gateway_endpoint + f"/stage-{stage_num}"
+
+        response: Response = requests.post(
+            endpoint,
+            headers={
+                "Content-Type": "application/json",
+                "Ocp-Apim-Subscription-Key": f"{ai_gateway_key}"
+            },
+            json=body if body else {
+                "input": prompt
+            }
+        )
+
+        content = json.loads(response.content.decode('utf-8'))
+
+        if content['status'] != 'success':
+            return False, content.get('error', 'Unknown error'), ""
+
+        result = content['data']
+
+        return True, "", result
+
+    except Exception as e:
+        return False, str(e), ""
+    
+
+def _http_post_image_backend(prompt: str, stage_num: int, body={}) -> Tuple[bool, str, str]:
+    try:
+        endpoint = ai_gateway_endpoint + f"/stage-{stage_num}"
+
+        response: Response = requests.post(
+            endpoint,
+            headers={
+                "Content-Type": "application/json",
+                "Ocp-Apim-Subscription-Key": f"{ai_gateway_key}"
+            },
+            json=body if body else {
+                "input": prompt
+            }
+        )
+
+        if response.status_code != 200:
+            return False, f"HTTP error {response.status_code}: {response.text}", ""
+
+        result = json.loads(response.content.decode('utf-8'))
+
+        return True, "", result
+
+    except Exception as e:
+        return False, str(e), ""
+
 
 def invoke_stage_1(prompt: str) -> Tuple[str, str, str, Union[Any | str]]:
     try:
@@ -146,6 +208,50 @@ def invoke_stage_2_1(prompt: str) -> Tuple[bool, str, Union[Any | str]]:
     except Exception as e:
         return False, str(e), ""
     
+
+def invoke_stage_3(prompt: str) -> Tuple[bool, str, Union[Any | str]]:
+    try:
+        ok, err, result = _http_post_backend(prompt, 3)
+        return ok, err, result
+
+    except Exception as e:
+        return False, str(e), ""
+    
+
+def image_to_base64(image: Image.Image, format: str = "JPEG") -> str:
+    """
+    Convert PIL Image to base64 string
+    """
+    buffered = io.BytesIO()
+    image.save(buffered, format=format)
+    return base64.b64encode(buffered.getvalue()).decode('utf-8')
+
+def invoke_stage_4_ocr(passenger_id: str) -> Tuple[bool, str, dict[bool, bool, str]]:
+    # st.subheader("Upload Applicant Badge for OCR")
+
+    uploaded_file = st.session_state.passenger_badge_image_file
+
+    if uploaded_file is not None:
+        # Display image
+        image = Image.open(uploaded_file)
+        st.image(image, caption="Passenger Badge", use_container_width=True)
+        
+        with st.spinner("Processing image..."):
+            # Convert to base64
+            img_format = uploaded_file.name.split('.')[-1].upper()
+            if img_format == "JPG":
+                img_format = "JPEG"
+            
+            base64_string = image_to_base64(image, img_format)
+            
+
+            ok, err, result =_http_post_image_backend("", 4, body={
+                "image_base64": base64_string,
+                "img_format": img_format.lower(),
+                "passenger_id": passenger_id})
+            
+            return ok, err, result
+
 
 def render_side_bar():
 
@@ -203,7 +309,11 @@ def render_chat_component():
                 st.image(message["content"], caption="", use_container_width=True)
             else:
                 st.markdown(message["content"])
-    
+
+    if st.session_state.current_stage == HackathonStage.STAGE_4:
+        st.session_state.passenger_badge_image_file = st.file_uploader("Choose a passenger badge image for verification...", type=["jpg", "jpeg", "png"])
+        st.write("Enter Passenger ID in prompt for verification.")
+
     # Chat input
     if prompt := st.chat_input("What would you like to know?"):
         # Add user message to chat history
@@ -256,9 +366,29 @@ def render_chat_component():
                     st.session_state.messages.append({"role": "assistant", "content": result})
                     
                 elif st.session_state.current_stage  == HackathonStage.STAGE_3:
-                    pass
+                    ok, err, result = invoke_stage_3(prompt)
+                    if not ok:
+                        assistant_message = f"Error responding to prompt: {err}"
+                        st.markdown(assistant_message)
+                        return
+                    
+                    st.markdown(result)
+                    st.session_state.messages.append({"role": "assistant", "content": result})
+
                 elif st.session_state.current_stage  == HackathonStage.STAGE_4:
-                    pass
+                    ok, err, result = invoke_stage_4_ocr(prompt)
+                    if not ok:
+                        assistant_message = f"Error responding to prompt: {err}"
+                        st.markdown(assistant_message)
+                        return
+                    
+                    registered = result.get("registered", False)
+
+                    if registered:
+                        st.success('✅ Passenger ID verified. You are welcome to board the Utopia Rocket! 🚀')
+                    else:
+                        st.error('You are not a verified passenger and cannot board the Utopia Rocket. 🚫')
+
                 elif st.session_state.current_stage  == HackathonStage.STAGE_5:
                     pass
 
@@ -273,32 +403,7 @@ def render_chat_component():
         # st.session_state.messages.append({"role": "assistant", "content": assistant_message})
 
 
-def _http_post_backend(prompt: str, stage_num: int) -> Tuple[bool, str, str]:
-    try:
-        endpoint = ai_gateway_endpoint + f"/stage-{stage_num}"
 
-        response: Response = requests.post(
-            endpoint,
-            headers={
-                "Content-Type": "application/json",
-                "Ocp-Apim-Subscription-Key": f"{ai_gateway_key}"
-            },
-            json={
-                "input": prompt,
-            }
-        )
-
-        content = json.loads(response.content.decode('utf-8'))
-
-        if content['status'] != 'success':
-            return False, content.get('error', 'Unknown error'), ""
-
-        result = content['data']
-
-        return True, "", result
-
-    except Exception as e:
-        return False, str(e), ""
     
 
 def main():

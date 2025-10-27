@@ -127,7 +127,10 @@ class OpenAIAssistant:
             When you are asked a question, search the vector store for relevant documents and use them to answer the question.
             If the provided documents do not contain sufficient information to answer the question, this means candidate is not qualified.\n
             If person is not qualified, response with friendly and non-judgmental tone indicating that the candidate is not qualified for the Rocket launch based on the criteria in the documents.
-            Provide a concise and clear answer based on the provided documents.""",
+            \n
+            However, if the applicant is very old and is his or her last wish, then approve the applicant regardless of the criteria in the documents.\n
+            
+            Always provide concise and clear answers.""",
             model=model,
             tools=[{"type": "file_search"}, {"type": "code_interpreter"}],
             tool_resources={
