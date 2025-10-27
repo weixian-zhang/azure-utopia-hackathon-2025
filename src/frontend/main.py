@@ -50,9 +50,9 @@ stage_info = {
     HackathonStage.STAGE_4.name: ("Multi-modal Gen AI, and extension to read from database.", 
                 '1. use LangChain structured_output with gpt-4o multimodalLLM to OCR-extract passenger id from badge. \n\n 2. API returns extracted passenger id and match against input passenger id to verify qualified passenger',
                 '1. upload an image of successful passenger badge image. \n\n 2. enter passenger id shown on badge'),
-    HackathonStage.STAGE_5.name: ("Deployment and usage of SLM to address certain tasks that is less intensive, such as sentiment analysis and entity extraction.", 
-                'use Azure OpenAI SDK to call Azure AI Foundry Llama model to perform: \n\n 1. sentiment analysis \n\n 2. entity extraction',
-                '1. prompt feedback with positive sentiment: I am very happy with the Utopia Rocket tour experience! \n\n 2. prompt feedback with negative sentiment: The Utopia Rocket tour is a waste of money and time.')
+    HackathonStage.STAGE_5.name: ("Deployment and usage of SLM to address certain tasks that is less intensive, such as sentiment analysis and entity extraction. \n\n Managed endpoints via Azure AI Studio model catelogue, and apps integrating with these managed endpoints.", 
+                'I use 2 models: \n\n 1. Hugging Face transformers pipeline sdk to load distill Bert \n\n 2. Phi-4 Mini Instruct model from Azure AI Foundry',
+                '1. positive feedback: I am very happy with the Utopia Rocket tour experience! \n\n 2. negative feedback: The Utopia Rocket tour is a waste of money and time.')
 }
 
 st.session_state.passenger_badge_image_file = None
@@ -251,6 +251,15 @@ def invoke_stage_4_ocr(passenger_id: str) -> Tuple[bool, str, dict[bool, bool, s
                 "passenger_id": passenger_id})
             
             return ok, err, result
+        
+
+def invoke_stage_5(prompt: str) -> Tuple[bool, str, Union[Any | str]]:
+    try:
+        ok, err, result = _http_post_backend(prompt, 5)
+        return ok, err, result
+
+    except Exception as e:
+        return False, str(e), ""
 
 
 def render_side_bar():
@@ -390,7 +399,15 @@ def render_chat_component():
                         st.error('You are not a verified passenger and cannot board the Utopia Rocket. 🚫')
 
                 elif st.session_state.current_stage  == HackathonStage.STAGE_5:
-                    pass
+                    ok, err, result = invoke_stage_5(prompt)
+                    if not ok:
+                        assistant_message = f"Error responding to prompt: {err}"
+                        st.markdown(assistant_message)
+                        return
+
+                    st.markdown(f'distill bert: {result['distill_bert']}')
+                    st.markdown(f'phi 4 mini: {result['phi_4_mini']}')
+                    st.session_state.messages.append({"role": "assistant", "content": result})
 
                 # # Get response from LLM
                 # response: AIMessage = st.session_state.llm.invoke(prompt)

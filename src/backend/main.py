@@ -7,6 +7,8 @@ from evil_llm import EvilLLM
 from virtue_llm import VirtueLLM
 from openai_assistant import OpenAIAssistant
 from llm_image_ocr import LLMImageOCR
+from slm import SLM
+
 class RequestData(BaseModel):
     input: str
 
@@ -26,10 +28,11 @@ class AppState():
     virtue_llm: VirtueLLM = None
     openai_assistant: OpenAIAssistant = None
     llm_image_ocr: LLMImageOCR = None
-
+    slm: SLM = None
 
  
 app_state = AppState()
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -42,6 +45,7 @@ async def lifespan(app: FastAPI):
     app_state.openai_assistant.setup_assistant()
 
     app_state.llm_image_ocr = LLMImageOCR()
+    app_state.slm = SLM()
 
     yield
 
@@ -52,6 +56,7 @@ async def lifespan(app: FastAPI):
     app_state.virtue_llm = None
     app_state.openai_assistant = None
     app_state.llm_image_ocr  = None
+    app_state.slm_bert = None
 
 
 app = FastAPI(lifespan=lifespan)
@@ -140,6 +145,32 @@ async def ocr_badge(request: ImageBase64Request):
     
     except Exception as e:
         return {"error": str(e)}
+    
+
+@app.post("/stage-5")
+async def chat_endpoint(data: RequestData):
+    """
+    using Small Language Model for sentiment analysis
+    """
+
+    try:
+        bert_response: str = app_state.slm.distill_bert_analyze_sentiment(data.input)
+
+        phi4mini_response: str = app_state.slm.phi_4_mini_instruct_analyze_sentiment(data.input)
+
+        return {
+            "status": "success",
+            "data": {
+                "distill_bert": bert_response,
+                "phi_4_mini": phi4mini_response
+            }
+        }
+    
+    except Exception as e:
+        return {
+            "status": "error",
+            "message": str(e)
+        }
 
 
 
