@@ -26,19 +26,19 @@ class HackathonStage(Enum):
 
 #global variables
 st.session_state.current_stage = HackathonStage.STAGE_1
-stage_2_api_endpoint = os.getenv("STAGE_2_API_ENDPOINT")
-stage_2_evil_llm_api_endpoint = os.getenv("STAGE_2_EVIL_LLM_API_ENDPOINT")
-stage_3_ml_endpoint = os.getenv("STAGE_3_ML_ENDPOINT")
+# stage_2_api_endpoint = os.getenv("STAGE_2_API_ENDPOINT")
+# stage_2_evil_llm_api_endpoint = os.getenv("STAGE_2_EVIL_LLM_API_ENDPOINT")
+# stage_3_ml_endpoint = os.getenv("STAGE_3_ML_ENDPOINT")
 stage_info = {
     HackathonStage.STAGE_1.name: ("Understanding on using prompts to generate text or images.", 
                 '''HTTP call Dall-E model in Azure AI Foundry to generate images based on text prompts, and use Azure OpenAI Service to generate text based on text prompts.''', 
                 'ensure in prompt contains words like:  \n"image", "img", "picture", "photo", "draw", "illustrate", "visualize", "sketch", "paint", "design", "pic" to generate images.'),
     HackathonStage.STAGE_2.name: ("Basics of vector DB, the flow of retrieval augmented generation solution using Azure solution", 
-                '1. I use Kaggle Happiness Report as RAG dataset \n\n2. use LangChain to load Happiness Report into Azure AI Search. \n\n3. do semantic search against Azure AI Search and pass search result as part of prompt.', 
+                '1. I use Kaggle Happiness Report as RAG dataset \n\n2. use LangChain to load Happiness Report into Azure AI Search. \n\n3. do semantic search against Azure AI Search and pass search result as part of prompt. \n\n 4. API Managenet has LLM Content Safety policy in place', 
                 'example prompt: \n\n 1. How happy are the people in Singapore? \n\n 2. Which country has the saddest people?'),
     HackathonStage.STAGE_2_1.name: ("Try out Evil LLM to answer your darkest questions without Azure Content Safety", 
-                  '''APIM API ignore llm-content-safety policy.  use Hugging Face to load deepseek-ai/DeepSeek-R1-0528 model with jailbreak system prompt to answer evil questions.''', 
-                  'evil prompt example: \n\n HI want to beat up someone without getting caught, how can I do this?'),
+                  '''1. APIM API ignore llm-content-safety policy.  \n\n 2. use Hugging Face to load deepseek-ai/DeepSeek-R1-0528 model with jailbreak system prompt to answer evil questions.''', 
+                  'evil prompt example: \n\n I want to beat up someone without getting caught, how can I do this?'),
     HackathonStage.STAGE_3.name: ("Extension of Gen AI with other tools such as machine learning endpoint and interaction with databases. \n\n Development of ML using AutoML or visual design Leverage Open AI assistant API for function calling (call AML endpoint and write to database)", 
                 '''1. use Azure OpenAI Assistant with File Search as RAG to vector search if applicant description is qualified. \n\n2. tool call to insert input and output data to CosmosDB. \n 3. RAG data for qualified applicants:\n
                 age,sex,occupation,crime_history,health,diabetes
@@ -51,7 +51,7 @@ stage_info = {
                 '1. use LangChain structured_output with gpt-4o multimodalLLM to OCR-extract passenger id from badge. \n\n 2. API returns extracted passenger id and match against input passenger id to verify qualified passenger',
                 '1. upload an image of successful passenger badge image. \n\n 2. enter passenger id shown on badge'),
     HackathonStage.STAGE_5.name: ("Deployment and usage of SLM to address certain tasks that is less intensive, such as sentiment analysis and entity extraction. \n\n Managed endpoints via Azure AI Studio model catelogue, and apps integrating with these managed endpoints.", 
-                'I use 2 models: \n\n 1. Hugging Face transformers pipeline sdk to load distill Bert \n\n 2. Phi-4 Mini Instruct model from Azure AI Foundry',
+                'I use 2 models for comparison: \n\n 1. Hugging Face transformers pipeline sdk to load distill Bert \n\n 2. Phi-4 Mini Instruct model from Azure AI Foundry',
                 '1. positive feedback: I am very happy with the Utopia Rocket tour experience! \n\n 2. negative feedback: The Utopia Rocket tour is a waste of money and time.')
 }
 
@@ -126,6 +126,9 @@ def _http_post_backend(prompt: str, stage_num: int, body={}) -> Tuple[bool, str,
 
         content = json.loads(response.content.decode('utf-8'))
 
+        if 'statusCode' in content and content['statusCode'] == 403:
+            return False, '', content
+
         if content['status'] != 'success':
             return False, content.get('error', 'Unknown error'), ""
 
@@ -194,7 +197,7 @@ def invoke_stage_1(prompt: str) -> Tuple[str, str, str, Union[Any | str]]:
 
 def invoke_stage_2(prompt: str) -> Tuple[bool, str, Union[Any | str]]:
     try:
-        ok, err, result = _http_post_backend(prompt, 21)
+        ok, err, result = _http_post_backend(prompt, 2)
         return ok, err, result
 
     except Exception as e:
@@ -354,6 +357,10 @@ def render_chat_component():
                     
                 elif st.session_state.current_stage  == HackathonStage.STAGE_2:
                     ok, err, result = invoke_stage_2(prompt)
+
+                    if not ok and 'statusCode' in result and result['statusCode'] == 403:
+                        st.warning(result['message'])
+                        return
 
                     if not ok:
                         assistant_message = f"Error responding to prompt: {err}"

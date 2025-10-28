@@ -19,6 +19,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Copy requirements file
 COPY requirements.txt .
 
+# torch CPU only version
+RUN pip install --no-cache-dir \
+    torch --index-url https://download.pytorch.org/whl/cpu
+
 # Install Python dependencies
 RUN pip install --disable-pip-version-check --no-cache-dir -r requirements.txt
 

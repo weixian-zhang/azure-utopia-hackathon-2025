@@ -171,6 +171,15 @@ async def chat_endpoint(data: RequestData):
             "status": "error",
             "message": str(e)
         }
+    
+
+@app.get('/')
+async def health_check():
+    return {"status": "healthy"}
+
+@app.get('/health')
+async def health_check():
+    return {"status": "healthy"}
 
 
 
@@ -183,11 +192,6 @@ async def chat_endpoint(data: RequestData):
 #         "status": "success",
 #         "data": response
 #     }
-
-
-@app.get("/health")
-async def health_check():
-    return {"status": "healthy"}
 
 
 if __name__ == "__main__":

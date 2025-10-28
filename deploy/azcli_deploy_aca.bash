@@ -28,36 +28,39 @@ az containerapp env create \
     --enable-peer-to-peer-encryption \
     --logs-workspace-id f2aba6b2-3607-4eb6-aec3-3d52ed5c9d92
 
-# stage_1 streamlit container app
-az acr build --image acrcpfhackthon.azurecr.io/webapp:v0.0.3 --registry acrcpfhackthon --file Dockerfile .
+# frontend streamlit container app
+az acr build --image acrcpfhackthon.azurecr.io/frontend:v0.0.3 --registry acrcpfhackthon --file Dockerfile .
 
 az containerapp create \
---name aca-stage-1-streamlit \
+--name aca-frontend-cpf-hackathon \
 --resource-group rg-cpf-hackathon-2025 \
 --environment /subscriptions/c9061bc7-fa28-41d9-a783-2600b29c6e2f/resourceGroups/rg-cpf-hackathon-2025/providers/Microsoft.App/managedEnvironments/aca-env-external-cpf-hackathon \
---image acrcpfhackthon.azurecr.io/webapp:v0.0.3 \
+--image acrcpfhackthon.azurecr.io/frontend:v0.0.1 \
 --registry-server acrcpfhackthon.azurecr.io \
 --registry-identity /subscriptions/c9061bc7-fa28-41d9-a783-2600b29c6e2f/resourceGroups/rg-cpf-hackathon-2025/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity-aca-acr-cpf-hackathon \
 --target-port 8080 \
---min-replicas 1 \
---max-replicas 2 \
+--min-replicas 2 \
+--max-replicas 3 \
 --ingress external \
 --query properties.configuration.fullQdn
 
-# stage_2 hugging face evil llm container app
-az acr build --image acrcpfhackthon.azurecr.io/evil-llm:v0.0.2 --registry acrcpfhackthon --file Dockerfile .
+# build backend container
+az acr build --image acrcpfhackthon.azurecr.io/backend:v0.0.1 --registry acrcpfhackthon --file Dockerfile ./backend
+
+#quick test
+ az acr run --registry acrcpfhackthon --cmd 'acrcpfhackthon.azurecr.io/backend:v0.0.3' /dev/null
 
 az containerapp create \
---name aca-stage-2-evil-llm \
+--name aca-backend-cpf-hackathon \
 --resource-group rg-cpf-hackathon-2025 \
 --environment /subscriptions/c9061bc7-fa28-41d9-a783-2600b29c6e2f/resourceGroups/rg-cpf-hackathon-2025/providers/Microsoft.App/managedEnvironments/aca-env-external-cpf-hackathon \
---image acrcpfhackthon.azurecr.io/evil-llm:latest \
+--image acrcpfhackthon.azurecr.io/backend:v0.0.3 \
 --registry-server acrcpfhackthon.azurecr.io \
 --registry-identity /subscriptions/c9061bc7-fa28-41d9-a783-2600b29c6e2f/resourceGroups/rg-cpf-hackathon-2025/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity-aca-acr-cpf-hackathon \
 --target-port 8080 \
 --ingress external \
---min-replicas 1 \
---max-replicas 2 \
+--min-replicas 2 \
+--max-replicas 3 \
 --query properties.configuration.fullQdn
 
 

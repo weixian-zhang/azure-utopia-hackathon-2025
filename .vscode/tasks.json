@@ -10,6 +10,14 @@
             "options": {
                 "cwd": "${workspaceFolder}/src"
             }
+        },
+        {
+            "label": "acr build backend",
+            "type": "shell",
+            "command": "az acr build --image acrcpfhackthon.azurecr.io/backend:v0.0.1 --registry acrcpfhackthon --file ./backend/Dockerfile ./backend",
+            "options": {
+                "cwd": "${workspaceFolder}/src"
+            }
         }
     ]
 }
