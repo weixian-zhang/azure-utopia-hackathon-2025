@@ -1,9 +1,8 @@
 from langchain_openai import AzureChatOpenAI
-from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
-from vector_db import VectorStore
+from langchain_core.messages import AIMessage
+from stage_2.vector_db import VectorStore
 from dotenv import load_dotenv
 
-load_dotenv()
 
 class RAG():
     

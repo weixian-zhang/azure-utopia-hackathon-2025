@@ -45,7 +45,7 @@ az containerapp create \
 --query properties.configuration.fullQdn
 
 # build backend container
-az acr build --image acrcpfhackthon.azurecr.io/backend:v0.0.1 --registry acrcpfhackthon --file Dockerfile ./backend
+az acr build --image acrcpfhackthon.azurecr.io/backend:v0.0.2 --registry acrcpfhackthon --file Dockerfile .
 
 #quick test
  az acr run --registry acrcpfhackthon --cmd 'acrcpfhackthon.azurecr.io/backend:v0.0.3' /dev/null

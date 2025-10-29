@@ -2,15 +2,28 @@ from fastapi import FastAPI
 from contextlib import asynccontextmanager
 from pydantic import BaseModel
 import uvicorn
-from rag import RAG
-from evil_llm import EvilLLM
-from virtue_llm import VirtueLLM
-from openai_assistant import OpenAIAssistant
-from llm_image_ocr import LLMImageOCR
-from slm import SLM
+from stage_2.vector_db import VectorStore
+from stage_2.rag import RAG
+from stage_2.evil_llm import EvilLLM
+from langchain_openai import AzureChatOpenAI
+from stage_3.openai_assistant import OpenAIAssistant
+from stage_4.llm_image_ocr import LLMImageOCR
+from stage_5.settler_health_agent import SettlerHealthAgent
+
+# {
+#   "query": "What is the average heart rate for passenger 18?",
+#   "username": "luna_pilot",
+#   "team": "team@example.com",
+#   "call_index": 4
+# }
 
 class RequestData(BaseModel):
-    input: str
+    username: str = None
+    team: str = None
+    call_index: int = None
+
+class Stage5RequestData(RequestData):
+    query: str
 
 class ImageBase64Request(BaseModel):
     image_base64: str
@@ -25,10 +38,10 @@ class OCRResponse(BaseModel):
 class AppState():
     rag: RAG = None
     evil_llm: EvilLLM = None
-    virtue_llm: VirtueLLM = None
+    llm: AzureChatOpenAI = None
     openai_assistant: OpenAIAssistant = None
     llm_image_ocr: LLMImageOCR = None
-    slm: SLM = None
+    settler_health_agent: SettlerHealthAgent = None
 
  
 app_state = AppState()
@@ -39,13 +52,18 @@ async def lifespan(app: FastAPI):
     app_state.rag = RAG()
     app_state.rag.vectorize_data_if_not_exists()
     app_state.evil_llm = EvilLLM()
-    app_state.virtue_llm = VirtueLLM()
+    app_state.llm = AzureChatOpenAI(
+            deployment_name="gpt-4o",
+            model="gpt-4o",
+            api_version="2024-12-01-preview",
+            temperature=1.0
+        )
 
     app_state.openai_assistant = OpenAIAssistant()
     app_state.openai_assistant.setup_assistant()
 
     app_state.llm_image_ocr = LLMImageOCR()
-    app_state.slm = SLM()
+    app_state.settler_health_agent = SettlerHealthAgent()
 
     yield
 
@@ -53,7 +71,7 @@ async def lifespan(app: FastAPI):
     print("Shutting down...")
     app_state.rag = None
     app_state.evil_llm = None
-    app_state.virtue_llm = None
+    app_state.llm = None
     app_state.openai_assistant = None
     app_state.llm_image_ocr  = None
     app_state.slm_bert = None
@@ -64,7 +82,7 @@ app = FastAPI(lifespan=lifespan)
 
 @app.post("/stage-1")
 async def stage_1(data: RequestData):
-    return app_state.virtue_llm.invoke(data.input)
+    return app_state.llm.invoke(data.input)
 
 
 @app.post("/stage-2")
@@ -102,7 +120,7 @@ async def chat_endpoint(data: RequestData):
 
 
 @app.post("/stage-3")
-async def chat_endpoint(data: RequestData):
+async def rag_with_ai_search(data: RequestData):
     """
     retrieval augmented generation solution using Azure AI Search and Azure OpenAI Service.
     """
@@ -146,9 +164,30 @@ async def ocr_badge(request: ImageBase64Request):
     except Exception as e:
         return {"error": str(e)}
     
+    
 
 @app.post("/stage-5")
-async def chat_endpoint(data: RequestData):
+async def settler_health_agent_invoke(data: Stage5RequestData):
+    """
+    using Small Language Model for sentiment analysis
+    """
+
+    try:
+        response: str = app_state.settler_health_agent.invoke(data.query)
+
+        return {
+            "response": response
+        }
+    
+    except Exception as e:
+        return {
+            "status": "error",
+            "message": str(e)
+        }
+    
+
+@app.post("/stage-5-slm")
+async def slm_sentiment_analysis(data: RequestData):
     """
     using Small Language Model for sentiment analysis
     """
@@ -171,6 +210,11 @@ async def chat_endpoint(data: RequestData):
             "status": "error",
             "message": str(e)
         }
+    
+
+@app.post("/stage-5")
+async def sqlite_query_generator(data: RequestData):
+    pass
     
 
 @app.get('/')

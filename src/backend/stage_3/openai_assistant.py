@@ -2,7 +2,7 @@ from openai import AzureOpenAI, OpenAI
 import os
 from typing import List, Tuple, Any
 import time
-from cosmosdb_mongo_manager import CosmosMongoDBManager
+# from stage_3.cosmosdb_mongo_manager import CosmosMongoDBManager
 
 class OpenAIAssistant:
     def __init__(self):
@@ -18,7 +18,7 @@ class OpenAIAssistant:
         self.vector_store = None
         self.assistant_id = None
 
-        self.cosmos_mongo = CosmosMongoDBManager()
+        #self.cosmos_mongo = CosmosMongoDBManager()
 
     def setup_assistant(self, max_tokens: int = 150) -> str:
         
@@ -66,7 +66,7 @@ class OpenAIAssistant:
         """
         Create a vector store and upload files to it
         """
-        selection_criteria_data_path = os.path.join(os.path.dirname(__file__), "data", "stage_3", "selection_criteria.json")
+        selection_criteria_data_path = os.path.join(os.path.dirname(__file__), "selection_criteria.json")
         vector_store_name = "selection_criteria_vector_store"
         
         # Upload files and create vector store
@@ -207,7 +207,7 @@ class OpenAIAssistant:
             response = self.run_assistant()
 
             #record in cosmos mongo
-            self.cosmos_mongo.insert_passenger_qualifying_info(prompt, response)
+            #self.cosmos_mongo.insert_passenger_qualifying_info(prompt, response)
 
             return response
         
