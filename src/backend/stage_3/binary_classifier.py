@@ -42,19 +42,6 @@ class BinaryClassifier:
 
         system_prompt = f"""You are a binary classifier for determining if passengers are qualified for a rocket tour.
 
-        header fields of CSV data:
-
-        Selected: 1 means accepted, 0 means rejected
-        Name: name of passenger
-        Sex: male or female
-        Age: age
-        SibSp: number of siblings/spouses aboard
-        Parch: number of parents/children aboard
-        Fare: amount of money paid for ticket
-        Occupation: occupation of the passenger
-        FavoriteColor: favourite color of the passenger
-        Hobby: hobby of the passenger
-
         examples of accepted passengers:
         {self.accepted_csv}
 
@@ -62,9 +49,12 @@ class BinaryClassifier:
         {self.rejected_csv}
 
 
-        Study the patterns of these examples of accepted and rejected passengers, compare with input passenger features.
-        Passenger features to compare:
+        """
 
+
+        user_prompt = f"""Classify passenger to accepted or rejected based on below features: {input}.
+        
+        features to consider:
         Selected: 1 means accepted, 0 means rejected
         Name: name of passenger
         Sex: male or female
@@ -75,12 +65,7 @@ class BinaryClassifier:
         Occupation: occupation of the passenger
         FavoriteColor: favourite color of the passenger
         Hobby: hobby of the passenger
-
-        Based on your study, classify the input passenger as accepted or rejected.
         """
-
-                
-        user_prompt = f"""Classify passenger to accepted or rejected based on features: {input}."""
 
         messages = [
             SystemMessage(content=system_prompt),
@@ -96,7 +81,7 @@ class BinaryClassifier:
 
         response = llm.invoke(messages)
 
-        return response
+        return response.accepted
     
 
 if __name__ == "__main__":
@@ -104,8 +89,10 @@ if __name__ == "__main__":
     input_2 = 'With a heart set on Azure Utopia, Gale, Mr. Shadrach is a 34-year-old male second-class Artist who paid a fare of 21, treasures Gardening, prefers White, and travels with one sibling or spouse and no parents or children.'
     input_3 = 'Eager to explore Azure Utopia, Rosblom, Mr. Viktor Richard is an 18-year-old male third-class Grocer who paid a fare of 20.2125, enjoys Walking, prefers Brown, and is accompanied by one sibling or spouse and one parent or child.'
     input_4 = 'Radiant with anticipation for Azure Utopia, Phillips, Miss. Kate Florence ("Mrs Kate Louise Phillips Marshall") is a 19-year-old female second-class Tailor who paid a fare of 26, adores Knitting, favors Yellow, and travels alone with 0 siblings/spouse and 0 parents/children.'
+    input_5 = 'Brimming with hope to settle on Azure Utopia, Zimmerman, Mr. Leo is a 29-year-old male third-class Butcher who paid a fare of 7.875, enjoys Embroidery, prefers Brown, and arrives alone with 0 siblings/spouse and 0 parents/children.'
     checker = BinaryClassifier()
     # print(checker.invoke(input_1).accepted)
     # print(checker.invoke(input_2).accepted)
-    print(checker.invoke(input_4).accepted)
+    # print(checker.invoke(input_4).accepted)
+    print(checker.invoke(input_5))
     #print(f"Is the passenger accepted? {accepted.accepted}, Reason: {accepted.reason}, Confidence: {accepted.confidence}")

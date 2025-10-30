@@ -3,10 +3,10 @@ from pathlib import Path
 
 from langchain_community.vectorstores.azuresearch import AzureSearch
 from langchain_openai import AzureOpenAIEmbeddings
-from langchain_text_splitters import CharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import DirectoryLoader
-from langchain_community.document_loaders.csv_loader import CSVLoader
-
+# from langchain_community.document_loaders.csv_loader import CSVLoader
+from langchain_community.document_loaders import UnstructuredFileLoader, PyPDFLoader, Docx2txtLoader
 
 class VectorStore():
 
@@ -27,22 +27,29 @@ class VectorStore():
         )
 
     def load_and_vectorize_csv(self):
-        csv_path = os.path.join(os.path.dirname(__file__), "data", "stage_2_happiness_index")
+        data_path = os.path.join(os.path.dirname(__file__))
+
+        loader = UnstructuredFileLoader("path/to/your/document.docx")
+        docs = loader.load()
         loader = DirectoryLoader(
-                path=csv_path,
-                glob="**/*.csv",  # This pattern matches all CSV files in the directory and its subdirectories
-                loader_cls=CSVLoader,
+                path=data_path,
+                glob="**/*.{pdf,docx}",
                 loader_kwargs={
                     "csv_args": {
                         "delimiter": ",",
                     }
-                }
+                },
+                loader_cls={
+                    ".pdf": PyPDFLoader,
+                    ".docx": Docx2txtLoader,
+                },
+                recursive=False
             )
-
+        
         documents = loader.load()
 
 
-        text_splitter = CharacterTextSplitter(chunk_size=2000, chunk_overlap=200)
+        text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
         docs = text_splitter.split_documents(documents)
 
         document_ids =self.vector_store.add_documents(docs)

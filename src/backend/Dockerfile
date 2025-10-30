@@ -36,7 +36,7 @@ COPY . .
 EXPOSE 8080
 
 # Health check
-HEALTHCHECK CMD curl --fail http://localhost:8080/health || exit 1
+# HEALTHCHECK CMD curl --fail http://localhost:8080/health || exit 1
 
 # Run FastAPI app with uvicorn on port 8080
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]

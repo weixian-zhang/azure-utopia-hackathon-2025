@@ -8,7 +8,8 @@ from stage_2.evil_llm import EvilLLM
 from langchain_openai import AzureChatOpenAI
 # from stage_3.openai_assistant import OpenAIAssistant
 # from stage_4.llm_image_ocr import LLMImageOCR
-from stage_3.binary_classifier import BianaryClassifier
+from stage_3.binary_classifier import BinaryClassifier
+from stage_3.scikit_learn_classifer import SKLearnLogisticRegressionClassifier
 from stage_4.image_safety_check import  ImageSafetyChecker
 from stage_5.settler_health_agent import SettlerHealthAgent
 
@@ -43,7 +44,8 @@ class AppState():
     llm: AzureChatOpenAI = None
     # openai_assistant: OpenAIAssistant = None
     # llm_image_ocr: LLMImageOCR = None
-    binary_classifier: BianaryClassifier = None
+    binary_classifier: BinaryClassifier = None
+    sklearn_lr_classifier: SKLearnLogisticRegressionClassifier = None
     image_safety_checker: ImageSafetyChecker = None
     settler_health_agent: SettlerHealthAgent = None
 
@@ -67,7 +69,8 @@ async def lifespan(app: FastAPI):
     # app_state.openai_assistant.setup_assistant()
     # app_state.llm_image_ocr = LLMImageOCR()
 
-    app_state.binary_classifier = BianaryClassifier()
+    app_state.binary_classifier = BinaryClassifier()
+    app_state.sklearn_lr_classifier = SKLearnLogisticRegressionClassifier()
     app_state.image_safety_checker = ImageSafetyChecker()
     app_state.settler_health_agent = SettlerHealthAgent()
     
@@ -132,10 +135,12 @@ async def rag_with_ai_search(data: Stage3RequestData):
     """
 
     try:
-        response: str = app_state.binary_classifier.invoke(data.input)
+        #response: bool = app_state.binary_classifier.invoke(data.input)
+
+        response = app_state.sklearn_lr_classifier.invoke(data.input)
 
         return {
-            "accepted": response.accepted,
+            "accepted": response
         }
     
     except Exception as e:
