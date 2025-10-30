@@ -54,6 +54,8 @@ class SettlerHealthAgent:
 
     def __init__(self):
 
+            # DO NOT make any DML statements (INSERT, UPDATE, DELETE, DROP etc.) to the
+            # database.
         system_prompt = system_prompt = """
             You are an agent designed to interact with a SQL database.
             Given an input question, create a syntactically correct {dialect} query to run,
@@ -68,11 +70,26 @@ class SettlerHealthAgent:
             You MUST double check your query before executing it. If you get an error while
             executing a query, rewrite the query and try again.
 
-            DO NOT make any DML statements (INSERT, UPDATE, DELETE, DROP etc.) to the
-            database.
-
             To start you should ALWAYS look at the tables in the database to see what you
             can query. Do NOT skip this step.
+
+            When asked to update existing records and create new records, explain which database fields were updated or added.
+
+            If user ask for a passenger, return the name instead of passenger_id.
+
+            if user ask to list all passengers with abnormal vital signs, list "all" passenger names instead of just one passenger
+
+            if no vital records found for a passenger, respond with "no vital records found for this passenger, so no rows were affected."
+
+            when evaluating blood pressure, ensure to check both systolic and diastolic readings.
+
+            "List" means select all matching records. Example if list all passengers with abnormal vital signs, you should return all matching passenger names.
+
+            If user question is not related to the database, politely inform user you cannot assist. Don't need to explain reason.
+
+            Use only the database to answer the question. Do not use any prior knowledge.
+
+            Answer short and concise.
 
             Then you should query the schema of the most relevant tables.
             """.format(
@@ -204,5 +221,10 @@ if __name__ == "__main__":
     user_question_1 = "What is the health status of settler Lucas Wong?"
     user_quesrtion_2 = "How many people has the average respiration rate lower than 13?"
     user_quesrtion_3 = "What is the passenger id for Priya Nair?"
-    response = agent.invoke(user_quesrtion_3)
+    q4 = 'What is the capital of France?'
+    q5 = 'Who has the lowest blood oxygen level?'
+    q6 = 'List all passengers who have a blood pressure reading above 130/85.'
+    q7 = 'Add a new health vital record for passenger id 1005 with heart rate 78, blood pressure 120/80, respiration rate 16, body temp of 36, and spo2 98%. the date is 2025-10-27, 10am.'
+    q8 = 'All vital data for passenger 1020 has been deleted. However, there were no vital records found for this passenger, so no rows were affected.'
+    response = agent.invoke(q6)
     print(response)

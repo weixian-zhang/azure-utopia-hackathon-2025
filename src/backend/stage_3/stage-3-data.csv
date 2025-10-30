@@ -1,0 +1,892 @@
+PassengerId,Selected,Pclass,Name,Sex,Age,SibSp,Parch,Fare,Occupation,FavoriteColor,Hobby
+1,0,3,"Braund, Mr. Owen Harris",male,22,1,0,7.25,Painter,Maroon,Cycling
+2,1,1,"Cumings, Mrs. John Bradley (Florence Briggs Thayer)",female,38,1,0,71.2833,Junior Architect,White,Cycling
+3,1,3,"Heikkinen, Miss. Laina",female,26,0,0,7.925,Lead Steward,Magenta,Knitting
+4,1,1,"Futrelle, Mrs. Jacques Heath (Lily May Peel)",female,35,1,0,53.1,Glassblower,Maroon,Woodworking
+5,0,3,"Allen, Mr. William Henry",male,35,0,0,8.05,Lead Teacher,Red,Knitting
+6,0,3,"Moran, Mr. James",male,,0,0,8.4583,Miner,Maroon,Knitting
+7,0,1,"McCarthy, Mr. Timothy J",male,54,0,0,51.8625,Chief Shoemaker,Pink,Traveling
+8,0,3,"Palsson, Master. Gosta Leonard",male,2,3,1,21.075,Doctor,Green,Embroidery
+9,1,3,"Johnson, Mrs. Oscar W (Elisabeth Vilhelmina Berg)",female,27,0,2,11.1333,Seamstress,Grey,Chess
+10,1,2,"Nasser, Mrs. Nicholas (Adele Achem)",female,14,1,0,30.0708,Head Chef,Red,Fishing
+11,1,3,"Sandstrom, Miss. Marguerite Rut",female,4,1,1,16.7,Head Merchant,Red,Dancing
+12,1,1,"Bonnell, Miss. Elizabeth",female,58,0,0,26.55,Farmer,Olive,Woodworking
+13,0,3,"Saundercock, Mr. William Henry",male,20,0,0,8.05,Blacksmith,Olive,Traveling
+14,0,3,"Andersson, Mr. Anders Johan",male,39,1,5,31.275,Teacher,Blue,Dancing
+15,0,3,"Vestrom, Miss. Hulda Amanda Adolfina",female,14,0,0,7.8542,Merchant,Black,Traveling
+16,1,2,"Hewlett, Mrs. (Mary D Kingcome) ",female,55,0,0,16,Writer,Magenta,Knitting
+17,0,3,"Rice, Master. Eugene",male,2,4,1,29.125,Mechanic,Teal,Violin
+18,1,2,"Williams, Mr. Charles Eugene",male,,0,0,13,Nurse,Olive,BirdWatching
+19,0,3,"Vander Planke, Mrs. Julius (Emelia Maria Vandemoortele)",female,31,1,0,18,Teacher,Orange,Violin
+20,1,3,"Masselmani, Mrs. Fatima",female,,0,0,7.225,Baker,Cyan,Singing
+21,0,2,"Fynney, Mr. Joseph J",male,35,0,0,26,Seamstress,Green,Embroidery
+22,1,2,"Beesley, Mr. Lawrence",male,34,0,0,13,Junior Lawyer,Orange,Photography
+23,1,3,"McGowan, Miss. Anna ""Annie""",female,15,0,0,8.0292,Senior Accountant,Blue,Woodworking
+24,1,1,"Sloper, Mr. William Thompson",male,28,0,0,35.5,Assistant Mechanic,Pink,Cooking
+25,0,3,"Palsson, Miss. Torborg Danira",female,8,3,1,21.075,Photographer,Olive,Baking
+26,1,3,"Asplund, Mrs. Carl Oscar (Selma Augusta Emilia Johansson)",female,38,1,5,31.3875,Writer,Orange,StampCollecting
+27,0,3,"Emir, Mr. Farred Chehab",male,,0,0,7.225,Head Librarian,Blue,BirdWatching
+28,0,1,"Fortune, Mr. Charles Alexander",male,19,3,2,263,Glassblower,Blue,Fishing
+29,1,3,"O'Dwyer, Miss. Ellen ""Nellie""",female,,0,0,7.8792,Lead Nurse,Orange,Chess
+30,0,3,"Todoroff, Mr. Lalio",male,,0,0,7.8958,Assistant Innkeeper,Navy,Knitting
+31,0,1,"Uruchurtu, Don. Manuel E",male,40,0,0,27.7208,Writer,White,Cooking
+32,1,1,"Spencer, Mrs. William Augustus (Marie Eugenie)",female,,1,0,146.5208,Writer,Magenta,Photography
+33,1,3,"Glynn, Miss. Mary Agatha",female,,0,0,7.75,Grocer,Green,Chess
+34,0,2,"Wheadon, Mr. Edward H",male,66,0,0,10.5,Musician,Black,Calligraphy
+35,0,1,"Meyer, Mr. Edgar Joseph",male,28,1,0,82.1708,Farmer,Red,Photography
+36,0,1,"Holverson, Mr. Alexander Oskar",male,42,1,0,52,Butcher,Grey,Cycling
+37,1,3,"Mamee, Mr. Hanna",male,,0,0,7.2292,Chief Steward,Purple,Dancing
+38,0,3,"Cann, Mr. Ernest Charles",male,21,0,0,8.05,Senior Doctor,Purple,Walking
+39,0,3,"Vander Planke, Miss. Augusta Maria",female,18,2,0,18,Lead Architect,Olive,StampCollecting
+40,1,3,"Nicola-Yarred, Miss. Jamila",female,14,1,0,11.2417,Lead Merchant,Cyan,Walking
+41,0,3,"Ahlin, Mrs. Johan (Johanna Persdotter Larsson)",female,40,1,0,9.475,Accountant,Navy,Painting
+42,0,2,"Turpin, Mrs. William John Robert (Dorothy Ann Wonnacott)",female,27,1,0,21,Head Grocer,Blue,Painting
+43,0,3,"Kraeff, Mr. Theodor",male,,0,0,7.8958,Doctor,Cyan,Embroidery
+44,1,2,"Laroche, Miss. Simonne Marie Anne Andree",female,3,1,2,41.5792,Accountant,Green,Cooking
+45,1,3,"Devaney, Miss. Margaret Delia",female,19,0,0,7.8792,Teacher,Magenta,Chess
+46,0,3,"Rogers, Mr. William John",male,,0,0,8.05,Doctor,Green,BirdWatching
+47,0,3,"Lennon, Mr. Denis",male,,1,0,15.5,Musician,Pink,Photography
+48,1,3,"O'Driscoll, Miss. Bridget",female,,0,0,7.75,Musician,Cyan,Embroidery
+49,0,3,"Samaan, Mr. Youssef",male,,2,0,21.6792,Porter,Pink,Embroidery
+50,0,3,"Arnold-Franchi, Mrs. Josef (Josefine Franchi)",female,18,1,0,17.8,Blacksmith,Red,Chess
+51,0,3,"Panula, Master. Juha Niilo",male,7,4,1,39.6875,Apprentice Grocer,Cyan,Chess
+52,0,3,"Nosworthy, Mr. Richard Cater",male,21,0,0,7.8,Lead Seamstress,Cyan,Cycling
+53,1,1,"Harper, Mrs. Henry Sleeper (Myna Haxtun)",female,49,1,0,76.7292,Chef,Olive,Gardening
+54,1,2,"Faunthorpe, Mrs. Lizzie (Elizabeth Anne Wilkinson)",female,29,1,0,26,Seamstress,Brown,Piano
+55,0,1,"Ostby, Mr. Engelhart Cornelius",male,65,0,1,61.9792,Nurse,Blue,Traveling
+56,1,1,"Woolner, Mr. Hugh",male,,0,0,35.5,Bookkeeper,Navy,Dancing
+57,1,2,"Rugg, Miss. Emily",female,21,0,0,10.5,Apprentice Merchant,Cyan,Painting
+58,0,3,"Novel, Mr. Mansouer",male,28.5,0,0,7.2292,Apprentice Miner,Teal,Baking
+59,1,2,"West, Miss. Constance Mirium",female,5,1,2,27.75,Miner,Teal,Dancing
+60,0,3,"Goodwin, Master. William Frederick",male,11,5,2,46.9,Carpenter,Red,StampCollecting
+61,0,3,"Sirayanian, Mr. Orsen",male,22,0,0,7.2292,Doctor,Green,Painting
+62,1,1,"Icard, Miss. Amelie",female,38,0,0,80,Assistant Grocer,Orange,CardGames
+63,0,1,"Harris, Mr. Henry Birkhardt",male,45,1,0,83.475,Junior Bookkeeper,Yellow,Violin
+64,0,3,"Skoog, Master. Harald",male,4,3,2,27.9,Apprentice Innkeeper,Olive,Cycling
+65,0,1,"Stewart, Mr. Albert A",male,,0,0,27.7208,Merchant,Blue,Gardening
+66,1,3,"Moubarek, Master. Gerios",male,,1,1,15.2458,Nurse,Pink,Cooking
+67,1,2,"Nye, Mrs. (Elizabeth Ramell)",female,29,0,0,10.5,Miner,Green,Woodworking
+68,0,3,"Crease, Mr. Ernest James",male,19,0,0,8.1583,Butcher,Orange,Cycling
+69,1,3,"Andersson, Miss. Erna Alexandra",female,17,4,2,7.925,Innkeeper,Purple,Fishing
+70,0,3,"Kink, Mr. Vincenz",male,26,2,0,8.6625,Farmer,Magenta,Knitting
+71,0,2,"Jenkin, Mr. Stephen Curnow",male,32,0,0,10.5,Innkeeper,Maroon,Cycling
+72,0,3,"Goodwin, Miss. Lillian Amy",female,16,5,2,46.9,Watchmaker,White,Cycling
+73,0,2,"Hood, Mr. Ambrose Jr",male,21,0,0,73.5,Watchmaker,Orange,Traveling
+74,0,3,"Chronopoulos, Mr. Apostolos",male,26,1,0,14.4542,Innkeeper,Green,BirdWatching
+75,1,3,"Bing, Mr. Lee",male,32,0,0,56.4958,Shoemaker,Maroon,Knitting
+76,0,3,"Moen, Mr. Sigurd Hansen",male,25,0,0,7.65,Junior Merchant,White,Woodworking
+77,0,3,"Staneff, Mr. Ivan",male,,0,0,7.8958,Tailor,Olive,Calligraphy
+78,0,3,"Moutal, Mr. Rahamin Haim",male,,0,0,8.05,Chief Painter,Yellow,Cycling
+79,1,2,"Caldwell, Master. Alden Gates",male,0.83,0,2,29,Clerk,White,Gardening
+80,1,3,"Dowdell, Miss. Elizabeth",female,30,0,0,12.475,Architect,Maroon,Cooking
+81,0,3,"Waelens, Mr. Achille",male,22,0,0,9,Musician,Purple,Cycling
+82,1,3,"Sheerlinck, Mr. Jan Baptist",male,29,0,0,9.5,Senior Butcher,Green,Dancing
+83,1,3,"McDermott, Miss. Brigdet Delia",female,,0,0,7.7875,Lead Doctor,Maroon,Cooking
+84,0,1,"Carrau, Mr. Francisco M",male,28,0,0,47.1,Photographer,Pink,Piano
+85,1,2,"Ilett, Miss. Bertha",female,17,0,0,10.5,Lawyer,Green,Walking
+86,1,3,"Backstrom, Mrs. Karl Alfred (Maria Mathilda Gustafsson)",female,33,3,0,15.85,Artist,Pink,Painting
+87,0,3,"Ford, Mr. William Neal",male,16,1,3,34.375,Writer,Navy,Embroidery
+88,0,3,"Slocovski, Mr. Selman Francis",male,,0,0,8.05,Butcher,White,Painting
+89,1,1,"Fortune, Miss. Mabel Helen",female,23,3,2,263,Head Writer,Navy,Traveling
+90,0,3,"Celotti, Mr. Francesco",male,24,0,0,8.05,Teacher,White,Embroidery
+91,0,3,"Christmann, Mr. Emil",male,29,0,0,8.05,Clerk,Cyan,Woodworking
+92,0,3,"Andreasson, Mr. Paul Edvin",male,20,0,0,7.8542,Assistant Tailor,Orange,Gardening
+93,0,1,"Chaffee, Mr. Herbert Fuller",male,46,1,0,61.175,Nurse,Brown,Woodworking
+94,0,3,"Dean, Mr. Bertram Frank",male,26,1,2,20.575,Steward,Brown,Woodworking
+95,0,3,"Coxon, Mr. Daniel",male,59,0,0,7.25,Writer,Green,StampCollecting
+96,0,3,"Shorney, Mr. Charles Joseph",male,,0,0,8.05,Lead Writer,Teal,Baking
+97,0,1,"Goldschmidt, Mr. George B",male,71,0,0,34.6542,Lead Librarian,White,Chess
+98,1,1,"Greenfield, Mr. William Bertram",male,23,0,1,63.3583,Apprentice Steward,Teal,Gardening
+99,1,2,"Doling, Mrs. John T (Ada Julia Bone)",female,34,0,1,23,Merchant,Cyan,BirdWatching
+100,0,2,"Kantor, Mr. Sinai",male,34,1,0,26,Junior Glassblower,Pink,Violin
+101,0,3,"Petranec, Miss. Matilda",female,28,0,0,7.8958,Accountant,Orange,Cooking
+102,0,3,"Petroff, Mr. Pastcho (""Pentcho"")",male,,0,0,7.8958,Junior Porter,Green,Embroidery
+103,0,1,"White, Mr. Richard Frasar",male,21,0,1,77.2875,Junior Baker,Grey,Violin
+104,0,3,"Johansson, Mr. Gustaf Joel",male,33,0,0,8.6542,Lawyer,Green,Cycling
+105,0,3,"Gustafsson, Mr. Anders Vilhelm",male,37,2,0,7.925,Architect,Grey,Traveling
+106,0,3,"Mionoff, Mr. Stoytcho",male,28,0,0,7.8958,Artist,Cyan,Reading
+107,1,3,"Salkjelsvik, Miss. Anna Kristine",female,21,0,0,7.65,Lead Artist,Cyan,Reading
+108,1,3,"Moss, Mr. Albert Johan",male,,0,0,7.775,Head Sailor,White,Walking
+109,0,3,"Rekic, Mr. Tido",male,38,0,0,7.8958,Lead Tailor,Blue,Cycling
+110,1,3,"Moran, Miss. Bertha",female,,1,0,24.15,Clerk,Black,Dancing
+111,0,1,"Porter, Mr. Walter Chamberlain",male,47,0,0,52,Photographer,Olive,Chess
+112,0,3,"Zabour, Miss. Hileni",female,14.5,1,0,14.4542,Glassblower,Purple,Violin
+113,0,3,"Barton, Mr. David John",male,22,0,0,8.05,Sailor,Orange,BirdWatching
+114,0,3,"Jussila, Miss. Katriina",female,20,1,0,9.825,Junior Carpenter,Teal,Woodworking
+115,0,3,"Attalah, Miss. Malake",female,17,0,0,14.4583,Chief Doctor,Maroon,Reading
+116,0,3,"Pekoniemi, Mr. Edvard",male,21,0,0,7.925,Lead Artist,Red,Traveling
+117,0,3,"Connors, Mr. Patrick",male,70.5,0,0,7.75,Assistant Clerk,Blue,Gardening
+118,0,2,"Turpin, Mr. William John Robert",male,29,1,0,21,Carpenter,Black,Baking
+119,0,1,"Baxter, Mr. Quigg Edmond",male,24,0,1,247.5208,Senior Writer,Pink,Embroidery
+120,0,3,"Andersson, Miss. Ellis Anna Maria",female,2,4,2,31.275,Baker,Yellow,Piano
+121,0,2,"Hickman, Mr. Stanley George",male,21,2,0,73.5,Steward,Green,Traveling
+122,0,3,"Moore, Mr. Leonard Charles",male,,0,0,8.05,Blacksmith,Maroon,Walking
+123,0,2,"Nasser, Mr. Nicholas",male,32.5,1,0,30.0708,Writer,Blue,Calligraphy
+124,1,2,"Webber, Miss. Susan",female,32.5,0,0,13,Butcher,Yellow,Traveling
+125,0,1,"White, Mr. Percival Wayland",male,54,0,1,77.2875,Lead Clerk,Olive,Reading
+126,1,3,"Nicola-Yarred, Master. Elias",male,12,1,0,11.2417,Butcher,Teal,Cooking
+127,0,3,"McMahon, Mr. Martin",male,,0,0,7.75,Baker,Pink,Reading
+128,1,3,"Madsen, Mr. Fridtjof Arne",male,24,0,0,7.1417,Assistant Architect,Cyan,CardGames
+129,1,3,"Peter, Miss. Anna",female,,1,1,22.3583,Banker,Purple,CardGames
+130,0,3,"Ekstrom, Mr. Johan",male,45,0,0,6.975,Porter,Orange,Gardening
+131,0,3,"Drazenoic, Mr. Jozef",male,33,0,0,7.8958,Glassblower,Maroon,Cooking
+132,0,3,"Coelho, Mr. Domingos Fernandeo",male,20,0,0,7.05,Junior Musician,Blue,Calligraphy
+133,0,3,"Robins, Mrs. Alexander A (Grace Charity Laury)",female,47,1,0,14.5,Nurse,Navy,Painting
+134,1,2,"Weisz, Mrs. Leopold (Mathilde Francoise Pede)",female,29,1,0,26,Innkeeper,Purple,Dancing
+135,0,2,"Sobey, Mr. Samuel James Hayden",male,25,0,0,13,Musician,Brown,Photography
+136,0,2,"Richard, Mr. Emile",male,23,0,0,15.0458,Lawyer,Blue,StampCollecting
+137,1,1,"Newsom, Miss. Helen Monypeny",female,19,0,2,26.2833,Architect,Teal,Baking
+138,0,1,"Futrelle, Mr. Jacques Heath",male,37,1,0,53.1,Assistant Lawyer,Orange,Knitting
+139,0,3,"Osen, Mr. Olaf Elon",male,16,0,0,9.2167,Chief Doctor,Teal,Woodworking
+140,0,1,"Giglio, Mr. Victor",male,24,0,0,79.2,Steward,Pink,Fishing
+141,0,3,"Boulos, Mrs. Joseph (Sultana)",female,,0,2,15.2458,Soldier,Cyan,Cooking
+142,1,3,"Nysten, Miss. Anna Sofia",female,22,0,0,7.75,Soldier,Red,Fishing
+143,1,3,"Hakkarainen, Mrs. Pekka Pietari (Elin Matilda Dolck)",female,24,1,0,15.85,Merchant,Yellow,Photography
+144,0,3,"Burke, Mr. Jeremiah",male,19,0,0,6.75,Chef,Blue,Chess
+145,0,2,"Andrew, Mr. Edgardo Samuel",male,18,0,0,11.5,Glassblower,Navy,Piano
+146,0,2,"Nicholls, Mr. Joseph Charles",male,19,1,1,36.75,Head Artist,Green,Traveling
+147,1,3,"Andersson, Mr. August Edvard (""Wennerstrom"")",male,27,0,0,7.7958,Chief Teacher,Pink,BirdWatching
+148,0,3,"Ford, Miss. Robina Maggie ""Ruby""",female,9,2,2,34.375,Glassblower,Grey,Dancing
+149,0,2,"Navratil, Mr. Michel (""Louis M Hoffman"")",male,36.5,0,2,26,Mechanic,Magenta,Painting
+150,0,2,"Byles, Rev. Thomas Roussel Davids",male,42,0,0,13,Farmer,Yellow,Cooking
+151,0,2,"Bateman, Rev. Robert James",male,51,0,0,12.525,Senior Shoemaker,Brown,Baking
+152,1,1,"Pears, Mrs. Thomas (Edith Wearne)",female,22,1,0,66.6,Apprentice Porter,Pink,CardGames
+153,0,3,"Meo, Mr. Alfonzo",male,55.5,0,0,8.05,Baker,Navy,Painting
+154,0,3,"van Billiard, Mr. Austin Blyler",male,40.5,0,2,14.5,Senior Merchant,Yellow,Baking
+155,0,3,"Olsen, Mr. Ole Martin",male,,0,0,7.3125,Grocer,Maroon,Woodworking
+156,0,1,"Williams, Mr. Charles Duane",male,51,0,1,61.3792,Merchant,Teal,Fishing
+157,1,3,"Gilnagh, Miss. Katherine ""Katie""",female,16,0,0,7.7333,Nurse,Magenta,Cooking
+158,0,3,"Corn, Mr. Harry",male,30,0,0,8.05,Sailor,Orange,StampCollecting
+159,0,3,"Smiljanic, Mr. Mile",male,,0,0,8.6625,Artist,White,CardGames
+160,0,3,"Sage, Master. Thomas Henry",male,,8,2,69.55,Seamstress,Olive,Reading
+161,0,3,"Cribb, Mr. John Hatfield",male,44,0,1,16.1,Chef,Black,Knitting
+162,1,2,"Watt, Mrs. James (Elizabeth ""Bessie"" Inglis Milne)",female,40,0,0,15.75,Artist,Red,Cooking
+163,0,3,"Bengtsson, Mr. John Viktor",male,26,0,0,7.775,Assistant Librarian,Green,Singing
+164,0,3,"Calic, Mr. Jovo",male,17,0,0,8.6625,Librarian,Cyan,BirdWatching
+165,0,3,"Panula, Master. Eino Viljami",male,1,4,1,39.6875,Chef,Maroon,Calligraphy
+166,1,3,"Goldsmith, Master. Frank John William ""Frankie""",male,9,0,2,20.525,Merchant,Blue,Piano
+167,1,1,"Chibnall, Mrs. (Edith Martha Bowerman)",female,,0,1,55,Chef,Blue,StampCollecting
+168,0,3,"Skoog, Mrs. William (Anna Bernhardina Karlsson)",female,45,1,4,27.9,Architect,Teal,Piano
+169,0,1,"Baumann, Mr. John D",male,,0,0,25.925,Apprentice Musician,Maroon,Traveling
+170,0,3,"Ling, Mr. Lee",male,28,0,0,56.4958,Chief Chef,Green,Chess
+171,0,1,"Van der hoef, Mr. Wyckoff",male,61,0,0,33.5,Merchant,Yellow,Painting
+172,0,3,"Rice, Master. Arthur",male,4,4,1,29.125,Mechanic,White,Walking
+173,1,3,"Johnson, Miss. Eleanor Ileen",female,1,1,1,11.1333,Assistant Mechanic,Brown,Dancing
+174,0,3,"Sivola, Mr. Antti Wilhelm",male,21,0,0,7.925,Lead Butcher,Brown,Woodworking
+175,0,1,"Smith, Mr. James Clinch",male,56,0,0,30.6958,Butcher,Green,Calligraphy
+176,0,3,"Klasen, Mr. Klas Albin",male,18,1,1,7.8542,Head Chef,Teal,Gardening
+177,0,3,"Lefebre, Master. Henry Forbes",male,,3,1,25.4667,Soldier,Maroon,Photography
+178,0,1,"Isham, Miss. Ann Elizabeth",female,50,0,0,28.7125,Architect,Black,Cycling
+179,0,2,"Hale, Mr. Reginald",male,30,0,0,13,Head Doctor,Olive,Knitting
+180,0,3,"Leonard, Mr. Lionel",male,36,0,0,0,Senior Doctor,White,Knitting
+181,0,3,"Sage, Miss. Constance Gladys",female,,8,2,69.55,Grocer,Maroon,Gardening
+182,0,2,"Pernot, Mr. Rene",male,,0,0,15.05,Merchant,Grey,Embroidery
+183,0,3,"Asplund, Master. Clarence Gustaf Hugo",male,9,4,2,31.3875,Glassblower,Grey,Piano
+184,1,2,"Becker, Master. Richard F",male,1,2,1,39,Watchmaker,Pink,Embroidery
+185,1,3,"Kink-Heilmann, Miss. Luise Gretchen",female,4,0,2,22.025,Junior Grocer,Teal,Reading
+186,0,1,"Rood, Mr. Hugh Roscoe",male,,0,0,50,Carpenter,Magenta,Photography
+187,1,3,"O'Brien, Mrs. Thomas (Johanna ""Hannah"" Godfrey)",female,,1,0,15.5,Head Photographer,Orange,Woodworking
+188,1,1,"Romaine, Mr. Charles Hallace (""Mr C Rolmane"")",male,45,0,0,26.55,Doctor,Teal,Cooking
+189,0,3,"Bourke, Mr. John",male,40,1,1,15.5,Grocer,Blue,Cycling
+190,0,3,"Turcin, Mr. Stjepan",male,36,0,0,7.8958,Assistant Watchmaker,Red,Calligraphy
+191,1,2,"Pinsky, Mrs. (Rosa)",female,32,0,0,13,Porter,Olive,Calligraphy
+192,0,2,"Carbines, Mr. William",male,19,0,0,13,Lead Chef,Red,Woodworking
+193,1,3,"Andersen-Jensen, Miss. Carla Christine Nielsine",female,19,1,0,7.8542,Assistant Baker,Magenta,Piano
+194,1,2,"Navratil, Master. Michel M",male,3,1,1,26,Carpenter,Brown,CardGames
+195,1,1,"Brown, Mrs. James Joseph (Margaret Tobin)",female,44,0,0,27.7208,Lead Doctor,Yellow,Traveling
+196,1,1,"Lurette, Miss. Elise",female,58,0,0,146.5208,Senior Miner,Grey,Calligraphy
+197,0,3,"Mernagh, Mr. Robert",male,,0,0,7.75,Clerk,Maroon,Walking
+198,0,3,"Olsen, Mr. Karl Siegwart Andreas",male,42,0,1,8.4042,Engineer,Maroon,CardGames
+199,1,3,"Madigan, Miss. Margaret ""Maggie""",female,,0,0,7.75,Doctor,Green,Embroidery
+200,0,2,"Yrois, Miss. Henriette (""Mrs Harbeck"")",female,24,0,0,13,Blacksmith,Black,Cooking
+201,0,3,"Vande Walle, Mr. Nestor Cyriel",male,28,0,0,9.5,Apprentice Banker,Blue,Cooking
+202,0,3,"Sage, Mr. Frederick",male,,8,2,69.55,Merchant,Blue,Violin
+203,0,3,"Johanson, Mr. Jakob Alfred",male,34,0,0,6.4958,Painter,Blue,Painting
+204,0,3,"Youseff, Mr. Gerious",male,45.5,0,0,7.225,Shoemaker,Brown,Knitting
+205,1,3,"Cohen, Mr. Gurshon ""Gus""",male,18,0,0,8.05,Clerk,Grey,Violin
+206,0,3,"Strom, Miss. Telma Matilda",female,2,0,1,10.4625,Engineer,Red,Photography
+207,0,3,"Backstrom, Mr. Karl Alfred",male,32,1,0,15.85,Teacher,Black,Dancing
+208,1,3,"Albimona, Mr. Nassef Cassem",male,26,0,0,18.7875,Grocer,White,Baking
+209,1,3,"Carr, Miss. Helen ""Ellen""",female,16,0,0,7.75,Steward,Pink,Walking
+210,1,1,"Blank, Mr. Henry",male,40,0,0,31,Writer,Cyan,CardGames
+211,0,3,"Ali, Mr. Ahmed",male,24,0,0,7.05,Doctor,Orange,Knitting
+212,1,2,"Cameron, Miss. Clear Annie",female,35,0,0,21,Nurse,Orange,Photography
+213,0,3,"Perkin, Mr. John Henry",male,22,0,0,7.25,Sailor,Navy,BirdWatching
+214,0,2,"Givard, Mr. Hans Kristensen",male,30,0,0,13,Junior Photographer,Olive,Painting
+215,0,3,"Kiernan, Mr. Philip",male,,1,0,7.75,Chief Butcher,Magenta,Photography
+216,1,1,"Newell, Miss. Madeleine",female,31,1,0,113.275,Glassblower,Green,Gardening
+217,1,3,"Honkanen, Miss. Eliina",female,27,0,0,7.925,Steward,Green,Embroidery
+218,0,2,"Jacobsohn, Mr. Sidney Samuel",male,42,1,0,27,Merchant,Purple,Reading
+219,1,1,"Bazzani, Miss. Albina",female,32,0,0,76.2917,Lead Merchant,Yellow,Fishing
+220,0,2,"Harris, Mr. Walter",male,30,0,0,10.5,Tailor,Teal,Fishing
+221,1,3,"Sunderland, Mr. Victor Francis",male,16,0,0,8.05,Doctor,Brown,Violin
+222,0,2,"Bracken, Mr. James H",male,27,0,0,13,Artist,Magenta,Photography
+223,0,3,"Green, Mr. George Henry",male,51,0,0,8.05,Clerk,Magenta,Embroidery
+224,0,3,"Nenkoff, Mr. Christo",male,,0,0,7.8958,Seamstress,Maroon,Cycling
+225,1,1,"Hoyt, Mr. Frederick Maxfield",male,38,1,0,90,Carpenter,Grey,Embroidery
+226,0,3,"Berglund, Mr. Karl Ivar Sven",male,22,0,0,9.35,Grocer,Green,Knitting
+227,1,2,"Mellors, Mr. William John",male,19,0,0,10.5,Soldier,Olive,CardGames
+228,0,3,"Lovell, Mr. John Hall (""Henry"")",male,20.5,0,0,7.25,Butcher,White,Woodworking
+229,0,2,"Fahlstrom, Mr. Arne Jonas",male,18,0,0,13,Tailor,Red,Singing
+230,0,3,"Lefebre, Miss. Mathilde",female,,3,1,25.4667,Engineer,Teal,Traveling
+231,1,1,"Harris, Mrs. Henry Birkhardt (Irene Wallach)",female,35,1,0,83.475,Doctor,Navy,Traveling
+232,0,3,"Larsson, Mr. Bengt Edvin",male,29,0,0,7.775,Carpenter,Teal,CardGames
+233,0,2,"Sjostedt, Mr. Ernst Adolf",male,59,0,0,13.5,Junior Chef,Green,Piano
+234,1,3,"Asplund, Miss. Lillian Gertrud",female,5,4,2,31.3875,Junior Writer,White,Violin
+235,0,2,"Leyson, Mr. Robert William Norman",male,24,0,0,10.5,Bookkeeper,Red,Fishing
+236,0,3,"Harknett, Miss. Alice Phoebe",female,,0,0,7.55,Innkeeper,Olive,Walking
+237,0,2,"Hold, Mr. Stephen",male,44,1,0,26,Soldier,Pink,Reading
+238,1,2,"Collyer, Miss. Marjorie ""Lottie""",female,8,0,2,26.25,Teacher,Maroon,Chess
+239,0,2,"Pengelly, Mr. Frederick William",male,19,0,0,10.5,Teacher,Cyan,Gardening
+240,0,2,"Hunt, Mr. George Henry",male,33,0,0,12.275,Baker,Navy,Knitting
+241,0,3,"Zabour, Miss. Thamine",female,,1,0,14.4542,Merchant,Magenta,Reading
+242,1,3,"Murphy, Miss. Katherine ""Kate""",female,,1,0,15.5,Lawyer,Magenta,CardGames
+243,0,2,"Coleridge, Mr. Reginald Charles",male,29,0,0,10.5,Glassblower,Cyan,Woodworking
+244,0,3,"Maenpaa, Mr. Matti Alexanteri",male,22,0,0,7.125,Watchmaker,Maroon,Violin
+245,0,3,"Attalah, Mr. Sleiman",male,30,0,0,7.225,Assistant Artist,Black,Woodworking
+246,0,1,"Minahan, Dr. William Edward",male,44,2,0,90,Assistant Butcher,Yellow,Traveling
+247,0,3,"Lindahl, Miss. Agda Thorilda Viktoria",female,25,0,0,7.775,Grocer,Maroon,Gardening
+248,1,2,"Hamalainen, Mrs. William (Anna)",female,24,0,2,14.5,Nurse,Purple,Embroidery
+249,1,1,"Beckwith, Mr. Richard Leonard",male,37,1,1,52.5542,Librarian,Green,Gardening
+250,0,2,"Carter, Rev. Ernest Courtenay",male,54,1,0,26,Apprentice Doctor,Red,Chess
+251,0,3,"Reed, Mr. James George",male,,0,0,7.25,Apprentice Shoemaker,Orange,Reading
+252,0,3,"Strom, Mrs. Wilhelm (Elna Matilda Persson)",female,29,1,1,10.4625,Chief Nurse,Pink,Calligraphy
+253,0,1,"Stead, Mr. William Thomas",male,62,0,0,26.55,Chef,Olive,Reading
+254,0,3,"Lobb, Mr. William Arthur",male,30,1,0,16.1,Lawyer,Red,Reading
+255,0,3,"Rosblom, Mrs. Viktor (Helena Wilhelmina)",female,41,0,2,20.2125,Apprentice Steward,Red,Walking
+256,1,3,"Touma, Mrs. Darwis (Hanne Youssef Razi)",female,29,0,2,15.2458,Apprentice Shoemaker,Olive,Traveling
+257,1,1,"Thorne, Mrs. Gertrude Maybelle",female,,0,0,79.2,Steward,Orange,Gardening
+258,1,1,"Cherry, Miss. Gladys",female,30,0,0,86.5,Head Porter,White,Gardening
+259,1,1,"Ward, Miss. Anna",female,35,0,0,512.3292,Nurse,Maroon,Traveling
+260,1,2,"Parrish, Mrs. (Lutie Davis)",female,50,0,1,26,Tailor,Cyan,Violin
+261,0,3,"Smith, Mr. Thomas",male,,0,0,7.75,Butcher,Maroon,Photography
+262,1,3,"Asplund, Master. Edvin Rojj Felix",male,3,4,2,31.3875,Head Shoemaker,Orange,Woodworking
+263,0,1,"Taussig, Mr. Emil",male,52,1,1,79.65,Lead Miner,Brown,Gardening
+264,0,1,"Harrison, Mr. William",male,40,0,0,0,Nurse,Purple,Embroidery
+265,0,3,"Henry, Miss. Delia",female,,0,0,7.75,Head Teacher,Orange,Piano
+266,0,2,"Reeves, Mr. David",male,36,0,0,10.5,Steward,Grey,Dancing
+267,0,3,"Panula, Mr. Ernesti Arvid",male,16,4,1,39.6875,Accountant,Pink,Fishing
+268,1,3,"Persson, Mr. Ernst Ulrik",male,25,1,0,7.775,Chef,Navy,Chess
+269,1,1,"Graham, Mrs. William Thompson (Edith Junkins)",female,58,0,1,153.4625,Photographer,White,Violin
+270,1,1,"Bissette, Miss. Amelia",female,35,0,0,135.6333,Soldier,Purple,Singing
+271,0,1,"Cairns, Mr. Alexander",male,,0,0,31,Nurse,Maroon,Gardening
+272,1,3,"Tornquist, Mr. William Henry",male,25,0,0,0,Chef,Black,Embroidery
+273,1,2,"Mellinger, Mrs. (Elizabeth Anne Maidment)",female,41,0,1,19.5,Seamstress,Maroon,Dancing
+274,0,1,"Natsch, Mr. Charles H",male,37,0,1,29.7,Senior Accountant,Olive,Reading
+275,1,3,"Healy, Miss. Hanora ""Nora""",female,,0,0,7.75,Accountant,Navy,Woodworking
+276,1,1,"Andrews, Miss. Kornelia Theodosia",female,63,1,0,77.9583,Assistant Accountant,White,Cycling
+277,0,3,"Lindblom, Miss. Augusta Charlotta",female,45,0,0,7.75,Seamstress,Green,StampCollecting
+278,0,2,"Parkes, Mr. Francis ""Frank""",male,,0,0,0,Accountant,Cyan,Reading
+279,0,3,"Rice, Master. Eric",male,7,4,1,29.125,Architect,Teal,Photography
+280,1,3,"Abbott, Mrs. Stanton (Rosa Hunt)",female,35,1,1,20.25,Merchant,Maroon,Embroidery
+281,0,3,"Duane, Mr. Frank",male,65,0,0,7.75,Assistant Steward,Magenta,Chess
+282,0,3,"Olsson, Mr. Nils Johan Goransson",male,28,0,0,7.8542,Glassblower,Cyan,Chess
+283,0,3,"de Pelsmaeker, Mr. Alfons",male,16,0,0,9.5,Banker,Navy,Walking
+284,1,3,"Dorking, Mr. Edward Arthur",male,19,0,0,8.05,Apprentice Baker,Maroon,Walking
+285,0,1,"Smith, Mr. Richard William",male,,0,0,26,Chief Steward,Brown,Gardening
+286,0,3,"Stankovic, Mr. Ivan",male,33,0,0,8.6625,Bookkeeper,Red,BirdWatching
+287,1,3,"de Mulder, Mr. Theodore",male,30,0,0,9.5,Seamstress,Purple,CardGames
+288,0,3,"Naidenoff, Mr. Penko",male,22,0,0,7.8958,Clerk,Brown,Baking
+289,1,2,"Hosono, Mr. Masabumi",male,42,0,0,13,Blacksmith,Maroon,Knitting
+290,1,3,"Connolly, Miss. Kate",female,22,0,0,7.75,Accountant,Purple,Piano
+291,1,1,"Barber, Miss. Ellen ""Nellie""",female,26,0,0,78.85,Lead Accountant,Teal,Photography
+292,1,1,"Bishop, Mrs. Dickinson H (Helen Walton)",female,19,1,0,91.0792,Accountant,Purple,Traveling
+293,0,2,"Levy, Mr. Rene Jacques",male,36,0,0,12.875,Watchmaker,Green,Piano
+294,0,3,"Haas, Miss. Aloisia",female,24,0,0,8.85,Teacher,Brown,Baking
+295,0,3,"Mineff, Mr. Ivan",male,24,0,0,7.8958,Apprentice Steward,Blue,Embroidery
+296,0,1,"Lewy, Mr. Ervin G",male,,0,0,27.7208,Engineer,Brown,Cooking
+297,0,3,"Hanna, Mr. Mansour",male,23.5,0,0,7.2292,Carpenter,White,Painting
+298,0,1,"Allison, Miss. Helen Loraine",female,2,1,2,151.55,Butcher,Green,Walking
+299,1,1,"Saalfeld, Mr. Adolphe",male,,0,0,30.5,Engineer,White,Dancing
+300,1,1,"Baxter, Mrs. James (Helene DeLaudeniere Chaput)",female,50,0,1,247.5208,Miner,Pink,Singing
+301,1,3,"Kelly, Miss. Anna Katherine ""Annie Kate""",female,,0,0,7.75,Assistant Chef,White,Embroidery
+302,1,3,"McCoy, Mr. Bernard",male,,2,0,23.25,Sailor,Grey,Piano
+303,0,3,"Johnson, Mr. William Cahoone Jr",male,19,0,0,0,Tailor,Olive,Traveling
+304,1,2,"Keane, Miss. Nora A",female,,0,0,12.35,Writer,Blue,Painting
+305,0,3,"Williams, Mr. Howard Hugh ""Harry""",male,,0,0,8.05,Bookkeeper,Red,Gardening
+306,1,1,"Allison, Master. Hudson Trevor",male,0.92,1,2,151.55,Lead Photographer,Magenta,StampCollecting
+307,1,1,"Fleming, Miss. Margaret",female,,0,0,110.8833,Baker,Pink,StampCollecting
+308,1,1,"Penasco y Castellana, Mrs. Victor de Satode (Maria Josefa Perez de Soto y Vallejo)",female,17,1,0,108.9,Senior Baker,White,Embroidery
+309,0,2,"Abelson, Mr. Samuel",male,30,1,0,24,Assistant Tailor,Maroon,StampCollecting
+310,1,1,"Francatelli, Miss. Laura Mabel",female,30,0,0,56.9292,Soldier,Orange,Baking
+311,1,1,"Hays, Miss. Margaret Bechstein",female,24,0,0,83.1583,Butcher,Pink,Dancing
+312,1,1,"Ryerson, Miss. Emily Borie",female,18,2,2,262.375,Senior Lawyer,Red,Calligraphy
+313,0,2,"Lahtinen, Mrs. William (Anna Sylfven)",female,26,1,1,26,Glassblower,Red,BirdWatching
+314,0,3,"Hendekovic, Mr. Ignjac",male,28,0,0,7.8958,Chief Librarian,Grey,Singing
+315,0,2,"Hart, Mr. Benjamin",male,43,1,1,26.25,Innkeeper,Yellow,BirdWatching
+316,1,3,"Nilsson, Miss. Helmina Josefina",female,26,0,0,7.8542,Mechanic,Green,Calligraphy
+317,1,2,"Kantor, Mrs. Sinai (Miriam Sternin)",female,24,1,0,26,Architect,Grey,Walking
+318,0,2,"Moraweck, Dr. Ernest",male,54,0,0,14,Clerk,Brown,Cycling
+319,1,1,"Wick, Miss. Mary Natalie",female,31,0,2,164.8667,Merchant,Pink,Walking
+320,1,1,"Spedden, Mrs. Frederic Oakley (Margaretta Corning Stone)",female,40,1,1,134.5,Steward,Green,Embroidery
+321,0,3,"Dennis, Mr. Samuel",male,22,0,0,7.25,Head Watchmaker,Teal,Painting
+322,0,3,"Danoff, Mr. Yoto",male,27,0,0,7.8958,Accountant,Magenta,Singing
+323,1,2,"Slayter, Miss. Hilda Mary",female,30,0,0,12.35,Junior Mechanic,Pink,Painting
+324,1,2,"Caldwell, Mrs. Albert Francis (Sylvia Mae Harbaugh)",female,22,1,1,29,Senior Merchant,Cyan,Dancing
+325,0,3,"Sage, Mr. George John Jr",male,,8,2,69.55,Assistant Librarian,Purple,Knitting
+326,1,1,"Young, Miss. Marie Grice",female,36,0,0,135.6333,Grocer,Magenta,Calligraphy
+327,0,3,"Nysveen, Mr. Johan Hansen",male,61,0,0,6.2375,Blacksmith,Orange,Baking
+328,1,2,"Ball, Mrs. (Ada E Hall)",female,36,0,0,13,Musician,Olive,Embroidery
+329,1,3,"Goldsmith, Mrs. Frank John (Emily Alice Brown)",female,31,1,1,20.525,Teacher,Red,Violin
+330,1,1,"Hippach, Miss. Jean Gertrude",female,16,0,1,57.9792,Senior Watchmaker,Teal,Knitting
+331,1,3,"McCoy, Miss. Agnes",female,,2,0,23.25,Head Doctor,Yellow,Cooking
+332,0,1,"Partner, Mr. Austen",male,45.5,0,0,28.5,Chief Baker,Red,Knitting
+333,0,1,"Graham, Mr. George Edward",male,38,0,1,153.4625,Porter,Orange,Violin
+334,0,3,"Vander Planke, Mr. Leo Edmondus",male,16,2,0,18,Head Butcher,Navy,Chess
+335,1,1,"Frauenthal, Mrs. Henry William (Clara Heinsheimer)",female,,1,0,133.65,Painter,Grey,CardGames
+336,0,3,"Denkoff, Mr. Mitto",male,,0,0,7.8958,Miner,Olive,Reading
+337,0,1,"Pears, Mr. Thomas Clinton",male,29,1,0,66.6,Doctor,Teal,Cycling
+338,1,1,"Burns, Miss. Elizabeth Margaret",female,41,0,0,134.5,Merchant,Navy,Chess
+339,1,3,"Dahl, Mr. Karl Edwart",male,45,0,0,8.05,Assistant Clerk,Olive,Gardening
+340,0,1,"Blackwell, Mr. Stephen Weart",male,45,0,0,35.5,Chief Nurse,Green,CardGames
+341,1,2,"Navratil, Master. Edmond Roger",male,2,1,1,26,Innkeeper,Navy,Traveling
+342,1,1,"Fortune, Miss. Alice Elizabeth",female,24,3,2,263,Baker,Teal,Cooking
+343,0,2,"Collander, Mr. Erik Gustaf",male,28,0,0,13,Clerk,Navy,Traveling
+344,0,2,"Sedgwick, Mr. Charles Frederick Waddington",male,25,0,0,13,Senior Accountant,Yellow,Knitting
+345,0,2,"Fox, Mr. Stanley Hubert",male,36,0,0,13,Architect,Cyan,Painting
+346,1,2,"Brown, Miss. Amelia ""Mildred""",female,24,0,0,13,Farmer,Yellow,Baking
+347,1,2,"Smith, Miss. Marion Elsie",female,40,0,0,13,Soldier,Cyan,Embroidery
+348,1,3,"Davison, Mrs. Thomas Henry (Mary E Finck)",female,,1,0,16.1,Lead Bookkeeper,Pink,BirdWatching
+349,1,3,"Coutts, Master. William Loch ""William""",male,3,1,1,15.9,Miner,Cyan,Knitting
+350,0,3,"Dimic, Mr. Jovan",male,42,0,0,8.6625,Butcher,Teal,Baking
+351,0,3,"Odahl, Mr. Nils Martin",male,23,0,0,9.225,Doctor,Teal,Woodworking
+352,0,1,"Williams-Lambert, Mr. Fletcher Fellows",male,,0,0,35,Senior Artist,Teal,Violin
+353,0,3,"Elias, Mr. Tannous",male,15,1,1,7.2292,Apprentice Sailor,Yellow,Knitting
+354,0,3,"Arnold-Franchi, Mr. Josef",male,25,1,0,17.8,Lawyer,Navy,BirdWatching
+355,0,3,"Yousif, Mr. Wazli",male,,0,0,7.225,Nurse,Olive,Singing
+356,0,3,"Vanden Steen, Mr. Leo Peter",male,28,0,0,9.5,Senior Engineer,White,Knitting
+357,1,1,"Bowerman, Miss. Elsie Edith",female,22,0,1,55,Miner,Teal,BirdWatching
+358,0,2,"Funk, Miss. Annie Clemmer",female,38,0,0,13,Accountant,Red,Photography
+359,1,3,"McGovern, Miss. Mary",female,,0,0,7.8792,Soldier,Olive,Singing
+360,1,3,"Mockler, Miss. Helen Mary ""Ellie""",female,,0,0,7.8792,Seamstress,Purple,Photography
+361,0,3,"Skoog, Mr. Wilhelm",male,40,1,4,27.9,Junior Bookkeeper,Red,Dancing
+362,0,2,"del Carlo, Mr. Sebastiano",male,29,1,0,27.7208,Miner,Yellow,Knitting
+363,0,3,"Barbara, Mrs. (Catherine David)",female,45,0,1,14.4542,Lead Seamstress,Red,CardGames
+364,0,3,"Asim, Mr. Adola",male,35,0,0,7.05,Senior Engineer,Brown,Gardening
+365,0,3,"O'Brien, Mr. Thomas",male,,1,0,15.5,Musician,Cyan,Violin
+366,0,3,"Adahl, Mr. Mauritz Nils Martin",male,30,0,0,7.25,Grocer,Grey,Traveling
+367,1,1,"Warren, Mrs. Frank Manley (Anna Sophia Atkinson)",female,60,1,0,75.25,Butcher,Yellow,Reading
+368,1,3,"Moussa, Mrs. (Mantoura Boulos)",female,,0,0,7.2292,Watchmaker,Olive,Embroidery
+369,1,3,"Jermyn, Miss. Annie",female,,0,0,7.75,Writer,White,Dancing
+370,1,1,"Aubart, Mme. Leontine Pauline",female,24,0,0,69.3,Apprentice Miner,Navy,Baking
+371,1,1,"Harder, Mr. George Achilles",male,25,1,0,55.4417,Lawyer,Red,Violin
+372,0,3,"Wiklund, Mr. Jakob Alfred",male,18,1,0,6.4958,Junior Miner,Yellow,Calligraphy
+373,0,3,"Beavan, Mr. William Thomas",male,19,0,0,8.05,Nurse,Black,Singing
+374,0,1,"Ringhini, Mr. Sante",male,22,0,0,135.6333,Doctor,Pink,Calligraphy
+375,0,3,"Palsson, Miss. Stina Viola",female,3,3,1,21.075,Lead Clerk,Olive,StampCollecting
+376,1,1,"Meyer, Mrs. Edgar Joseph (Leila Saks)",female,,1,0,82.1708,Architect,Pink,Gardening
+377,1,3,"Landergren, Miss. Aurora Adelia",female,22,0,0,7.25,Head Photographer,Cyan,Calligraphy
+378,0,1,"Widener, Mr. Harry Elkins",male,27,0,2,211.5,Chief Butcher,Navy,Baking
+379,0,3,"Betros, Mr. Tannous",male,20,0,0,4.0125,Chief Painter,Olive,Singing
+380,0,3,"Gustafsson, Mr. Karl Gideon",male,19,0,0,7.775,Soldier,Olive,Calligraphy
+381,1,1,"Bidois, Miss. Rosalie",female,42,0,0,227.525,Assistant Tailor,Maroon,Cycling
+382,1,3,"Nakid, Miss. Maria (""Mary"")",female,1,0,2,15.7417,Writer,Grey,Reading
+383,0,3,"Tikkanen, Mr. Juho",male,32,0,0,7.925,Porter,Green,Woodworking
+384,1,1,"Holverson, Mrs. Alexander Oskar (Mary Aline Towner)",female,35,1,0,52,Blacksmith,Red,Painting
+385,0,3,"Plotcharsky, Mr. Vasil",male,,0,0,7.8958,Sailor,Blue,Singing
+386,0,2,"Davies, Mr. Charles Henry",male,18,0,0,73.5,Artist,Teal,Cooking
+387,0,3,"Goodwin, Master. Sidney Leonard",male,1,5,2,46.9,Chief Farmer,Purple,Chess
+388,1,2,"Buss, Miss. Kate",female,36,0,0,13,Lead Glassblower,Navy,Photography
+389,0,3,"Sadlier, Mr. Matthew",male,,0,0,7.7292,Chief Bookkeeper,Cyan,Dancing
+390,1,2,"Lehmann, Miss. Bertha",female,17,0,0,12,Writer,Brown,StampCollecting
+391,1,1,"Carter, Mr. William Ernest",male,36,1,2,120,Chef,Olive,Embroidery
+392,1,3,"Jansson, Mr. Carl Olof",male,21,0,0,7.7958,Lawyer,Green,Dancing
+393,0,3,"Gustafsson, Mr. Johan Birger",male,28,2,0,7.925,Banker,Grey,Violin
+394,1,1,"Newell, Miss. Marjorie",female,23,1,0,113.275,Innkeeper,Red,Violin
+395,1,3,"Sandstrom, Mrs. Hjalmar (Agnes Charlotta Bengtsson)",female,24,0,2,16.7,Shoemaker,Cyan,StampCollecting
+396,0,3,"Johansson, Mr. Erik",male,22,0,0,7.7958,Sailor,Orange,Walking
+397,0,3,"Olsson, Miss. Elina",female,31,0,0,7.8542,Engineer,White,Baking
+398,0,2,"McKane, Mr. Peter David",male,46,0,0,26,Apprentice Blacksmith,Magenta,Knitting
+399,0,2,"Pain, Dr. Alfred",male,23,0,0,10.5,Junior Chef,Grey,Chess
+400,1,2,"Trout, Mrs. William H (Jessie L)",female,28,0,0,12.65,Sailor,Black,Embroidery
+401,1,3,"Niskanen, Mr. Juha",male,39,0,0,7.925,Apprentice Merchant,Pink,Traveling
+402,0,3,"Adams, Mr. John",male,26,0,0,8.05,Senior Porter,Teal,Fishing
+403,0,3,"Jussila, Miss. Mari Aina",female,21,1,0,9.825,Lead Miner,Orange,Traveling
+404,0,3,"Hakkarainen, Mr. Pekka Pietari",male,28,1,0,15.85,Grocer,Olive,Dancing
+405,0,3,"Oreskovic, Miss. Marija",female,20,0,0,8.6625,Baker,Green,BirdWatching
+406,0,2,"Gale, Mr. Shadrach",male,34,1,0,21,Artist,White,Gardening
+407,0,3,"Widegren, Mr. Carl/Charles Peter",male,51,0,0,7.75,Lead Soldier,Navy,Reading
+408,1,2,"Richards, Master. William Rowe",male,3,1,1,18.75,Grocer,Red,Piano
+409,0,3,"Birkeland, Mr. Hans Martin Monsen",male,21,0,0,7.775,Porter,Green,Chess
+410,0,3,"Lefebre, Miss. Ida",female,,3,1,25.4667,Carpenter,Olive,Walking
+411,0,3,"Sdycoff, Mr. Todor",male,,0,0,7.8958,Photographer,Teal,Traveling
+412,0,3,"Hart, Mr. Henry",male,,0,0,6.8583,Innkeeper,Purple,Painting
+413,1,1,"Minahan, Miss. Daisy E",female,33,1,0,90,Teacher,Maroon,Knitting
+414,0,2,"Cunningham, Mr. Alfred Fleming",male,,0,0,0,Doctor,Grey,Chess
+415,1,3,"Sundman, Mr. Johan Julian",male,44,0,0,7.925,Clerk,Green,Knitting
+416,0,3,"Meek, Mrs. Thomas (Annie Louise Rowley)",female,,0,0,8.05,Painter,Black,CardGames
+417,1,2,"Drew, Mrs. James Vivian (Lulu Thorne Christian)",female,34,1,1,32.5,Steward,Maroon,Embroidery
+418,1,2,"Silven, Miss. Lyyli Karoliina",female,18,0,2,13,Apprentice Librarian,Blue,Knitting
+419,0,2,"Matthews, Mr. William John",male,30,0,0,13,Artist,Grey,Knitting
+420,0,3,"Van Impe, Miss. Catharina",female,10,0,2,24.15,Glassblower,Yellow,StampCollecting
+421,0,3,"Gheorgheff, Mr. Stanio",male,,0,0,7.8958,Tailor,Orange,CardGames
+422,0,3,"Charters, Mr. David",male,21,0,0,7.7333,Teacher,White,Gardening
+423,0,3,"Zimmerman, Mr. Leo",male,29,0,0,7.875,Butcher,Brown,Embroidery
+424,0,3,"Danbom, Mrs. Ernst Gilbert (Anna Sigrid Maria Brogren)",female,28,1,1,14.4,Clerk,Cyan,Painting
+425,0,3,"Rosblom, Mr. Viktor Richard",male,18,1,1,20.2125,Grocer,Brown,Walking
+426,0,3,"Wiseman, Mr. Phillippe",male,,0,0,7.25,Assistant Painter,Black,Cycling
+427,1,2,"Clarke, Mrs. Charles V (Ada Maria Winfield)",female,28,1,0,26,Carpenter,Yellow,Chess
+428,1,2,"Phillips, Miss. Kate Florence (""Mrs Kate Louise Phillips Marshall"")",female,19,0,0,26,Tailor,Yellow,Knitting
+429,0,3,"Flynn, Mr. James",male,,0,0,7.75,Clerk,Brown,Violin
+430,1,3,"Pickard, Mr. Berk (Berk Trembisky)",male,32,0,0,8.05,Engineer,Pink,Cooking
+431,1,1,"Bjornstrom-Steffansson, Mr. Mauritz Hakan",male,28,0,0,26.55,Senior Sailor,Green,Piano
+432,1,3,"Thorneycroft, Mrs. Percival (Florence Kate White)",female,,1,0,16.1,Blacksmith,Purple,Singing
+433,1,2,"Louch, Mrs. Charles Alexander (Alice Adelaide Slow)",female,42,1,0,26,Shoemaker,Orange,Violin
+434,0,3,"Kallio, Mr. Nikolai Erland",male,17,0,0,7.125,Grocer,Blue,Cooking
+435,0,1,"Silvey, Mr. William Baird",male,50,1,0,55.9,Junior Steward,Magenta,Gardening
+436,1,1,"Carter, Miss. Lucile Polk",female,14,1,2,120,Doctor,Brown,Singing
+437,0,3,"Ford, Miss. Doolina Margaret ""Daisy""",female,21,2,2,34.375,Steward,Teal,Dancing
+438,1,2,"Richards, Mrs. Sidney (Emily Hocking)",female,24,2,3,18.75,Apprentice Mechanic,Orange,Calligraphy
+439,0,1,"Fortune, Mr. Mark",male,64,1,4,263,Apprentice Mechanic,Yellow,Photography
+440,0,2,"Kvillner, Mr. Johan Henrik Johannesson",male,31,0,0,10.5,Carpenter,Purple,Cooking
+441,1,2,"Hart, Mrs. Benjamin (Esther Ada Bloomfield)",female,45,1,1,26.25,Engineer,Green,Cooking
+442,0,3,"Hampe, Mr. Leon",male,20,0,0,9.5,Musician,Navy,CardGames
+443,0,3,"Petterson, Mr. Johan Emil",male,25,1,0,7.775,Apprentice Merchant,Brown,Walking
+444,1,2,"Reynaldo, Ms. Encarnacion",female,28,0,0,13,Lead Teacher,Navy,Traveling
+445,1,3,"Johannesen-Bratthammer, Mr. Bernt",male,,0,0,8.1125,Miner,Brown,Gardening
+446,1,1,"Dodge, Master. Washington",male,4,0,2,81.8583,Musician,Pink,Calligraphy
+447,1,2,"Mellinger, Miss. Madeleine Violet",female,13,0,1,19.5,Chief Nurse,Cyan,Piano
+448,1,1,"Seward, Mr. Frederic Kimber",male,34,0,0,26.55,Clerk,Maroon,Piano
+449,1,3,"Baclini, Miss. Marie Catherine",female,5,2,1,19.2583,Banker,White,Violin
+450,1,1,"Peuchen, Major. Arthur Godfrey",male,52,0,0,30.5,Nurse,Red,Calligraphy
+451,0,2,"West, Mr. Edwy Arthur",male,36,1,2,27.75,Baker,Blue,Cycling
+452,0,3,"Hagland, Mr. Ingvald Olai Olsen",male,,1,0,19.9667,Accountant,Orange,Chess
+453,0,1,"Foreman, Mr. Benjamin Laventall",male,30,0,0,27.75,Seamstress,Blue,Traveling
+454,1,1,"Goldenberg, Mr. Samuel L",male,49,1,0,89.1042,Grocer,Brown,Singing
+455,0,3,"Peduzzi, Mr. Joseph",male,,0,0,8.05,Bookkeeper,Grey,Embroidery
+456,1,3,"Jalsevac, Mr. Ivan",male,29,0,0,7.8958,Steward,Navy,Dancing
+457,0,1,"Millet, Mr. Francis Davis",male,65,0,0,26.55,Lead Writer,Maroon,Baking
+458,1,1,"Kenyon, Mrs. Frederick R (Marion)",female,,1,0,51.8625,Architect,Navy,Baking
+459,1,2,"Toomey, Miss. Ellen",female,50,0,0,10.5,Tailor,Maroon,Cycling
+460,0,3,"O'Connor, Mr. Maurice",male,,0,0,7.75,Apprentice Musician,Grey,Cycling
+461,1,1,"Anderson, Mr. Harry",male,48,0,0,26.55,Grocer,Orange,Cycling
+462,0,3,"Morley, Mr. William",male,34,0,0,8.05,Watchmaker,Yellow,Reading
+463,0,1,"Gee, Mr. Arthur H",male,47,0,0,38.5,Lead Grocer,Orange,CardGames
+464,0,2,"Milling, Mr. Jacob Christian",male,48,0,0,13,Engineer,Black,Traveling
+465,0,3,"Maisner, Mr. Simon",male,,0,0,8.05,Baker,Pink,Violin
+466,0,3,"Goncalves, Mr. Manuel Estanslas",male,38,0,0,7.05,Librarian,Red,Cooking
+467,0,2,"Campbell, Mr. William",male,,0,0,0,Miner,Blue,Knitting
+468,0,1,"Smart, Mr. John Montgomery",male,56,0,0,26.55,Blacksmith,Cyan,Cycling
+469,0,3,"Scanlan, Mr. James",male,,0,0,7.725,Assistant Musician,Red,Woodworking
+470,1,3,"Baclini, Miss. Helene Barbara",female,0.75,2,1,19.2583,Mechanic,White,Chess
+471,0,3,"Keefe, Mr. Arthur",male,,0,0,7.25,Junior Clerk,White,Baking
+472,0,3,"Cacic, Mr. Luka",male,38,0,0,8.6625,Porter,Maroon,Cooking
+473,1,2,"West, Mrs. Edwy Arthur (Ada Mary Worth)",female,33,1,2,27.75,Glassblower,Cyan,Painting
+474,1,2,"Jerwan, Mrs. Amin S (Marie Marthe Thuillard)",female,23,0,0,13.7917,Photographer,Orange,Singing
+475,0,3,"Strandberg, Miss. Ida Sofia",female,22,0,0,9.8375,Banker,Brown,Violin
+476,0,1,"Clifford, Mr. George Quincy",male,,0,0,52,Watchmaker,Navy,Chess
+477,0,2,"Renouf, Mr. Peter Henry",male,34,1,0,21,Banker,Magenta,Baking
+478,0,3,"Braund, Mr. Lewis Richard",male,29,1,0,7.0458,Head Sailor,Black,Baking
+479,0,3,"Karlsson, Mr. Nils August",male,22,0,0,7.5208,Accountant,Cyan,Reading
+480,1,3,"Hirvonen, Miss. Hildur E",female,2,0,1,12.2875,Seamstress,Teal,Cycling
+481,0,3,"Goodwin, Master. Harold Victor",male,9,5,2,46.9,Clerk,Brown,Traveling
+482,0,2,"Frost, Mr. Anthony Wood ""Archie""",male,,0,0,0,Lead Teacher,Yellow,Violin
+483,0,3,"Rouse, Mr. Richard Henry",male,50,0,0,8.05,Blacksmith,Black,Reading
+484,1,3,"Turkula, Mrs. (Hedwig)",female,63,0,0,9.5875,Mechanic,Yellow,CardGames
+485,1,1,"Bishop, Mr. Dickinson H",male,25,1,0,91.0792,Junior Farmer,Pink,Fishing
+486,0,3,"Lefebre, Miss. Jeannie",female,,3,1,25.4667,Musician,Olive,Dancing
+487,1,1,"Hoyt, Mrs. Frederick Maxfield (Jane Anne Forby)",female,35,1,0,90,Butcher,White,StampCollecting
+488,0,1,"Kent, Mr. Edward Austin",male,58,0,0,29.7,Head Artist,Brown,Painting
+489,0,3,"Somerton, Mr. Francis William",male,30,0,0,8.05,Sailor,Grey,Painting
+490,1,3,"Coutts, Master. Eden Leslie ""Neville""",male,9,1,1,15.9,Mechanic,Brown,Walking
+491,0,3,"Hagland, Mr. Konrad Mathias Reiersen",male,,1,0,19.9667,Porter,White,Cooking
+492,0,3,"Windelov, Mr. Einar",male,21,0,0,7.25,Musician,Green,StampCollecting
+493,0,1,"Molson, Mr. Harry Markland",male,55,0,0,30.5,Lead Lawyer,Blue,Painting
+494,0,1,"Artagaveytia, Mr. Ramon",male,71,0,0,49.5042,Clerk,Navy,Walking
+495,0,3,"Stanley, Mr. Edward Roland",male,21,0,0,8.05,Porter,Cyan,BirdWatching
+496,0,3,"Yousseff, Mr. Gerious",male,,0,0,14.4583,Tailor,Yellow,Baking
+497,1,1,"Eustis, Miss. Elizabeth Mussey",female,54,1,0,78.2667,Head Blacksmith,White,CardGames
+498,0,3,"Shellard, Mr. Frederick William",male,,0,0,15.1,Soldier,Brown,Piano
+499,0,1,"Allison, Mrs. Hudson J C (Bessie Waldo Daniels)",female,25,1,2,151.55,Porter,Grey,Walking
+500,0,3,"Svensson, Mr. Olof",male,24,0,0,7.7958,Farmer,Maroon,StampCollecting
+501,0,3,"Calic, Mr. Petar",male,17,0,0,8.6625,Lawyer,Brown,Reading
+502,0,3,"Canavan, Miss. Mary",female,21,0,0,7.75,Junior Steward,White,Cooking
+503,0,3,"O'Sullivan, Miss. Bridget Mary",female,,0,0,7.6292,Engineer,Grey,BirdWatching
+504,0,3,"Laitinen, Miss. Kristina Sofia",female,37,0,0,9.5875,Junior Porter,Purple,Fishing
+505,1,1,"Maioni, Miss. Roberta",female,16,0,0,86.5,Architect,Green,Chess
+506,0,1,"Penasco y Castellana, Mr. Victor de Satode",male,18,1,0,108.9,Butcher,Cyan,Cycling
+507,1,2,"Quick, Mrs. Frederick Charles (Jane Richards)",female,33,0,2,26,Miner,Grey,BirdWatching
+508,1,1,"Bradley, Mr. George (""George Arthur Brayton"")",male,,0,0,26.55,Accountant,Red,Cooking
+509,0,3,"Olsen, Mr. Henry Margido",male,28,0,0,22.525,Butcher,Blue,Singing
+510,1,3,"Lang, Mr. Fang",male,26,0,0,56.4958,Teacher,Grey,Walking
+511,1,3,"Daly, Mr. Eugene Patrick",male,29,0,0,7.75,Grocer,Olive,Traveling
+512,0,3,"Webber, Mr. James",male,,0,0,8.05,Photographer,Olive,CardGames
+513,1,1,"McGough, Mr. James Robert",male,36,0,0,26.2875,Doctor,Purple,Gardening
+514,1,1,"Rothschild, Mrs. Martin (Elizabeth L. Barrett)",female,54,1,0,59.4,Apprentice Grocer,White,CardGames
+515,0,3,"Coleff, Mr. Satio",male,24,0,0,7.4958,Innkeeper,White,Reading
+516,0,1,"Walker, Mr. William Anderson",male,47,0,0,34.0208,Shoemaker,Navy,Photography
+517,1,2,"Lemore, Mrs. (Amelia Milley)",female,34,0,0,10.5,Clerk,Teal,Dancing
+518,0,3,"Ryan, Mr. Patrick",male,,0,0,24.15,Porter,Brown,Embroidery
+519,1,2,"Angle, Mrs. William A (Florence ""Mary"" Agnes Hughes)",female,36,1,0,26,Grocer,Teal,Chess
+520,0,3,"Pavlovic, Mr. Stefo",male,32,0,0,7.8958,Chief Mechanic,Maroon,Fishing
+521,1,1,"Perreault, Miss. Anne",female,30,0,0,93.5,Junior Grocer,White,CardGames
+522,0,3,"Vovk, Mr. Janko",male,22,0,0,7.8958,Engineer,Cyan,BirdWatching
+523,0,3,"Lahoud, Mr. Sarkis",male,,0,0,7.225,Head Porter,Red,StampCollecting
+524,1,1,"Hippach, Mrs. Louis Albert (Ida Sophia Fischer)",female,44,0,1,57.9792,Miner,Pink,Cooking
+525,0,3,"Kassem, Mr. Fared",male,,0,0,7.2292,Photographer,Navy,Traveling
+526,0,3,"Farrell, Mr. James",male,40.5,0,0,7.75,Painter,Navy,Woodworking
+527,1,2,"Ridsdale, Miss. Lucy",female,50,0,0,10.5,Nurse,Maroon,StampCollecting
+528,0,1,"Farthing, Mr. John",male,,0,0,221.7792,Bookkeeper,Blue,Chess
+529,0,3,"Salonen, Mr. Johan Werner",male,39,0,0,7.925,Chief Librarian,Blue,Traveling
+530,0,2,"Hocking, Mr. Richard George",male,23,2,1,11.5,Clerk,Blue,Chess
+531,1,2,"Quick, Miss. Phyllis May",female,2,1,1,26,Porter,Grey,Knitting
+532,0,3,"Toufik, Mr. Nakli",male,,0,0,7.2292,Steward,Teal,Singing
+533,0,3,"Elias, Mr. Joseph Jr",male,17,1,1,7.2292,Junior Seamstress,White,Woodworking
+534,1,3,"Peter, Mrs. Catherine (Catherine Rizk)",female,,0,2,22.3583,Steward,Navy,Painting
+535,0,3,"Cacic, Miss. Marija",female,30,0,0,8.6625,Innkeeper,Brown,Woodworking
+536,1,2,"Hart, Miss. Eva Miriam",female,7,0,2,26.25,Watchmaker,Pink,Baking
+537,0,1,"Butt, Major. Archibald Willingham",male,45,0,0,26.55,Senior Merchant,Olive,Chess
+538,1,1,"LeRoy, Miss. Bertha",female,30,0,0,106.425,Carpenter,Blue,StampCollecting
+539,0,3,"Risien, Mr. Samuel Beard",male,,0,0,14.5,Apprentice Merchant,Maroon,Painting
+540,1,1,"Frolicher, Miss. Hedwig Margaritha",female,22,0,2,49.5,Junior Doctor,Olive,Cycling
+541,1,1,"Crosby, Miss. Harriet R",female,36,0,2,71,Painter,Grey,Baking
+542,0,3,"Andersson, Miss. Ingeborg Constanzia",female,9,4,2,31.275,Chief Baker,Navy,Reading
+543,0,3,"Andersson, Miss. Sigrid Elisabeth",female,11,4,2,31.275,Carpenter,Navy,Embroidery
+544,1,2,"Beane, Mr. Edward",male,32,1,0,26,Nurse,Grey,Embroidery
+545,0,1,"Douglas, Mr. Walter Donald",male,50,1,0,106.425,Lead Clerk,Blue,Calligraphy
+546,0,1,"Nicholson, Mr. Arthur Ernest",male,64,0,0,26,Head Butcher,Orange,Calligraphy
+547,1,2,"Beane, Mrs. Edward (Ethel Clarke)",female,19,1,0,26,Tailor,White,Cooking
+548,1,2,"Padro y Manent, Mr. Julian",male,,0,0,13.8625,Doctor,Yellow,Dancing
+549,0,3,"Goldsmith, Mr. Frank John",male,33,1,1,20.525,Head Doctor,Cyan,Cooking
+550,1,2,"Davies, Master. John Morgan Jr",male,8,1,1,36.75,Porter,Brown,Cooking
+551,1,1,"Thayer, Mr. John Borland Jr",male,17,0,2,110.8833,Nurse,Purple,Piano
+552,0,2,"Sharp, Mr. Percival James R",male,27,0,0,26,Writer,Grey,Calligraphy
+553,0,3,"O'Brien, Mr. Timothy",male,,0,0,7.8292,Lawyer,Maroon,Singing
+554,1,3,"Leeni, Mr. Fahim (""Philip Zenni"")",male,22,0,0,7.225,Soldier,Brown,Chess
+555,1,3,"Ohman, Miss. Velin",female,22,0,0,7.775,Accountant,Teal,Painting
+556,0,1,"Wright, Mr. George",male,62,0,0,26.55,Mechanic,Olive,Walking
+557,1,1,"Duff Gordon, Lady. (Lucille Christiana Sutherland) (""Mrs Morgan"")",female,48,1,0,39.6,Musician,Maroon,Singing
+558,0,1,"Robbins, Mr. Victor",male,,0,0,227.525,Carpenter,Maroon,Traveling
+559,1,1,"Taussig, Mrs. Emil (Tillie Mandelbaum)",female,39,1,1,79.65,Porter,Cyan,Piano
+560,1,3,"de Messemaeker, Mrs. Guillaume Joseph (Emma)",female,36,1,0,17.4,Nurse,Green,Photography
+561,0,3,"Morrow, Mr. Thomas Rowan",male,,0,0,7.75,Tailor,Magenta,Cycling
+562,0,3,"Sivic, Mr. Husein",male,40,0,0,7.8958,Banker,Magenta,Knitting
+563,0,2,"Norman, Mr. Robert Douglas",male,28,0,0,13.5,Senior Doctor,Yellow,Cycling
+564,0,3,"Simmons, Mr. John",male,,0,0,8.05,Steward,Red,Calligraphy
+565,0,3,"Meanwell, Miss. (Marion Ogden)",female,,0,0,8.05,Painter,Teal,StampCollecting
+566,0,3,"Davies, Mr. Alfred J",male,24,2,0,24.15,Apprentice Librarian,Cyan,Baking
+567,0,3,"Stoytcheff, Mr. Ilia",male,19,0,0,7.8958,Assistant Writer,Red,Walking
+568,0,3,"Palsson, Mrs. Nils (Alma Cornelia Berglund)",female,29,0,4,21.075,Junior Librarian,Teal,Cycling
+569,0,3,"Doharr, Mr. Tannous",male,,0,0,7.2292,Lead Engineer,Brown,Photography
+570,1,3,"Jonsson, Mr. Carl",male,32,0,0,7.8542,Porter,White,Photography
+571,1,2,"Harris, Mr. George",male,62,0,0,10.5,Engineer,Olive,Singing
+572,1,1,"Appleton, Mrs. Edward Dale (Charlotte Lamson)",female,53,2,0,51.4792,Butcher,Maroon,StampCollecting
+573,1,1,"Flynn, Mr. John Irwin (""Irving"")",male,36,0,0,26.3875,Architect,Black,Calligraphy
+574,1,3,"Kelly, Miss. Mary",female,,0,0,7.75,Senior Sailor,Olive,StampCollecting
+575,0,3,"Rush, Mr. Alfred George John",male,16,0,0,8.05,Architect,Maroon,Cooking
+576,0,3,"Patchett, Mr. George",male,19,0,0,14.5,Soldier,Navy,Singing
+577,1,2,"Garside, Miss. Ethel",female,34,0,0,13,Lead Blacksmith,Black,Photography
+578,1,1,"Silvey, Mrs. William Baird (Alice Munger)",female,39,1,0,55.9,Senior Butcher,Yellow,Calligraphy
+579,0,3,"Caram, Mrs. Joseph (Maria Elias)",female,,1,0,14.4583,Soldier,Black,Woodworking
+580,1,3,"Jussila, Mr. Eiriik",male,32,0,0,7.925,Senior Artist,Navy,Dancing
+581,1,2,"Christy, Miss. Julie Rachel",female,25,1,1,30,Innkeeper,Yellow,Calligraphy
+582,1,1,"Thayer, Mrs. John Borland (Marian Longstreth Morris)",female,39,1,1,110.8833,Librarian,Blue,Chess
+583,0,2,"Downton, Mr. William James",male,54,0,0,26,Blacksmith,Green,Cooking
+584,0,1,"Ross, Mr. John Hugo",male,36,0,0,40.125,Nurse,White,Baking
+585,0,3,"Paulner, Mr. Uscher",male,,0,0,8.7125,Assistant Chef,Grey,Painting
+586,1,1,"Taussig, Miss. Ruth",female,18,0,2,79.65,Senior Miner,Green,Fishing
+587,0,2,"Jarvis, Mr. John Denzil",male,47,0,0,15,Lead Watchmaker,White,Walking
+588,1,1,"Frolicher-Stehli, Mr. Maxmillian",male,60,1,1,79.2,Blacksmith,Cyan,Photography
+589,0,3,"Gilinski, Mr. Eliezer",male,22,0,0,8.05,Head Teacher,Cyan,Embroidery
+590,0,3,"Murdlin, Mr. Joseph",male,,0,0,8.05,Tailor,Yellow,Walking
+591,0,3,"Rintamaki, Mr. Matti",male,35,0,0,7.125,Musician,Yellow,Painting
+592,1,1,"Stephenson, Mrs. Walter Bertram (Martha Eustis)",female,52,1,0,78.2667,Nurse,Brown,Traveling
+593,0,3,"Elsbury, Mr. William James",male,47,0,0,7.25,Lead Teacher,Pink,Painting
+594,0,3,"Bourke, Miss. Mary",female,,0,2,7.75,Seamstress,Black,Chess
+595,0,2,"Chapman, Mr. John Henry",male,37,1,0,26,Chef,Magenta,BirdWatching
+596,0,3,"Van Impe, Mr. Jean Baptiste",male,36,1,1,24.15,Seamstress,Maroon,Singing
+597,1,2,"Leitch, Miss. Jessie Wills",female,,0,0,33,Apprentice Teacher,Pink,Traveling
+598,0,3,"Johnson, Mr. Alfred",male,49,0,0,0,Apprentice Accountant,Red,Baking
+599,0,3,"Boulos, Mr. Hanna",male,,0,0,7.225,Banker,Cyan,Painting
+600,1,1,"Duff Gordon, Sir. Cosmo Edmund (""Mr Morgan"")",male,49,1,0,56.9292,Baker,Yellow,Dancing
+601,1,2,"Jacobsohn, Mrs. Sidney Samuel (Amy Frances Christy)",female,24,2,1,27,Clerk,Maroon,Dancing
+602,0,3,"Slabenoff, Mr. Petco",male,,0,0,7.8958,Chief Mechanic,Blue,CardGames
+603,0,1,"Harrington, Mr. Charles H",male,,0,0,42.4,Lead Musician,Maroon,CardGames
+604,0,3,"Torber, Mr. Ernst William",male,44,0,0,8.05,Engineer,Blue,Cycling
+605,1,1,"Homer, Mr. Harry (""Mr E Haven"")",male,35,0,0,26.55,Nurse,Navy,StampCollecting
+606,0,3,"Lindell, Mr. Edvard Bengtsson",male,36,1,0,15.55,Carpenter,Grey,Reading
+607,0,3,"Karaic, Mr. Milan",male,30,0,0,7.8958,Merchant,Green,Violin
+608,1,1,"Daniel, Mr. Robert Williams",male,27,0,0,30.5,Chief Writer,Olive,Chess
+609,1,2,"Laroche, Mrs. Joseph (Juliette Marie Louise Lafargue)",female,22,1,2,41.5792,Lead Teacher,Green,BirdWatching
+610,1,1,"Shutes, Miss. Elizabeth W",female,40,0,0,153.4625,Chief Sailor,Olive,CardGames
+611,0,3,"Andersson, Mrs. Anders Johan (Alfrida Konstantia Brogren)",female,39,1,5,31.275,Chief Carpenter,Olive,Gardening
+612,0,3,"Jardin, Mr. Jose Neto",male,,0,0,7.05,Head Doctor,Pink,Chess
+613,1,3,"Murphy, Miss. Margaret Jane",female,,1,0,15.5,Baker,Red,Chess
+614,0,3,"Horgan, Mr. John",male,,0,0,7.75,Artist,Magenta,BirdWatching
+615,0,3,"Brocklebank, Mr. William Alfred",male,35,0,0,8.05,Miner,Teal,BirdWatching
+616,1,2,"Herman, Miss. Alice",female,24,1,2,65,Teacher,Cyan,CardGames
+617,0,3,"Danbom, Mr. Ernst Gilbert",male,34,1,1,14.4,Senior Banker,White,Fishing
+618,0,3,"Lobb, Mrs. William Arthur (Cordelia K Stanlick)",female,26,1,0,16.1,Engineer,Pink,Painting
+619,1,2,"Becker, Miss. Marion Louise",female,4,2,1,39,Merchant,Yellow,Walking
+620,0,2,"Gavey, Mr. Lawrence",male,26,0,0,10.5,Tailor,Black,Walking
+621,0,3,"Yasbeck, Mr. Antoni",male,27,1,0,14.4542,Accountant,Red,Knitting
+622,1,1,"Kimball, Mr. Edwin Nelson Jr",male,42,1,0,52.5542,Glassblower,Blue,Embroidery
+623,1,3,"Nakid, Mr. Sahid",male,20,1,1,15.7417,Musician,Cyan,Dancing
+624,0,3,"Hansen, Mr. Henry Damsgaard",male,21,0,0,7.8542,Bookkeeper,Grey,Calligraphy
+625,0,3,"Bowen, Mr. David John ""Dai""",male,21,0,0,16.1,Assistant Doctor,Maroon,Woodworking
+626,0,1,"Sutton, Mr. Frederick",male,61,0,0,32.3208,Blacksmith,Pink,Cycling
+627,0,2,"Kirkland, Rev. Charles Leonard",male,57,0,0,12.35,Miner,Teal,Reading
+628,1,1,"Longley, Miss. Gretchen Fiske",female,21,0,0,77.9583,Chief Lawyer,Red,Gardening
+629,0,3,"Bostandyeff, Mr. Guentcho",male,26,0,0,7.8958,Lead Librarian,Brown,StampCollecting
+630,0,3,"O'Connell, Mr. Patrick D",male,,0,0,7.7333,Junior Steward,Cyan,Dancing
+631,1,1,"Barkworth, Mr. Algernon Henry Wilson",male,80,0,0,30,Carpenter,Cyan,Photography
+632,0,3,"Lundahl, Mr. Johan Svensson",male,51,0,0,7.0542,Writer,Maroon,Piano
+633,1,1,"Stahelin-Maeglin, Dr. Max",male,32,0,0,30.5,Sailor,Cyan,Painting
+634,0,1,"Parr, Mr. William Henry Marsh",male,,0,0,0,Merchant,Black,Chess
+635,0,3,"Skoog, Miss. Mabel",female,9,3,2,27.9,Bookkeeper,Maroon,Photography
+636,1,2,"Davis, Miss. Mary",female,28,0,0,13,Assistant Chef,Blue,Dancing
+637,0,3,"Leinonen, Mr. Antti Gustaf",male,32,0,0,7.925,Mechanic,Magenta,Baking
+638,0,2,"Collyer, Mr. Harvey",male,31,1,1,26.25,Miner,Red,CardGames
+639,0,3,"Panula, Mrs. Juha (Maria Emilia Ojala)",female,41,0,5,39.6875,Apprentice Blacksmith,Cyan,Violin
+640,0,3,"Thorneycroft, Mr. Percival",male,,1,0,16.1,Lead Shoemaker,Green,Traveling
+641,0,3,"Jensen, Mr. Hans Peder",male,20,0,0,7.8542,Lead Photographer,Brown,Traveling
+642,1,1,"Sagesser, Mlle. Emma",female,24,0,0,69.3,Musician,Green,BirdWatching
+643,0,3,"Skoog, Miss. Margit Elizabeth",female,2,3,2,27.9,Butcher,Grey,Dancing
+644,1,3,"Foo, Mr. Choong",male,,0,0,56.4958,Assistant Nurse,Grey,Cooking
+645,1,3,"Baclini, Miss. Eugenie",female,0.75,2,1,19.2583,Farmer,Brown,Chess
+646,1,1,"Harper, Mr. Henry Sleeper",male,48,1,0,76.7292,Lawyer,Grey,Gardening
+647,0,3,"Cor, Mr. Liudevit",male,19,0,0,7.8958,Clerk,Magenta,Embroidery
+648,1,1,"Simonius-Blumer, Col. Oberst Alfons",male,56,0,0,35.5,Tailor,Purple,Calligraphy
+649,0,3,"Willey, Mr. Edward",male,,0,0,7.55,Musician,Blue,Cycling
+650,1,3,"Stanley, Miss. Amy Zillah Elsie",female,23,0,0,7.55,Banker,Pink,Fishing
+651,0,3,"Mitkoff, Mr. Mito",male,,0,0,7.8958,Banker,White,Calligraphy
+652,1,2,"Doling, Miss. Elsie",female,18,0,1,23,Librarian,Red,Baking
+653,0,3,"Kalvik, Mr. Johannes Halvorsen",male,21,0,0,8.4333,Soldier,Purple,Singing
+654,1,3,"O'Leary, Miss. Hanora ""Norah""",female,,0,0,7.8292,Grocer,Cyan,Singing
+655,0,3,"Hegarty, Miss. Hanora ""Nora""",female,18,0,0,6.75,Chief Steward,Maroon,Violin
+656,0,2,"Hickman, Mr. Leonard Mark",male,24,2,0,73.5,Seamstress,Pink,Reading
+657,0,3,"Radeff, Mr. Alexander",male,,0,0,7.8958,Nurse,Brown,Knitting
+658,0,3,"Bourke, Mrs. John (Catherine)",female,32,1,1,15.5,Nurse,Orange,Chess
+659,0,2,"Eitemiller, Mr. George Floyd",male,23,0,0,13,Assistant Bookkeeper,Maroon,Woodworking
+660,0,1,"Newell, Mr. Arthur Webster",male,58,0,2,113.275,Accountant,Magenta,CardGames
+661,1,1,"Frauenthal, Dr. Henry William",male,50,2,0,133.65,Grocer,Blue,Gardening
+662,0,3,"Badt, Mr. Mohamed",male,40,0,0,7.225,Watchmaker,Red,BirdWatching
+663,0,1,"Colley, Mr. Edward Pomeroy",male,47,0,0,25.5875,Banker,White,Knitting
+664,0,3,"Coleff, Mr. Peju",male,36,0,0,7.4958,Assistant Merchant,Cyan,Chess
+665,1,3,"Lindqvist, Mr. Eino William",male,20,1,0,7.925,Chief Photographer,Pink,Gardening
+666,0,2,"Hickman, Mr. Lewis",male,32,2,0,73.5,Chef,Orange,Walking
+667,0,2,"Butler, Mr. Reginald Fenton",male,25,0,0,13,Writer,Orange,Gardening
+668,0,3,"Rommetvedt, Mr. Knud Paust",male,,0,0,7.775,Butcher,Maroon,Cycling
+669,0,3,"Cook, Mr. Jacob",male,43,0,0,8.05,Blacksmith,Orange,Embroidery
+670,1,1,"Taylor, Mrs. Elmer Zebley (Juliet Cummins Wright)",female,,1,0,52,Miner,Brown,Reading
+671,1,2,"Brown, Mrs. Thomas William Solomon (Elizabeth Catherine Ford)",female,40,1,1,39,Lead Clerk,Orange,Cycling
+672,0,1,"Davidson, Mr. Thornton",male,31,1,0,52,Steward,Purple,Piano
+673,0,2,"Mitchell, Mr. Henry Michael",male,70,0,0,10.5,Junior Engineer,Navy,Violin
+674,1,2,"Wilhelms, Mr. Charles",male,31,0,0,13,Musician,Purple,Violin
+675,0,2,"Watson, Mr. Ennis Hastings",male,,0,0,0,Glassblower,Black,Dancing
+676,0,3,"Edvardsson, Mr. Gustaf Hjalmar",male,18,0,0,7.775,Seamstress,Red,Dancing
+677,0,3,"Sawyer, Mr. Frederick Charles",male,24.5,0,0,8.05,Chef,Teal,Singing
+678,1,3,"Turja, Miss. Anna Sofia",female,18,0,0,9.8417,Butcher,Olive,Cooking
+679,0,3,"Goodwin, Mrs. Frederick (Augusta Tyler)",female,43,1,6,46.9,Miner,Cyan,Woodworking
+680,1,1,"Cardeza, Mr. Thomas Drake Martinez",male,36,0,1,512.3292,Seamstress,Cyan,Traveling
+681,0,3,"Peters, Miss. Katie",female,,0,0,8.1375,Innkeeper,Olive,Calligraphy
+682,1,1,"Hassab, Mr. Hammad",male,27,0,0,76.7292,Engineer,Purple,Fishing
+683,0,3,"Olsvigen, Mr. Thor Anderson",male,20,0,0,9.225,Chief Watchmaker,Navy,Violin
+684,0,3,"Goodwin, Mr. Charles Edward",male,14,5,2,46.9,Head Teacher,Yellow,Baking
+685,0,2,"Brown, Mr. Thomas William Solomon",male,60,1,1,39,Tailor,Purple,Dancing
+686,0,2,"Laroche, Mr. Joseph Philippe Lemercier",male,25,1,2,41.5792,Architect,Pink,BirdWatching
+687,0,3,"Panula, Mr. Jaako Arnold",male,14,4,1,39.6875,Chief Steward,Maroon,Embroidery
+688,0,3,"Dakic, Mr. Branko",male,19,0,0,10.1708,Junior Miner,Navy,Painting
+689,0,3,"Fischer, Mr. Eberhard Thelander",male,18,0,0,7.7958,Painter,Black,Calligraphy
+690,1,1,"Madill, Miss. Georgette Alexandra",female,15,0,1,211.3375,Chief Doctor,Orange,BirdWatching
+691,1,1,"Dick, Mr. Albert Adrian",male,31,1,0,57,Soldier,Grey,Violin
+692,1,3,"Karun, Miss. Manca",female,4,0,1,13.4167,Apprentice Nurse,Navy,CardGames
+693,1,3,"Lam, Mr. Ali",male,,0,0,56.4958,Artist,Green,Violin
+694,0,3,"Saad, Mr. Khalil",male,25,0,0,7.225,Steward,Blue,Dancing
+695,0,1,"Weir, Col. John",male,60,0,0,26.55,Chief Chef,Green,CardGames
+696,0,2,"Chapman, Mr. Charles Henry",male,52,0,0,13.5,Lead Lawyer,Purple,Baking
+697,0,3,"Kelly, Mr. James",male,44,0,0,8.05,Senior Blacksmith,Blue,Cooking
+698,1,3,"Mullens, Miss. Katherine ""Katie""",female,,0,0,7.7333,Nurse,Maroon,StampCollecting
+699,0,1,"Thayer, Mr. John Borland",male,49,1,1,110.8833,Farmer,Pink,StampCollecting
+700,0,3,"Humblen, Mr. Adolf Mathias Nicolai Olsen",male,42,0,0,7.65,Teacher,Grey,CardGames
+701,1,1,"Astor, Mrs. John Jacob (Madeleine Talmadge Force)",female,18,1,0,227.525,Soldier,Pink,BirdWatching
+702,1,1,"Silverthorne, Mr. Spencer Victor",male,35,0,0,26.2875,Senior Sailor,Grey,Gardening
+703,0,3,"Barbara, Miss. Saiide",female,18,0,1,14.4542,Architect,Teal,Fishing
+704,0,3,"Gallagher, Mr. Martin",male,25,0,0,7.7417,Lead Baker,Blue,Traveling
+705,0,3,"Hansen, Mr. Henrik Juul",male,26,1,0,7.8542,Apprentice Glassblower,White,Traveling
+706,0,2,"Morley, Mr. Henry Samuel (""Mr Henry Marshall"")",male,39,0,0,26,Innkeeper,Navy,Singing
+707,1,2,"Kelly, Mrs. Florence ""Fannie""",female,45,0,0,13.5,Assistant Farmer,Magenta,Violin
+708,1,1,"Calderhead, Mr. Edward Pennington",male,42,0,0,26.2875,Bookkeeper,Orange,Chess
+709,1,1,"Cleaver, Miss. Alice",female,22,0,0,151.55,Porter,Magenta,Traveling
+710,1,3,"Moubarek, Master. Halim Gonios (""William George"")",male,,1,1,15.2458,Miner,Red,Painting
+711,1,1,"Mayne, Mlle. Berthe Antonine (""Mrs de Villiers"")",female,24,0,0,49.5042,Architect,Green,Dancing
+712,0,1,"Klaber, Mr. Herman",male,,0,0,26.55,Writer,Blue,Violin
+713,1,1,"Taylor, Mr. Elmer Zebley",male,48,1,0,52,Innkeeper,Green,Walking
+714,0,3,"Larsson, Mr. August Viktor",male,29,0,0,9.4833,Painter,Blue,Painting
+715,0,2,"Greenberg, Mr. Samuel",male,52,0,0,13,Artist,Red,Calligraphy
+716,0,3,"Soholt, Mr. Peter Andreas Lauritz Andersen",male,19,0,0,7.65,Photographer,Brown,Knitting
+717,1,1,"Endres, Miss. Caroline Louise",female,38,0,0,227.525,Merchant,Magenta,Photography
+718,1,2,"Troutt, Miss. Edwina Celia ""Winnie""",female,27,0,0,10.5,Farmer,Red,Knitting
+719,0,3,"McEvoy, Mr. Michael",male,,0,0,15.5,Steward,Blue,Cycling
+720,0,3,"Johnson, Mr. Malkolm Joackim",male,33,0,0,7.775,Apprentice Seamstress,Navy,BirdWatching
+721,1,2,"Harper, Miss. Annie Jessie ""Nina""",female,6,0,1,33,Merchant,Maroon,Baking
+722,0,3,"Jensen, Mr. Svend Lauritz",male,17,1,0,7.0542,Artist,Blue,Singing
+723,0,2,"Gillespie, Mr. William Henry",male,34,0,0,13,Blacksmith,Teal,Traveling
+724,0,2,"Hodges, Mr. Henry Price",male,50,0,0,13,Farmer,Cyan,Piano
+725,1,1,"Chambers, Mr. Norman Campbell",male,27,1,0,53.1,Lead Steward,Purple,Baking
+726,0,3,"Oreskovic, Mr. Luka",male,20,0,0,8.6625,Librarian,Cyan,Violin
+727,1,2,"Renouf, Mrs. Peter Henry (Lillian Jefferys)",female,30,3,0,21,Blacksmith,Magenta,Walking
+728,1,3,"Mannion, Miss. Margareth",female,,0,0,7.7375,Innkeeper,Black,CardGames
+729,0,2,"Bryhl, Mr. Kurt Arnold Gottfrid",male,25,1,0,26,Shoemaker,Green,Chess
+730,0,3,"Ilmakangas, Miss. Pieta Sofia",female,25,1,0,7.925,Blacksmith,Grey,CardGames
+731,1,1,"Allen, Miss. Elisabeth Walton",female,29,0,0,211.3375,Doctor,Yellow,Woodworking
+732,0,3,"Hassan, Mr. Houssein G N",male,11,0,0,18.7875,Artist,Green,Singing
+733,0,2,"Knight, Mr. Robert J",male,,0,0,0,Assistant Miner,Red,Dancing
+734,0,2,"Berriman, Mr. William John",male,23,0,0,13,Mechanic,Black,Baking
+735,0,2,"Troupiansky, Mr. Moses Aaron",male,23,0,0,13,Junior Merchant,Red,Gardening
+736,0,3,"Williams, Mr. Leslie",male,28.5,0,0,16.1,Apprentice Nurse,Blue,Cycling
+737,0,3,"Ford, Mrs. Edward (Margaret Ann Watson)",female,48,1,3,34.375,Head Musician,Olive,Violin
+738,1,1,"Lesurer, Mr. Gustave J",male,35,0,0,512.3292,Watchmaker,White,Knitting
+739,0,3,"Ivanoff, Mr. Kanio",male,,0,0,7.8958,Merchant,Pink,CardGames
+740,0,3,"Nankoff, Mr. Minko",male,,0,0,7.8958,Doctor,Cyan,Cycling
+741,1,1,"Hawksford, Mr. Walter James",male,,0,0,30,Apprentice Carpenter,Yellow,CardGames
+742,0,1,"Cavendish, Mr. Tyrell William",male,36,1,0,78.85,Painter,White,CardGames
+743,1,1,"Ryerson, Miss. Susan Parker ""Suzette""",female,21,2,2,262.375,Teacher,Orange,Baking
+744,0,3,"McNamee, Mr. Neal",male,24,1,0,16.1,Blacksmith,Olive,Walking
+745,1,3,"Stranden, Mr. Juho",male,31,0,0,7.925,Lead Mechanic,Orange,BirdWatching
+746,0,1,"Crosby, Capt. Edward Gifford",male,70,1,1,71,Porter,Purple,Walking
+747,0,3,"Abbott, Mr. Rossmore Edward",male,16,1,1,20.25,Sailor,Pink,CardGames
+748,1,2,"Sinkkonen, Miss. Anna",female,30,0,0,13,Watchmaker,Grey,Embroidery
+749,0,1,"Marvin, Mr. Daniel Warner",male,19,1,0,53.1,Apprentice Baker,Grey,Traveling
+750,0,3,"Connaghton, Mr. Michael",male,31,0,0,7.75,Banker,Maroon,Dancing
+751,1,2,"Wells, Miss. Joan",female,4,1,1,23,Seamstress,Magenta,Fishing
+752,1,3,"Moor, Master. Meier",male,6,0,1,12.475,Senior Merchant,Maroon,Cycling
+753,0,3,"Vande Velde, Mr. Johannes Joseph",male,33,0,0,9.5,Nurse,Magenta,Singing
+754,0,3,"Jonkoff, Mr. Lalio",male,23,0,0,7.8958,Sailor,Red,Embroidery
+755,1,2,"Herman, Mrs. Samuel (Jane Laver)",female,48,1,2,65,Porter,White,Calligraphy
+756,1,2,"Hamalainen, Master. Viljo",male,0.67,1,1,14.5,Senior Porter,Purple,Gardening
+757,0,3,"Carlsson, Mr. August Sigfrid",male,28,0,0,7.7958,Banker,Teal,Woodworking
+758,0,2,"Bailey, Mr. Percy Andrew",male,18,0,0,11.5,Junior Bookkeeper,Yellow,Knitting
+759,0,3,"Theobald, Mr. Thomas Leonard",male,34,0,0,8.05,Grocer,Cyan,Traveling
+760,1,1,"Rothes, the Countess. of (Lucy Noel Martha Dyer-Edwards)",female,33,0,0,86.5,Carpenter,White,Gardening
+761,0,3,"Garfirth, Mr. John",male,,0,0,14.5,Nurse,Red,Gardening
+762,0,3,"Nirva, Mr. Iisakki Antino Aijo",male,41,0,0,7.125,Senior Watchmaker,Black,Traveling
+763,1,3,"Barah, Mr. Hanna Assi",male,20,0,0,7.2292,Assistant Merchant,Blue,Chess
+764,1,1,"Carter, Mrs. William Ernest (Lucile Polk)",female,36,1,2,120,Miner,Orange,Dancing
+765,0,3,"Eklund, Mr. Hans Linus",male,16,0,0,7.775,Artist,Green,CardGames
+766,1,1,"Hogeboom, Mrs. John C (Anna Andrews)",female,51,1,0,77.9583,Architect,Pink,Gardening
+767,0,1,"Brewe, Dr. Arthur Jackson",male,,0,0,39.6,Head Porter,White,Woodworking
+768,0,3,"Mangan, Miss. Mary",female,30.5,0,0,7.75,Doctor,Olive,StampCollecting
+769,0,3,"Moran, Mr. Daniel J",male,,1,0,24.15,Doctor,Cyan,CardGames
+770,0,3,"Gronnestad, Mr. Daniel Danielsen",male,32,0,0,8.3625,Musician,Olive,Singing
+771,0,3,"Lievens, Mr. Rene Aime",male,24,0,0,9.5,Photographer,Maroon,Calligraphy
+772,0,3,"Jensen, Mr. Niels Peder",male,48,0,0,7.8542,Seamstress,Orange,Traveling
+773,0,2,"Mack, Mrs. (Mary)",female,57,0,0,10.5,Head Butcher,Grey,Cycling
+774,0,3,"Elias, Mr. Dibo",male,,0,0,7.225,Teacher,Purple,Knitting
+775,1,2,"Hocking, Mrs. Elizabeth (Eliza Needs)",female,54,1,3,23,Senior Blacksmith,Yellow,Violin
+776,0,3,"Myhrman, Mr. Pehr Fabian Oliver Malkolm",male,18,0,0,7.75,Bookkeeper,Magenta,Cycling
+777,0,3,"Tobin, Mr. Roger",male,,0,0,7.75,Accountant,Green,Traveling
+778,1,3,"Emanuel, Miss. Virginia Ethel",female,5,0,0,12.475,Junior Lawyer,Grey,Woodworking
+779,0,3,"Kilgannon, Mr. Thomas J",male,,0,0,7.7375,Banker,Blue,CardGames
+780,1,1,"Robert, Mrs. Edward Scott (Elisabeth Walton McMillan)",female,43,0,1,211.3375,Assistant Nurse,Pink,Embroidery
+781,1,3,"Ayoub, Miss. Banoura",female,13,0,0,7.2292,Baker,Yellow,Embroidery
+782,1,1,"Dick, Mrs. Albert Adrian (Vera Gillespie)",female,17,1,0,57,Clerk,Black,Cooking
+783,0,1,"Long, Mr. Milton Clyde",male,29,0,0,30,Baker,Grey,Dancing
+784,0,3,"Johnston, Mr. Andrew G",male,,1,2,23.45,Accountant,Grey,Painting
+785,0,3,"Ali, Mr. William",male,25,0,0,7.05,Artist,Purple,Embroidery
+786,0,3,"Harmer, Mr. Abraham (David Lishin)",male,25,0,0,7.25,Innkeeper,Purple,Gardening
+787,1,3,"Sjoblom, Miss. Anna Sofia",female,18,0,0,7.4958,Senior Nurse,Navy,Painting
+788,0,3,"Rice, Master. George Hugh",male,8,4,1,29.125,Assistant Banker,Orange,Piano
+789,1,3,"Dean, Master. Bertram Vere",male,1,1,2,20.575,Merchant,Brown,Reading
+790,0,1,"Guggenheim, Mr. Benjamin",male,46,0,0,79.2,Writer,Teal,Cycling
+791,0,3,"Keane, Mr. Andrew ""Andy""",male,,0,0,7.75,Banker,Orange,Chess
+792,0,2,"Gaskell, Mr. Alfred",male,16,0,0,26,Photographer,Purple,StampCollecting
+793,0,3,"Sage, Miss. Stella Anna",female,,8,2,69.55,Innkeeper,Maroon,Traveling
+794,0,1,"Hoyt, Mr. William Fisher",male,,0,0,30.6958,Banker,Maroon,Traveling
+795,0,3,"Dantcheff, Mr. Ristiu",male,25,0,0,7.8958,Tailor,Brown,Dancing
+796,0,2,"Otter, Mr. Richard",male,39,0,0,13,Accountant,Blue,Woodworking
+797,1,1,"Leader, Dr. Alice (Farnham)",female,49,0,0,25.9292,Blacksmith,Purple,Cycling
+798,1,3,"Osman, Mrs. Mara",female,31,0,0,8.6833,Mechanic,Olive,Traveling
+799,0,3,"Ibrahim Shawah, Mr. Yousseff",male,30,0,0,7.2292,Mechanic,Purple,Violin
+800,0,3,"Van Impe, Mrs. Jean Baptiste (Rosalie Paula Govaert)",female,30,1,1,24.15,Junior Seamstress,Teal,Embroidery
+801,0,2,"Ponesell, Mr. Martin",male,34,0,0,13,Mechanic,White,Singing
+802,1,2,"Collyer, Mrs. Harvey (Charlotte Annie Tate)",female,31,1,1,26.25,Miner,White,Piano
+803,1,1,"Carter, Master. William Thornton II",male,11,1,2,120,Architect,Pink,Painting
+804,1,3,"Thomas, Master. Assad Alexander",male,0.42,0,1,8.5167,Chef,Green,Photography
+805,1,3,"Hedman, Mr. Oskar Arvid",male,27,0,0,6.975,Merchant,Blue,Calligraphy
+806,0,3,"Johansson, Mr. Karl Johan",male,31,0,0,7.775,Soldier,Black,Cooking
+807,0,1,"Andrews, Mr. Thomas Jr",male,39,0,0,0,Sailor,Orange,Photography
+808,0,3,"Pettersson, Miss. Ellen Natalia",female,18,0,0,7.775,Carpenter,Pink,Singing
+809,0,2,"Meyer, Mr. August",male,39,0,0,13,Grocer,Maroon,Cooking
+810,1,1,"Chambers, Mrs. Norman Campbell (Bertha Griggs)",female,33,1,0,53.1,Assistant Accountant,Purple,Walking
+811,0,3,"Alexander, Mr. William",male,26,0,0,7.8875,Doctor,Magenta,CardGames
+812,0,3,"Lester, Mr. James",male,39,0,0,24.15,Merchant,Yellow,Cycling
+813,0,2,"Slemen, Mr. Richard James",male,35,0,0,10.5,Porter,White,Cycling
+814,0,3,"Andersson, Miss. Ebba Iris Alfrida",female,6,4,2,31.275,Grocer,Olive,Reading
+815,0,3,"Tomlin, Mr. Ernest Portage",male,30.5,0,0,8.05,Musician,Blue,Baking
+816,0,1,"Fry, Mr. Richard",male,,0,0,0,Apprentice Steward,Magenta,Knitting
+817,0,3,"Heininen, Miss. Wendla Maria",female,23,0,0,7.925,Assistant Steward,Orange,Piano
+818,0,2,"Mallet, Mr. Albert",male,31,1,1,37.0042,Carpenter,Cyan,Violin
+819,0,3,"Holm, Mr. John Fredrik Alexander",male,43,0,0,6.45,Banker,Brown,BirdWatching
+820,0,3,"Skoog, Master. Karl Thorsten",male,10,3,2,27.9,Librarian,Pink,Fishing
+821,1,1,"Hays, Mrs. Charles Melville (Clara Jennings Gregg)",female,52,1,1,93.5,Porter,Maroon,Woodworking
+822,1,3,"Lulic, Mr. Nikola",male,27,0,0,8.6625,Watchmaker,Orange,Painting
+823,0,1,"Reuchlin, Jonkheer. John George",male,38,0,0,0,Butcher,Olive,Gardening
+824,1,3,"Moor, Mrs. (Beila)",female,27,0,1,12.475,Watchmaker,Brown,Singing
+825,0,3,"Panula, Master. Urho Abraham",male,2,4,1,39.6875,Junior Writer,Purple,Walking
+826,0,3,"Flynn, Mr. John",male,,0,0,6.95,Chief Teacher,Yellow,Baking
+827,0,3,"Lam, Mr. Len",male,,0,0,56.4958,Tailor,Teal,Singing
+828,1,2,"Mallet, Master. Andre",male,1,0,2,37.0042,Lead Baker,Teal,CardGames
+829,1,3,"McCormack, Mr. Thomas Joseph",male,,0,0,7.75,Apprentice Teacher,Blue,Painting
+830,1,1,"Stone, Mrs. George Nelson (Martha Evelyn)",female,62,0,0,80,Senior Steward,Teal,Calligraphy
+831,1,3,"Yasbeck, Mrs. Antoni (Selini Alexander)",female,15,1,0,14.4542,Merchant,Maroon,BirdWatching
+832,1,2,"Richards, Master. George Sibley",male,0.83,1,1,18.75,Apprentice Musician,Olive,Chess
+833,0,3,"Saad, Mr. Amin",male,,0,0,7.2292,Innkeeper,Grey,Singing
+834,0,3,"Augustsson, Mr. Albert",male,23,0,0,7.8542,Tailor,Green,Embroidery
+835,0,3,"Allum, Mr. Owen George",male,18,0,0,8.3,Head Mechanic,Olive,Piano
+836,1,1,"Compton, Miss. Sara Rebecca",female,39,1,1,83.1583,Miner,Cyan,Embroidery
+837,0,3,"Pasic, Mr. Jakob",male,21,0,0,8.6625,Mechanic,Green,Cycling
+838,0,3,"Sirota, Mr. Maurice",male,,0,0,8.05,Painter,Pink,Embroidery
+839,1,3,"Chip, Mr. Chang",male,32,0,0,56.4958,Lead Banker,Maroon,Cooking
+840,1,1,"Marechal, Mr. Pierre",male,,0,0,29.7,Glassblower,Magenta,Baking
+841,0,3,"Alhomaki, Mr. Ilmari Rudolf",male,20,0,0,7.925,Chief Accountant,Orange,Walking
+842,0,2,"Mudd, Mr. Thomas Charles",male,16,0,0,10.5,Innkeeper,Blue,Woodworking
+843,1,1,"Serepeca, Miss. Augusta",female,30,0,0,31,Carpenter,Maroon,Photography
+844,0,3,"Lemberopolous, Mr. Peter L",male,34.5,0,0,6.4375,Apprentice Accountant,Teal,Embroidery
+845,0,3,"Culumovic, Mr. Jeso",male,17,0,0,8.6625,Carpenter,Brown,CardGames
+846,0,3,"Abbing, Mr. Anthony",male,42,0,0,7.55,Apprentice Nurse,Brown,Chess
+847,0,3,"Sage, Mr. Douglas Bullen",male,,8,2,69.55,Baker,Orange,Violin
+848,0,3,"Markoff, Mr. Marin",male,35,0,0,7.8958,Clerk,Pink,Singing
+849,0,2,"Harper, Rev. John",male,28,0,1,33,Lead Watchmaker,Magenta,BirdWatching
+850,1,1,"Goldenberg, Mrs. Samuel L (Edwiga Grabowska)",female,,1,0,89.1042,Engineer,White,Embroidery
+851,0,3,"Andersson, Master. Sigvard Harald Elias",male,4,4,2,31.275,Junior Carpenter,Magenta,BirdWatching
+852,0,3,"Svensson, Mr. Johan",male,74,0,0,7.775,Engineer,Pink,Fishing
+853,0,3,"Boulos, Miss. Nourelain",female,9,1,1,15.2458,Photographer,Olive,Singing
+854,1,1,"Lines, Miss. Mary Conover",female,16,0,1,39.4,Chef,Blue,Chess
+855,0,2,"Carter, Mrs. Ernest Courtenay (Lilian Hughes)",female,44,1,0,26,Lead Shoemaker,Maroon,Dancing
+856,1,3,"Aks, Mrs. Sam (Leah Rosen)",female,18,0,1,9.35,Shoemaker,Blue,Gardening
+857,1,1,"Wick, Mrs. George Dennick (Mary Hitchcock)",female,45,1,1,164.8667,Glassblower,Brown,Fishing
+858,1,1,"Daly, Mr. Peter Denis ",male,51,0,0,26.55,Senior Soldier,Yellow,Gardening
+859,1,3,"Baclini, Mrs. Solomon (Latifa Qurban)",female,24,0,3,19.2583,Senior Musician,Maroon,Painting
+860,0,3,"Razi, Mr. Raihed",male,,0,0,7.2292,Porter,Purple,Dancing
+861,0,3,"Hansen, Mr. Claus Peter",male,41,2,0,14.1083,Sailor,Orange,Gardening
+862,0,2,"Giles, Mr. Frederick Edward",male,21,1,0,11.5,Butcher,Maroon,Violin
+863,1,1,"Swift, Mrs. Frederick Joel (Margaret Welles Barron)",female,48,0,0,25.9292,Grocer,Red,Singing
+864,0,3,"Sage, Miss. Dorothy Edith ""Dolly""",female,,8,2,69.55,Librarian,Cyan,Gardening
+865,0,2,"Gill, Mr. John William",male,24,0,0,13,Steward,Teal,Painting
+866,1,2,"Bystrom, Mrs. (Karolina)",female,42,0,0,13,Baker,Magenta,BirdWatching
+867,1,2,"Duran y More, Miss. Asuncion",female,27,1,0,13.8583,Baker,Grey,Cycling
+868,0,1,"Roebling, Mr. Washington Augustus II",male,31,0,0,50.4958,Chef,White,Chess
+869,0,3,"van Melkebeke, Mr. Philemon",male,,0,0,9.5,Apprentice Chef,Maroon,Chess
+870,1,3,"Johnson, Master. Harold Theodor",male,4,1,1,11.1333,Seamstress,Brown,Chess
+871,0,3,"Balkic, Mr. Cerin",male,26,0,0,7.8958,Senior Sailor,Cyan,Photography
+872,1,1,"Beckwith, Mrs. Richard Leonard (Sallie Monypeny)",female,47,1,1,52.5542,Glassblower,Orange,Singing
+873,0,1,"Carlsson, Mr. Frans Olof",male,33,0,0,5,Soldier,White,Dancing
+874,0,3,"Vander Cruyssen, Mr. Victor",male,47,0,0,9,Baker,Yellow,Woodworking
+875,1,2,"Abelson, Mrs. Samuel (Hannah Wizosky)",female,28,1,0,24,Watchmaker,White,Fishing
+876,1,3,"Najib, Miss. Adele Kiamie ""Jane""",female,15,0,0,7.225,Apprentice Librarian,Maroon,Woodworking
+877,0,3,"Gustafsson, Mr. Alfred Ossian",male,20,0,0,9.8458,Watchmaker,Blue,Singing
+878,0,3,"Petroff, Mr. Nedelio",male,19,0,0,7.8958,Merchant,Olive,StampCollecting
+879,0,3,"Laleff, Mr. Kristo",male,,0,0,7.8958,Innkeeper,Navy,CardGames
+880,1,1,"Potter, Mrs. Thomas Jr (Lily Alexenia Wilson)",female,56,0,1,83.1583,Grocer,Green,Traveling
+881,1,2,"Shelley, Mrs. William (Imanita Parrish Hall)",female,25,0,1,26,Assistant Blacksmith,White,Fishing
+882,0,3,"Markun, Mr. Johann",male,33,0,0,7.8958,Head Soldier,Purple,Knitting
+883,0,3,"Dahlberg, Miss. Gerda Ulrika",female,22,0,0,10.5167,Miner,Grey,Singing
+884,0,2,"Banfield, Mr. Frederick James",male,28,0,0,10.5,Sailor,Yellow,Baking
+885,0,3,"Sutehall, Mr. Henry Jr",male,25,0,0,7.05,Chief Carpenter,Brown,Calligraphy
+886,0,3,"Rice, Mrs. William (Margaret Norton)",female,39,0,5,29.125,Grocer,Brown,Baking
+887,0,2,"Montvila, Rev. Juozas",male,27,0,0,13,Watchmaker,Brown,StampCollecting
+888,1,1,"Graham, Miss. Margaret Edith",female,19,0,0,30,Soldier,Red,CardGames
+889,0,3,"Johnston, Miss. Catherine Helen ""Carrie""",female,,1,2,23.45,Architect,Maroon,Woodworking
+890,1,1,"Behr, Mr. Karl Howell",male,26,0,0,30,Butcher,Yellow,Singing
+891,0,3,"Dooley, Mr. Patrick",male,32,0,0,7.75,Baker,Maroon,Embroidery

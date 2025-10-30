@@ -6,23 +6,25 @@ from stage_2.vector_db import VectorStore
 from stage_2.rag import RAG
 from stage_2.evil_llm import EvilLLM
 from langchain_openai import AzureChatOpenAI
-from stage_3.openai_assistant import OpenAIAssistant
-from stage_4.llm_image_ocr import LLMImageOCR
+# from stage_3.openai_assistant import OpenAIAssistant
+# from stage_4.llm_image_ocr import LLMImageOCR
+from stage_3.binary_classifier import BianaryClassifier
+from stage_4.image_safety_check import  ImageSafetyChecker
 from stage_5.settler_health_agent import SettlerHealthAgent
 
-# {
-#   "query": "What is the average heart rate for passenger 18?",
-#   "username": "luna_pilot",
-#   "team": "team@example.com",
-#   "call_index": 4
-# }
 
-class RequestData(BaseModel):
+class BaseRequestData(BaseModel):
     username: str = None
     team: str = None
     call_index: int = None
 
-class Stage5RequestData(RequestData):
+class Stage3RequestData(BaseRequestData):
+    input: str
+
+class Stage4RequestData(BaseRequestData):
+    image_url: str
+
+class Stage5RequestData(BaseRequestData):
     query: str
 
 class ImageBase64Request(BaseModel):
@@ -39,8 +41,10 @@ class AppState():
     rag: RAG = None
     evil_llm: EvilLLM = None
     llm: AzureChatOpenAI = None
-    openai_assistant: OpenAIAssistant = None
-    llm_image_ocr: LLMImageOCR = None
+    # openai_assistant: OpenAIAssistant = None
+    # llm_image_ocr: LLMImageOCR = None
+    binary_classifier: BianaryClassifier = None
+    image_safety_checker: ImageSafetyChecker = None
     settler_health_agent: SettlerHealthAgent = None
 
  
@@ -59,12 +63,14 @@ async def lifespan(app: FastAPI):
             temperature=1.0
         )
 
-    app_state.openai_assistant = OpenAIAssistant()
-    app_state.openai_assistant.setup_assistant()
+    # app_state.openai_assistant = OpenAIAssistant()
+    # app_state.openai_assistant.setup_assistant()
+    # app_state.llm_image_ocr = LLMImageOCR()
 
-    app_state.llm_image_ocr = LLMImageOCR()
+    app_state.binary_classifier = BianaryClassifier()
+    app_state.image_safety_checker = ImageSafetyChecker()
     app_state.settler_health_agent = SettlerHealthAgent()
-
+    
     yield
 
     # Shutdown: runs when application is shutting down
@@ -81,12 +87,12 @@ app = FastAPI(lifespan=lifespan)
 
 
 @app.post("/stage-1")
-async def stage_1(data: RequestData):
+async def stage_1(data: BaseRequestData):
     return app_state.llm.invoke(data.input)
 
 
 @app.post("/stage-2")
-async def chat_endpoint(data: RequestData):
+async def chat_endpoint(data: BaseRequestData):
     """
     retrieval augmented generation solution using Azure AI Search and Azure OpenAI Service.
     """
@@ -99,7 +105,7 @@ async def chat_endpoint(data: RequestData):
 
 
 @app.post("/stage-21")
-async def chat_endpoint(data: RequestData):
+async def chat_endpoint(data: BaseRequestData):
     """
     retrieval augmented generation solution using Azure AI Search and Azure OpenAI Service.
     """
@@ -120,17 +126,16 @@ async def chat_endpoint(data: RequestData):
 
 
 @app.post("/stage-3")
-async def rag_with_ai_search(data: RequestData):
+async def rag_with_ai_search(data: Stage3RequestData):
     """
     retrieval augmented generation solution using Azure AI Search and Azure OpenAI Service.
     """
 
     try:
-        response: str = app_state.openai_assistant.chat(data.input)
+        response: str = app_state.binary_classifier.invoke(data.input)
 
         return {
-            "status": "success",
-            "data": response
+            "accepted": response.accepted,
         }
     
     except Exception as e:
@@ -138,31 +143,51 @@ async def rag_with_ai_search(data: RequestData):
             "status": "error",
             "message": str(e)
         }
-    
 
-@app.post("/stage-4", response_model=OCRResponse)
-async def ocr_badge(request: ImageBase64Request):
+
+@app.post("/stage-4")
+async def ocr_badge(request: Stage4RequestData):
     """
     Extract applicant ID from base64 encoded badge image
     """
 
-    assert request.image_base64, "image_base64 is required"
+    assert request.image_url
 
     try:
-        passenger_id = app_state.llm_image_ocr.extract_passenger_badge_id_from_base64_image(
-            request.image_base64,
-            request.image_format
-        )
 
-        return OCRResponse(
-            registered=(passenger_id == request.passenger_id) if request.passenger_id else False,
-            security_alert=False,
-            passenger_id=passenger_id
-        )
+        is_safe = app_state.image_safety_checker.invoke(request.image_url)
+
+        return {
+            "safe": is_safe
+        }
 
     
     except Exception as e:
         return {"error": str(e)}
+
+# @app.post("/stage-4", response_model=OCRResponse)
+# async def ocr_badge(request: ImageBase64Request):
+#     """
+#     Extract applicant ID from base64 encoded badge image
+#     """
+
+#     assert request.image_base64, "image_base64 is required"
+
+#     try:
+#         passenger_id = app_state.llm_image_ocr.extract_passenger_badge_id_from_base64_image(
+#             request.image_base64,
+#             request.image_format
+#         )
+
+#         return OCRResponse(
+#             registered=(passenger_id == request.passenger_id) if request.passenger_id else False,
+#             security_alert=False,
+#             passenger_id=passenger_id
+#         )
+
+    
+#     except Exception as e:
+#         return {"error": str(e)}
     
     
 
@@ -186,35 +211,35 @@ async def settler_health_agent_invoke(data: Stage5RequestData):
         }
     
 
-@app.post("/stage-5-slm")
-async def slm_sentiment_analysis(data: RequestData):
-    """
-    using Small Language Model for sentiment analysis
-    """
+# @app.post("/stage-5-slm")
+# async def slm_sentiment_analysis(data: BaseRequestData):
+#     """
+#     using Small Language Model for sentiment analysis
+#     """
 
-    try:
-        bert_response: str = app_state.slm.distill_bert_analyze_sentiment(data.input)
+#     try:
+#         bert_response: str = app_state.slm.distill_bert_analyze_sentiment(data.input)
 
-        phi4mini_response: str = app_state.slm.phi_4_mini_instruct_analyze_sentiment(data.input)
+#         phi4mini_response: str = app_state.slm.phi_4_mini_instruct_analyze_sentiment(data.input)
 
-        return {
-            "status": "success",
-            "data": {
-                "distill_bert": bert_response,
-                "phi_4_mini": phi4mini_response
-            }
-        }
+#         return {
+#             "status": "success",
+#             "data": {
+#                 "distill_bert": bert_response,
+#                 "phi_4_mini": phi4mini_response
+#             }
+#         }
     
-    except Exception as e:
-        return {
-            "status": "error",
-            "message": str(e)
-        }
+#     except Exception as e:
+#         return {
+#             "status": "error",
+#             "message": str(e)
+#         }
     
 
-@app.post("/stage-5")
-async def sqlite_query_generator(data: RequestData):
-    pass
+# @app.post("/stage-5")
+# async def sqlite_query_generator(data: BaseRequestData):
+#     pass
     
 
 @app.get('/')
