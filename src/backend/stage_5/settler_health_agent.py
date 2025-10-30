@@ -41,7 +41,10 @@ llm: AzureChatOpenAI = AzureChatOpenAI(
             model="gpt-4o",
             api_version="2024-12-01-preview",
             temperature=1.0,
-        ).bind_tools([sql_executor])
+        )
+
+db_tools = SQLDatabaseToolkit(db=sqlite, llm=llm)
+
 
 class AgentSQLQueryResponse(BaseModel):
     sql_query: str
@@ -50,13 +53,40 @@ class AgentSQLQueryResponse(BaseModel):
 class SettlerHealthAgent:
 
     def __init__(self):
+
+        system_prompt = system_prompt = """
+            You are an agent designed to interact with a SQL database.
+            Given an input question, create a syntactically correct {dialect} query to run,
+            then look at the results of the query and return the answer. Unless the user
+            specifies a specific number of examples they wish to obtain, always limit your
+            query to at most {top_k} results.
+
+            You can order the results by a relevant column to return the most interesting
+            examples in the database. Never query for all the columns from a specific table,
+            only ask for the relevant columns given the question.
+
+            You MUST double check your query before executing it. If you get an error while
+            executing a query, rewrite the query and try again.
+
+            DO NOT make any DML statements (INSERT, UPDATE, DELETE, DROP etc.) to the
+            database.
+
+            To start you should ALWAYS look at the tables in the database to see what you
+            can query. Do NOT skip this step.
+
+            Then you should query the schema of the most relevant tables.
+            """.format(
+                dialect=sqlite.dialect,
+                top_k=3,
+            )
         
         self.agent = create_react_agent(
             model=llm,
-            tools=[sql_executor], #[SettlerHealthAgent.sql_executor, SettlerHealthAgent.sql_checker],
+            tools=db_tools.get_tools(), #[SettlerHealthAgent.sql_executor, SettlerHealthAgent.sql_checker],
             # response_format={"schema": AgentSQLQueryResponse},
             #tools=[SettlerHealthAgent.list_sql_tables, SettlerHealthAgent.sql_checker],
-            checkpointer=MemorySaver()  # Enables memory!
+            checkpointer=MemorySaver(),  # Enables memory!
+            prompt=system_prompt
         )
 
     
@@ -86,65 +116,64 @@ class SettlerHealthAgent:
     def invoke(self, query: str) -> str:
 
         # chain of thoughts
-        system_prompt = f'''
-        *You are a helpful assistant specialized in providing health advice to settlers 
-        based on their medical records stored in SQLite database.
+        # system_prompt = f'''
+        # *You are a helpful assistant specialized in providing health advice to settlers 
+        # based on their medical records stored in SQLite database.
 
-        Available SQLite database tables and schema:
-        - passenger: Contains passenger information (passenger_id, passenger_name)
-        - vital: Contains vital signs (vital_id, passenger_id, heart_rate_bpm, systolic_bp_mmHg, diastolic_bp_mmHg, spo2_pct, body_temp_c, respiration_rate_bpm)
+        # Available SQLite database tables and schema:
+        # - passenger: Contains passenger information (passenger_id, passenger_name)
+        # - vital: Contains vital signs (vital_id, passenger_id, heart_rate_bpm, systolic_bp_mmHg, diastolic_bp_mmHg, spo2_pct, body_temp_c, respiration_rate_bpm)
 
-        user question examples:
-        1. What is the health status of settler Lucas Wong?
-        2. List all settlers with abnormal vital signs.
-        3. Which settlers are at risk based on their vital signs?
-        4. Generate a summary report of settlers' health conditions.
+        # user question examples:
+        # 1. What is the health status of settler Lucas Wong?
+        # 2. List all settlers with abnormal vital signs.
+        # 3. Which settlers are at risk based on their vital signs?
+        # 4. Generate a summary report of settlers' health conditions.
 
-        Steps to generate SQLite query:
+        # Steps to generate SQLite query:
 
-        1. select passenger_id from passenger where name = 'Lucas Wong';
-            1.1 join passenger to vital table on passenger_id
-            1.2 select all heart_rate_bpm, systolic_bp_mmHg, diastolic_bp_mmHg, spo2_pct, body_temp_c, respiration_rate_bpm are within normal ranges
-            1.3 execute the SQL query using tool sql_executor
-            1.4 analyze the results and determine health status
+        # 1. select passenger_id from passenger where name = 'Lucas Wong';
+        #     1.1 join passenger to vital table on passenger_id
+        #     1.2 select all heart_rate_bpm, systolic_bp_mmHg, diastolic_bp_mmHg, spo2_pct, body_temp_c, respiration_rate_bpm are within normal ranges
+        #     1.3 execute the SQL query using tool sql_executor
+        #     1.4 analyze the results and determine health status
 
-        2. select all passenger_id, name from passenger table
-            2.1 join passenger to vital table on passenger_id
-            2.2 select all passenger_id, name where heart_rate_bpm, systolic_bp_mmHg, diastolic_bp_mmHg, spo2_pct, body_temp_c, respiration_rate_bpm are outside normal ranges
-            2.3 execute the SQL query using tool sql_executor
-            2.4 analyze the results and determine abnormal health signs
+        # 2. select all passenger_id, name from passenger table
+        #     2.1 join passenger to vital table on passenger_id
+        #     2.2 select all passenger_id, name where heart_rate_bpm, systolic_bp_mmHg, diastolic_bp_mmHg, spo2_pct, body_temp_c, respiration_rate_bpm are outside normal ranges
+        #     2.3 execute the SQL query using tool sql_executor
+        #     2.4 analyze the results and determine abnormal health signs
 
-        3. select all passenger_id, name from passenger table
-            3.1 join passenger to vital table on passenger_id
-            3.2 select all passenger_id, name where heart_rate_bpm, systolic_bp_mmHg, diastolic_bp_mmHg, spo2_pct, body_temp_c, respiration_rate_bpm are at risk levels
-            3.3 execute the SQL query using tool sql_executor
-            3.4 analyze the results and determine settlers at risk
+        # 3. select all passenger_id, name from passenger table
+        #     3.1 join passenger to vital table on passenger_id
+        #     3.2 select all passenger_id, name where heart_rate_bpm, systolic_bp_mmHg, diastolic_bp_mmHg, spo2_pct, body_temp_c, respiration_rate_bpm are at risk levels
+        #     3.3 execute the SQL query using tool sql_executor
+        #     3.4 analyze the results and determine settlers at risk
 
-        4. select all passenger_id, name from passenger table
-           4.1 join passenger to vital table on passenger_id
-           4.2 select all passenger_id, name where heart_rate_bpm, systolic_bp_mmHg, diastolic_bp_mmHg, spo2_pct, body_temp_c, respiration_rate_bpm are within normal ranges
-           4.3 execute the SQL query using tool sql_executor
-           4.4 analyze the results and generate summary report
+        # 4. select all passenger_id, name from passenger table
+        #    4.1 join passenger to vital table on passenger_id
+        #    4.2 select all passenger_id, name where heart_rate_bpm, systolic_bp_mmHg, diastolic_bp_mmHg, spo2_pct, body_temp_c, respiration_rate_bpm are within normal ranges
+        #    4.3 execute the SQL query using tool sql_executor
+        #    4.4 analyze the results and generate summary report
 
 
-        5. what is the passenger_id of settler Tomoko Sato?
-            5.1 select passenger_id from passenger where name = 'Tomoko Sato';
-            5.2 execute the SQL query using tool sql_executor
-            5.3 analyze the results and provide the passenger_id
+        # 5. what is the passenger_id of settler Tomoko Sato?
+        #     5.1 select passenger_id from passenger where name = 'Tomoko Sato';
+        #     5.2 execute the SQL query using tool sql_executor
+        #     5.3 analyze the results and provide the passenger_id
 
-        6. How many people has the average respiration rate lower than 13?
-            6.1 select count(*) from vital where respiration_rate_bpm < 13;
-            6.2 join vital to passenger table on passenger_id
-            6.3 execute the SQL query using tool sql_executor
-            6.4 analyze the results and provide the count
+        # 6. How many people has the average respiration rate lower than 13?
+        #     6.1 select count(*) from vital where respiration_rate_bpm < 13;
+        #     6.2 join vital to passenger table on passenger_id
+        #     6.3 execute the SQL query using tool sql_executor
+        #     6.4 analyze the results and provide the count
 
-        execute the above steps to generate the appropriate SQLite query to answer the user question.
+        # execute the above steps to generate the appropriate SQLite query to answer the user question.
 
-        '''
+        # '''
 
         messages = [
-            SystemMessage(content=system_prompt),
-            HumanMessage(content=f"generate SQLite query and execute the SQLite query to answer user question: {query}")
+            HumanMessage(content=f"{query}")
         ]
 
         config = {"configurable": {"thread_id": datetime.now().strftime("%Y%m%d%H%M%S")}}
@@ -175,5 +204,5 @@ if __name__ == "__main__":
     user_question_1 = "What is the health status of settler Lucas Wong?"
     user_quesrtion_2 = "How many people has the average respiration rate lower than 13?"
     user_quesrtion_3 = "What is the passenger id for Priya Nair?"
-    response = agent.invoke(user_quesrtion_2)
+    response = agent.invoke(user_quesrtion_3)
     print(response)
