@@ -48,6 +48,13 @@ class RAG():
         Correctly identifies transparent governance under the Azure Consensus Protocol (ACP) and mentions equity in general.
         two core principles from the reference—justice-by-design and consent-first data practices—and equity baselines for essential services.'
 
+        example question:
+        What is the function of the Terraformer Coordinator agent?
+
+        example answer:
+        The Terraformer Coordinator agent governs the swarms of programmable nanites used in terraforming. It ensures atmospheric rebalancing, soil enrichment, water synthesis, and microbial seeding proceed according to plan. Embedded governance tokens allow civic oversight to pause, redirect, or decommission terraforming if ecological risks exceed thresholds.
+        It also manages biome scaffolding and the Azure Utopia context.
+
         Question: {query}
 
         Let's answer step by step:"""
