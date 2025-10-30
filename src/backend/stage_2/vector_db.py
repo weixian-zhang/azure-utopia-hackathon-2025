@@ -22,34 +22,56 @@ class VectorStore():
         self.vector_store: AzureSearch = AzureSearch(
             azure_search_endpoint=vector_store_address,
             azure_search_key=vector_store_password,
-            index_name='happiness_country_index',
+            index_name='utopia_info',
             embedding_function=self.embeddings.embed_query
         )
 
     def load_and_vectorize_csv(self):
+
         data_path = os.path.join(os.path.dirname(__file__))
 
-        loader = UnstructuredFileLoader("path/to/your/document.docx")
-        docs = loader.load()
-        loader = DirectoryLoader(
-                path=data_path,
-                glob="**/*.{pdf,docx}",
-                loader_kwargs={
-                    "csv_args": {
-                        "delimiter": ",",
-                    }
-                },
-                loader_cls={
-                    ".pdf": PyPDFLoader,
-                    ".docx": Docx2txtLoader,
-                },
-                recursive=False
-            )
+        # loader = DirectoryLoader(
+        #         path=data_path,
+        #         glob="**/*.{pdf,docx}",
+        #         loader_kwargs={
+        #             "csv_args": {
+        #                 "delimiter": ",",
+        #             }
+        #         },
+        #         loader_cls={
+        #             ".pdf": PyPDFLoader,
+        #             ".docx": Docx2txtLoader
+        #         },
+        #         recursive=True
+        #     )
         
-        documents = loader.load()
+        # documents = loader.load()
+
+        pdf_loader = DirectoryLoader(
+            path=data_path,
+            glob="**/*.pdf",
+            loader_cls=PyPDFLoader,
+            recursive=False,
+            show_progress=True
+        )
+        
+        # Load DOCX files
+        docx_loader = DirectoryLoader(
+            path=data_path,
+            glob="**/*.docx",
+            loader_cls=Docx2txtLoader,
+            recursive=True,
+            show_progress=True
+        )
+        
+        # Load both file types
+        pdf_documents = pdf_loader.load()
+        docx_documents = docx_loader.load()
+
+        documents = pdf_documents + docx_documents
 
 
-        text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
+        text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
         docs = text_splitter.split_documents(documents)
 
         document_ids =self.vector_store.add_documents(docs)
@@ -57,7 +79,7 @@ class VectorStore():
         assert len(document_ids) == len(docs), "RAG documents were not added to the Azure AI Search"
 
 
-    def similarity_search(self, query: str, k: int = 3):
+    def similarity_search(self, query: str, k: int = 5):
         result = self.vector_store.similarity_search(query, k=k)
         return result
     

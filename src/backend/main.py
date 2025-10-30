@@ -19,6 +19,9 @@ class BaseRequestData(BaseModel):
     team: str = None
     call_index: int = None
 
+class Stage2RequestData(BaseRequestData):
+    question: str
+
 class Stage3RequestData(BaseRequestData):
     input: str
 
@@ -95,15 +98,14 @@ async def stage_1(data: BaseRequestData):
 
 
 @app.post("/stage-2")
-async def chat_endpoint(data: BaseRequestData):
+async def chat_endpoint(data: Stage2RequestData):
     """
     retrieval augmented generation solution using Azure AI Search and Azure OpenAI Service.
     """
-    response: str = app_state.rag.answer_query(data.input)
+    answer: str = app_state.rag.answer_query(data.question)
     
     return {
-        "status": "success",
-        "data": response
+        "answer": answer
     }
 
 
